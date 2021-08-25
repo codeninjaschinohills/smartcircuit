@@ -4,7 +4,10 @@
 > Open this page at [https://codeninjaschinohills.github.io/smartcircuit/](https://codeninjaschinohills.github.io/smartcircuit/)
 
 ## 2021 Congressional App Challenge
-* Team Dojo Defenders
+* Challenge: https://www.congressionalappchallenge.us/ 
+* Rule Book: https://www.congressionalappchallenge.us/wp-content/uploads/2021/06/2021-CAC-Rules.pdf 
+
+## 2021 Team: Dojo Defenders
 * Ninjas: Rayce, Kyle, Tony, & Oliver
 
 ## Use as Extension
