@@ -3,6 +3,10 @@
 
 > Open this page at [https://codeninjaschinohills.github.io/smartcircuit/](https://codeninjaschinohills.github.io/smartcircuit/)
 
+## 2021 Congressional App Challenge
+* Team Dojo Defenders
+* Ninjas: Rayce, Kyle, Tony, & Oliver
+
 ## Use as Extension
 
 This repository can be added as an **extension** in MakeCode.
