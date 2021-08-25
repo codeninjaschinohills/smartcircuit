@@ -7,7 +7,7 @@
 * Challenge: https://www.congressionalappchallenge.us/ 
 * Rule Book: https://www.congressionalappchallenge.us/wp-content/uploads/2021/06/2021-CAC-Rules.pdf 
 
-## 2021 Team: Dojo Defenders
+## 2021 CNCH Team: Dojo Defenders
 * Ninjas: Rayce, Kyle, Tony, & Oliver
 
 ## Use as Extension
