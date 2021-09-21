@@ -8,13 +8,17 @@
         "main.blocks",
         "main.ts",
         "README.md",
-        "assets.json"
+        "assets.json",
+        "level1.ts",
+        "level2.ts",
+        "level3.ts",
+        "level4.ts"
     ],
     "testFiles": [
         "test.ts"
     ],
     "targetVersions": {
-        "target": "1.5.46",
+        "target": "1.5.56",
         "targetId": "arcade"
     },
     "supportedTargets": [
