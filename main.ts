@@ -165,3 +165,6 @@ let mySprite = sprites.create(img`
     `, SpriteKind.Player)
 mySprite.setBounceOnWall(true)
 mySprite.setVelocity(50, 50)
+game.onUpdateInterval(5000, function () {
+    mySprite.setVelocity(500, 500)
+})
