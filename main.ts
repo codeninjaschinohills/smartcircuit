@@ -45,9 +45,10 @@ controller.A.onEvent(ControllerButtonEvent.Pressed, function () {
         //console.log(`layout position=${layoutPos.x},${layoutPos.y}`);
 
         let wireWidth = 4;
-        for (let i = 0; i < wireWidth; i++) {
-            currentLayout[layoutPos.y][layoutPos.x + i] += symbolWire;
-        }
+        currentLayout[layoutPos.y][layoutPos.x + 0] += symbolWireEast;
+        currentLayout[layoutPos.y][layoutPos.x + 1] += symbolWireEast + symbolWireWest;
+        currentLayout[layoutPos.y][layoutPos.x + 2] += symbolWireEast + symbolWireWest;
+        currentLayout[layoutPos.y][layoutPos.x + 3] += symbolWireWest;
 
         //console.log(getLayoutString(currentLayout));
 
@@ -57,7 +58,7 @@ controller.A.onEvent(ControllerButtonEvent.Pressed, function () {
             // TODO: is this the only path we need to check?
             // is this the only spot we need to check to see if we won?
             // Also add in logic for win codition
-            // console.log(`Found path from ${positivePos.x},${positivePos.y} to ${symbolGoal}`);
+            //console.log(`Found path from ${positivePos.x},${positivePos.y} to ${symbolGoal}`);
         }
 
     }
@@ -149,9 +150,12 @@ let layoutWidth = 10;
 
 let symbolPositive = '+';
 let symbolNegative = '-';
-let symbolWire = 'X';
+let symbolWireNorth = '^';
+let symbolWireSouth = 'v';
+let symbolWireEast = '>';
+let symbolWireWest = '<';
 let symbolGoal = 'G';
-let symbolVisited = 'V';
+let symbolVisited = 'X';
 
 // Copy and paste the empty layout to setup your own layout
 let emptyLayout =
@@ -171,9 +175,9 @@ let startingLayout =
     [
         ['  ', '  ', '  ', '  ', '  ', '  ', '  ', '  ', '  ', '  '],
         ['  ', '  ', '  ', '  ', '  ', '  ', '  ', '  ', '  ', '  '],
-        ['  ', '-X', 'X ', 'X ', 'X ', 'X ', 'X ', 'X ', 'GX', 'G '],
+        ['  ', '->', '<>', '<>', '<>', '<>', '<>', '<>', 'G<', 'G '],
         ['  ', '  ', '  ', '  ', '  ', '  ', '  ', '  ', '  ', '  '],
-        ['  ', '+X', 'X ', 'X ', 'X ', 'X ', '  ', '  ', 'G ', 'G '],
+        ['  ', '+>', '<>', '<>', '<>', '< ', '  ', '  ', 'G ', 'G '],
         ['  ', '  ', '  ', '  ', '  ', '  ', '  ', '  ', '  ', '  '],
         ['  ', '  ', '  ', '  ', '  ', '  ', '  ', '  ', '  ', '  ']
     ];
@@ -207,13 +211,8 @@ function pathToHelper(layout: string[][], x: number, y: number, endingSymbols: s
         return false;
     }
 
-    // Mark this spot as visited (add a 'V')
+    // Mark this spot as visited (add a 'X')
     layout[y][x] = currentSymbols + symbolVisited;
-
-    // If the spot doesn't have a wire, it isn't a part of a path 
-    if (currentSymbols.indexOf(symbolWire) == -1) {
-        return false;
-    }
 
     // If this spot is our goal, then we made it!
     if (hasSymbols(endingSymbols, currentSymbols)) {
@@ -223,11 +222,31 @@ function pathToHelper(layout: string[][], x: number, y: number, endingSymbols: s
     // If we made it here, then we need to keep checking
     // See if a path exists from any adjacent spot to our goal
     // Remember we avoid rechecking spots by looking for the 'V'
-    // markings we add as we go. 
-    return pathToHelper(layout, x + 1, y, endingSymbols)
-        || pathToHelper(layout, x, y + 1, endingSymbols)
-        || pathToHelper(layout, x - 1, y, endingSymbols)
-        || pathToHelper(layout, x, y - 1, endingSymbols);
+    // markings we add as we go.
+
+    let northCheck = false;
+    let eastCheck = false;
+    let southCheck = false;
+    let westCheck = false;
+
+    if (hasSymbols(symbolWireNorth, currentSymbols)){
+        northCheck = pathToHelper(layout, x, y - 1, endingSymbols);
+    }
+
+    if (hasSymbols(symbolWireSouth, currentSymbols)) {
+        southCheck = pathToHelper(layout, x, y + 1, endingSymbols);
+    }
+
+    if (hasSymbols(symbolWireWest, currentSymbols)) {
+        westCheck = pathToHelper(layout, x - 1, y, endingSymbols);
+    }
+
+    if (hasSymbols(symbolWireEast, currentSymbols)) {
+        eastCheck = pathToHelper(layout, x + 1, y, endingSymbols);
+    }
+
+    // If any direction has a path, then return true
+    return northCheck || southCheck || westCheck || eastCheck;
 }
 
 // Returns true if 'toCheck' contains all the characters found in 'required'
@@ -284,7 +303,7 @@ function getLayoutString(layout: string[][]) {
     for (let y = 0; y < layoutHeight; y++) {
         layoutString += `${y}[`
         for (let x = 0; x < layoutWidth; x++) {
-            layoutString += `'${padString(layout[y][x], 4)}', `
+            layoutString += `'${padString(layout[y][x], 5)}', `
         }
         layoutString += ']\n'
     }
@@ -304,25 +323,19 @@ function padString(s: string, n: number) {
     return newString.split('').sort().join('');;
 }
 
-
 /*
 let testLayout =
     [
         ['  ', '  ', '  ', '  ', '  ', '  ', '  ', '  ', '  ', '  '],
         ['  ', '  ', '  ', '  ', '  ', '  ', '  ', '  ', '  ', '  '],
-        ['  ', '-X', 'X ', 'X ', 'X ', 'X ', 'X ', 'X ', 'GX', 'G '],
+        ['  ', '->', '<>', '<>', '<>', '<>', '<>', '<>', 'G<', 'G '],
         ['  ', '  ', '  ', '  ', '  ', '  ', '  ', '  ', '  ', '  '],
-        ['  ', '+X', 'X ', 'X ', 'X ', 'X ', '  ', '  ', 'G ', 'G '],
+        ['  ', '+>', '<>', '<>', '<>', '< ', '  ', '  ', 'G ', 'G '],
         ['  ', '  ', '  ', '  ', '  ', '  ', '  ', '  ', '  ', '  '],
         ['  ', '  ', '  ', '  ', '  ', '  ', '  ', '  ', '  ', '  ']
     ];
-
-console.log(getLayoutString(testLayout));
 let pos = findSymbolInLayout(testLayout, '+');
-if (pathTo(startingLayout, pos.x, pos.y, symbolGoal)) {
+if (pathTo(testLayout, pos.x, pos.y, symbolGoal)) {
     console.log("A PATH WAS FOUND!");
-}
-else {
-    console.log("A PATH WAS NOT FOUND!")
 }
 */
