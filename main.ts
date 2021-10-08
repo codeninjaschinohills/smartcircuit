@@ -67,13 +67,6 @@ controller.A.onEvent(ControllerButtonEvent.Pressed, function () {
         //console.log(getLayoutString(currentLayout));
 
         // symbolGoal = "G"
-        let positivePos = findSymbolInLayout(currentLayout, symbolPositive);
-        if (pathTo(currentLayout, positivePos.x, positivePos.y, symbolGoal)) {
-            // TODO: is this the only path we need to check?
-            // is this the only spot we need to check to see if we won?
-            // Also add in logic for win codition
-            //console.log(`Found path from ${positivePos.x},${positivePos.y} to ${symbolGoal}`);
-        }
 
     }
     if (selectorPanel == true) {
@@ -88,15 +81,22 @@ controller.A.onEvent(ControllerButtonEvent.Pressed, function () {
             // TODO: How do we clear the currentLayout?
             // a hint is that there should be an easy way to reset it!
         } else {
-            if (pathTo(currentLayout, 1, 4, symbolGoal)) {
-                console.log("nice");
-                // console.log(getLayoutString(currentLayout));
-                //console.log(getLayoutString(startingLayout));
+            let positivePos = findSymbolInLayout(currentLayout, symbolPositive);
+            let negativePos = findSymbolInLayout(currentLayout, symbolNegative);
+            let negativePathCheck = pathTo(currentLayout, positivePos.x, positivePos.y, symbolGoal);
+            let positivePathCheck = pathTo(currentLayout, negativePos.x, negativePos.y, symbolGoal);
+            let shortCircuitCheck = pathTo(currentLayout, positivePos.x, positivePos.y, symbolNegative);
+            if (positivePathCheck && negativePathCheck && !shortCircuitCheck) {
+                console.log("Path Found Fully");
+                //Win code goes here
+
+            } else if(positivePathCheck && negativePathCheck){
+                console.log("Shortcircuit");
+                //Shortcircuit fail goes here
 
             } else {
-                console.log("not nice");
-                //console.log(getLayoutString(currentLayout));
-
+                console.log("Path Not Found");
+                //Wire connection fail goes here
             }
         }
     }
