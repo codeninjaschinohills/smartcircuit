@@ -41,10 +41,10 @@ controller.A.onEvent(ControllerButtonEvent.Pressed, function () {
 
         let layoutPos = blockToLayout(testBlock.x, testBlock.y)
 
-        currentLayout[layoutPos.y + 0][layoutPos.x] += symbolWireNorth;
+        currentLayout[layoutPos.y + 0][layoutPos.x] += symbolWireSouth;
         currentLayout[layoutPos.y + 1][layoutPos.x] += symbolWireNorth + symbolWireSouth;
         currentLayout[layoutPos.y + 2][layoutPos.x] += symbolWireNorth + symbolWireSouth;
-        currentLayout[layoutPos.y + 3][layoutPos.x] += symbolWireSouth;
+        currentLayout[layoutPos.y + 3][layoutPos.x] += symbolWireNorth;
 
     } else if (selectorPanel == false) {
         testBlock = sprites.create(assets.image`4BlockH`, SpriteKind.Player)
