@@ -89,7 +89,7 @@ controller.A.onEvent(ControllerButtonEvent.Pressed, function () {
             // a hint is that there should be an easy way to reset it!
         } else {
             console.log(getLayoutString(currentLayout))
-            if (pathTo(currentLayout, 1, 4, symbolGoal)) {
+            if (pathTo(currentLayout, 1, 3, symbolGoal)) {
                 console.log("nice");
                 // console.log(getLayoutString(currentLayout));
                 //console.log(getLayoutString(startingLayout));
