@@ -88,6 +88,7 @@ controller.A.onEvent(ControllerButtonEvent.Pressed, function () {
             // TODO: How do we clear the currentLayout?
             // a hint is that there should be an easy way to reset it!
         } else {
+            console.log(getLayoutString(currentLayout))
             if (pathTo(currentLayout, 1, 4, symbolGoal)) {
                 console.log("nice");
                 // console.log(getLayoutString(currentLayout));
@@ -158,9 +159,9 @@ selectedButton = 2
 let battery = sprites.create(assets.image`batteryBlock`, 0)
 let goal = sprites.create(assets.image`goalThing`, 0)
 battery.x = 21
-battery.y = 58
+battery.y = 58 - 16
 goal.x = 149
-goal.y = 58
+goal.y = 58 - 16
 vertical = true
 curBlock = sprites.create(assets.image`4BlockV`, SpriteKind.Player)
 bottomOverlayTest = sprites.create(assets.image`bottomOverlay`, SpriteKind.Player)
@@ -171,6 +172,7 @@ curBlock.z = 1;
 scene.setBackgroundImage(assets.image`bg`)
 if (prePlacedBlocks == 1) {
     let blockOverlay = sprites.create(assets.image`placedBlocksOverlay`, 0);
+    blockOverlay.y = blockOverlay.y - 16
 }
 
 
@@ -203,10 +205,10 @@ let emptyLayout =
 let startingLayout =
     [
         ['  ', '  ', '  ', '  ', '  ', '  ', '  ', '  ', '  ', '  '],
-        ['  ', '  ', '  ', '  ', '  ', '  ', '  ', '  ', '  ', '  '],
         ['  ', '->', '<>', '<>', '<>', '<>', '<>', '<>', 'G<', 'G '],
         ['  ', '  ', '  ', '  ', '  ', '  ', '  ', '  ', '  ', '  '],
         ['  ', '+>', '<>', '<>', '<>', '< ', '  ', '  ', 'G ', 'G '],
+        ['  ', '  ', '  ', '  ', '  ', '  ', '  ', '  ', '  ', '  '],
         ['  ', '  ', '  ', '  ', '  ', '  ', '  ', '  ', '  ', '  '],
         ['  ', '  ', '  ', '  ', '  ', '  ', '  ', '  ', '  ', '  ']
     ];
