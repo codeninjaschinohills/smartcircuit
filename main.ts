@@ -97,6 +97,7 @@ controller.A.onEvent(ControllerButtonEvent.Pressed, function () {
                 //Win code goes here
                 lightbulb_on.x = 80
                 lightbulb_on.y = 43
+                game.showLongText("Good Job\n You've finished", DialogLayout.Bottom)
             } else if (positivePathCheck && negativePathCheck) {
                 console.log("Shortcircuit");
                 //Shortcircuit fail goes here
