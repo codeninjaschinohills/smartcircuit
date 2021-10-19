@@ -95,7 +95,8 @@ controller.A.onEvent(ControllerButtonEvent.Pressed, function () {
             if (positivePathCheck && negativePathCheck && !shortCircuitCheck) {
                 console.log("Path Found Fully");
                 //Win code goes here
-
+                lightbulb_on.x = 80
+                lightbulb_on.y = 43
             } else if (positivePathCheck && negativePathCheck) {
                 console.log("Shortcircuit");
                 //Shortcircuit fail goes here
@@ -162,9 +163,12 @@ let selectedButton = 0
 let curBlock: Sprite = null
 selectedButton = 2
 let battery = sprites.create(assets.image`batteryBlock`, 0)
-let lightbulb = sprites.create(assets.image`Lightbulb`,0)
+let lightbulb = sprites.create(assets.image`lightbulb_off`,0)
 lightbulb.x = 80
 lightbulb.y = 43
+let lightbulb_on = sprites.create(assets.image`lightbulb_on`, 0)
+lightbulb_on.x = 900
+lightbulb_on.y = 900
 battery.x = 21
 battery.y = 58
 vertical = true
@@ -208,10 +212,10 @@ let emptyLayout =
 // Note how there can be two symbols in a spot, like a Goal and a Wire
 let startingLayout =
     [
-        ['  ', '  ', '  ', '  ', '  ', '  ', '  ', '  ', '  ', '  '],
-        ['  ', '  ', '  ', '  ', '  ', '  ', '  ', '  ', '  ', '  '],
-        ['  ', '->', '<>', '<>', '<>', '<>', '<>', '<>', '< ', '  '],
-        ['  ', '  ', '  ', '  ', '  ', '  ', '  ', '  ', '  ', '  '],
+        ['  ', 'v ', '  ', '  ', '  ', '  ', '  ', '  ', '  ', '  '],
+        ['  ', 'v^', '  ', '  ', '  ', '  ', '  ', '  ', '  ', '  '],
+        ['  ', '-^', '  ', '  ', '  ', '  ', '  ', '  ', '  ', '  '],
+        ['  ', '  ', '  ', '  ', 'G ', 'G ', '  ', '  ', '  ', '  '],
         ['  ', '+v', '  ', '  ', '  ', '  ', '  ', '  ', '  ', '  '],
         ['  ', '^v', '  ', '  ', '  ', '  ', '  ', '  ', '  ', '  '],
         ['  ', '^ ', '  ', '  ', '  ', '  ', '  ', '  ', '  ', '  ']
