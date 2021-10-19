@@ -1,0 +1,3041 @@
+<xml xmlns="http://www.w3.org/1999/xhtml">
+<block id="%nLC/_FJrBF{u)0G|c91" type="keyonevent">
+<field name="button">controller.up</field>
+<field name="event">ControllerButtonEvent.Pressed</field>
+<statement name="HANDLER">
+<block id=".F=81(2^:NiXLA:pek{2" type="controls_if">
+<mutation elseif="1" else="0" />
+<value name="IF0">
+<shadow type="logic_boolean"><field name="BOOL">TRUE</field></shadow>
+<block type="logic_operation">
+<field name="OP">AND</field>
+<value name="A">
+<shadow type="logic_boolean"><field name="BOOL">TRUE</field></shadow>
+<block type="variables_get">
+<field name="VAR">vertical</field>
+</block>
+</value>
+<value name="B">
+<shadow type="logic_boolean"><field name="BOOL">TRUE</field></shadow>
+<block type="logic_compare">
+<field name="OP">GTE</field>
+<value name="A">
+<shadow type="math_number"><field name="NUM">0</field></shadow>
+<block type="math_arithmetic">
+<field name="OP">MINUS</field>
+<value name="A">
+<shadow type="math_number"><field name="NUM">0</field></shadow>
+<block type="Sprite_blockCombine_get">
+<field name="property">Sprite.y</field>
+<value name="mySprite">
+<block type="variables_get">
+<field name="VAR">curBlock</field>
+</block>
+</value>
+</block>
+</value>
+<value name="B">
+<shadow type="math_number">
+<field name="NUM">32</field>
+</shadow>
+</value>
+</block>
+</value>
+<value name="B">
+<shadow type="math_number">
+<field name="NUM">0</field>
+</shadow>
+</value>
+</block>
+</value>
+</block>
+</value>
+<value name="IF1">
+<shadow type="logic_boolean"><field name="BOOL">TRUE</field></shadow>
+<block type="logic_operation">
+<field name="OP">AND</field>
+<value name="A">
+<shadow type="logic_boolean"><field name="BOOL">TRUE</field></shadow>
+<block type="logic_negate">
+<value name="BOOL">
+<shadow type="logic_boolean"><field name="BOOL">TRUE</field></shadow>
+<block type="variables_get">
+<field name="VAR">vertical</field>
+</block>
+</value>
+</block>
+</value>
+<value name="B">
+<shadow type="logic_boolean"><field name="BOOL">TRUE</field></shadow>
+<block type="logic_compare">
+<field name="OP">GT</field>
+<value name="A">
+<shadow type="math_number"><field name="NUM">0</field></shadow>
+<block type="math_arithmetic">
+<field name="OP">MINUS</field>
+<value name="A">
+<shadow type="math_number"><field name="NUM">0</field></shadow>
+<block type="Sprite_blockCombine_get">
+<field name="property">Sprite.y</field>
+<value name="mySprite">
+<block type="variables_get">
+<field name="VAR">curBlock</field>
+</block>
+</value>
+</block>
+</value>
+<value name="B">
+<shadow type="math_number">
+<field name="NUM">16</field>
+</shadow>
+</value>
+</block>
+</value>
+<value name="B">
+<shadow type="math_number">
+<field name="NUM">0</field>
+</shadow>
+</value>
+</block>
+</value>
+</block>
+</value>
+<statement name="DO0">
+<block id="*JG)Dd.q):A/i=k4k)m#" type="typescript_statement">
+<mutation numlines="1" line0="curBlock.y -&#61; 16" />
+</block>
+</statement>
+<statement name="DO1">
+<block id="xdq%vr`mnL$@k%0IsX,F" type="typescript_statement">
+<mutation numlines="1" line0="curBlock.y -&#61; 16" />
+</block>
+</statement>
+<next>
+<block id="pX%+O;d(VS,XNM5sNYKO" type="controls_if">
+<mutation elseif="0" else="0" />
+<value name="IF0">
+<shadow type="logic_boolean"><field name="BOOL">TRUE</field></shadow>
+<block type="logic_compare">
+<field name="OP">EQ</field>
+<value name="A">
+<shadow type="math_number"><field name="NUM">0</field></shadow>
+<block type="variables_get">
+<field name="VAR">selectorPanel</field>
+</block>
+</value>
+<value name="B">
+<shadow type="math_number"><field name="NUM">0</field></shadow>
+<block type="logic_boolean">
+<field name="BOOL">TRUE</field>
+</block>
+</value>
+</block>
+</value>
+<statement name="DO0">
+<block id="cMCZoczL9N95r2h3}=w`" type="controls_if">
+<mutation elseif="0" else="1" />
+<value name="IF0">
+<shadow type="logic_boolean"><field name="BOOL">TRUE</field></shadow>
+<block type="logic_compare">
+<field name="OP">EQ</field>
+<value name="A">
+<shadow type="math_number"><field name="NUM">0</field></shadow>
+<block type="variables_get">
+<field name="VAR">vertical</field>
+</block>
+</value>
+<value name="B">
+<shadow type="math_number"><field name="NUM">0</field></shadow>
+<block type="logic_boolean">
+<field name="BOOL">TRUE</field>
+</block>
+</value>
+</block>
+</value>
+<statement name="DO0">
+<block id="-*#@l9x3g*!U7MJRu):w" type="spritesetimage">
+<value name="sprite">
+<block type="variables_get">
+<field name="VAR">curBlock</field>
+</block>
+</value>
+<value name="img">
+<shadow type="screen_image_picker">
+<field name="img">assets.image&#96;4BlockV&#96;</field>
+</shadow>
+</value>
+<next>
+<block id="fZjaK}:UI_X~H,ZhOh[A" type="Sprite_blockCombine_set">
+<field name="property">Sprite.y&#64;set</field>
+<value name="mySprite">
+<block type="variables_get">
+<field name="VAR">curBlock</field>
+</block>
+</value>
+<value name="value">
+<shadow type="math_number">
+<field name="NUM">76</field>
+</shadow>
+</value>
+<next>
+<block id="saF3b@zI5V/zPYIxmP_v" type="variables_set">
+<field name="VAR">selectorPanel</field>
+<value name="VALUE">
+<shadow type="math_number"><field name="NUM">0</field></shadow>
+<block type="logic_boolean">
+<field name="BOOL">FALSE</field>
+</block>
+</value>
+<next>
+<block id="|{?9fI]9NDJ$8[xd)4Vb" type="spritesetimage">
+<value name="sprite">
+<block type="variables_get">
+<field name="VAR">bottomOverlayTest</field>
+</block>
+</value>
+<value name="img">
+<shadow type="screen_image_picker">
+<field name="img">assets.image&#96;bottomOverlay&#96;</field>
+</shadow>
+</value>
+</block>
+</next>
+</block>
+</next>
+</block>
+</next>
+</block>
+</statement>
+<statement name="ELSE">
+<block id="CpLRE=rZ1CKV8[#Yf:O/" type="spritesetimage">
+<value name="sprite">
+<block type="variables_get">
+<field name="VAR">curBlock</field>
+</block>
+</value>
+<value name="img">
+<shadow type="screen_image_picker">
+<field name="img">assets.image&#96;4BlockH&#96;</field>
+</shadow>
+</value>
+<next>
+<block id="hN.z)RZ7Sa~8y8rhPoL3" type="Sprite_blockCombine_set">
+<field name="property">Sprite.y&#64;set</field>
+<value name="mySprite">
+<block type="variables_get">
+<field name="VAR">curBlock</field>
+</block>
+</value>
+<value name="value">
+<shadow type="math_number">
+<field name="NUM">104</field>
+</shadow>
+</value>
+<next>
+<block id="HwLQw;dn6MOxVF9ns/be" type="variables_set">
+<field name="VAR">selectorPanel</field>
+<value name="VALUE">
+<shadow type="math_number"><field name="NUM">0</field></shadow>
+<block type="logic_boolean">
+<field name="BOOL">FALSE</field>
+</block>
+</value>
+<next>
+<block id="wZvsW+YV.,h3+=9[~?/H" type="spritesetimage">
+<value name="sprite">
+<block type="variables_get">
+<field name="VAR">bottomOverlayTest</field>
+</block>
+</value>
+<value name="img">
+<shadow type="screen_image_picker">
+<field name="img">assets.image&#96;bottomOverlay&#96;</field>
+</shadow>
+</value>
+</block>
+</next>
+</block>
+</next>
+</block>
+</next>
+</block>
+</statement>
+</block>
+</statement>
+</block>
+</next>
+</block>
+</statement>
+</block>
+<block id="O)7qt%tPcVJ@GQN^A5m~" type="keyonevent">
+<field name="button">controller.B</field>
+<field name="event">ControllerButtonEvent.Pressed</field>
+<statement name="HANDLER">
+<block id="+$OobaReWK[W[WAjH5-N" type="controls_if">
+<mutation elseif="1" else="0" />
+<value name="IF0">
+<shadow type="logic_boolean"><field name="BOOL">TRUE</field></shadow>
+<block type="logic_operation">
+<field name="OP">AND</field>
+<value name="A">
+<shadow type="logic_boolean"><field name="BOOL">TRUE</field></shadow>
+<block type="logic_compare">
+<field name="OP">EQ</field>
+<value name="A">
+<shadow type="math_number"><field name="NUM">0</field></shadow>
+<block type="variables_get">
+<field name="VAR">vertical</field>
+</block>
+</value>
+<value name="B">
+<shadow type="math_number"><field name="NUM">0</field></shadow>
+<block type="logic_boolean">
+<field name="BOOL">TRUE</field>
+</block>
+</value>
+</block>
+</value>
+<value name="B">
+<shadow type="logic_boolean"><field name="BOOL">TRUE</field></shadow>
+<block type="logic_compare">
+<field name="OP">EQ</field>
+<value name="A">
+<shadow type="math_number"><field name="NUM">0</field></shadow>
+<block type="variables_get">
+<field name="VAR">selectorPanel</field>
+</block>
+</value>
+<value name="B">
+<shadow type="math_number"><field name="NUM">0</field></shadow>
+<block type="logic_boolean">
+<field name="BOOL">FALSE</field>
+</block>
+</value>
+</block>
+</value>
+</block>
+</value>
+<value name="IF1">
+<shadow type="logic_boolean"><field name="BOOL">TRUE</field></shadow>
+<block type="logic_compare">
+<field name="OP">EQ</field>
+<value name="A">
+<shadow type="math_number"><field name="NUM">0</field></shadow>
+<block type="variables_get">
+<field name="VAR">selectorPanel</field>
+</block>
+</value>
+<value name="B">
+<shadow type="math_number"><field name="NUM">0</field></shadow>
+<block type="logic_boolean">
+<field name="BOOL">FALSE</field>
+</block>
+</value>
+</block>
+</value>
+<statement name="DO0">
+<block id="WE7+RmN}AX3*bq%up^p0" type="spritesetimage">
+<value name="sprite">
+<block type="variables_get">
+<field name="VAR">curBlock</field>
+</block>
+</value>
+<value name="img">
+<shadow type="screen_image_picker">
+<field name="img">assets.image&#96;4BlockH&#96;</field>
+</shadow>
+</value>
+<next>
+<block id="sLZmZ}uGC,78a:i4qh0[" type="variables_set">
+<field name="VAR">vertical</field>
+<value name="VALUE">
+<shadow type="math_number"><field name="NUM">0</field></shadow>
+<block type="logic_boolean">
+<field name="BOOL">FALSE</field>
+</block>
+</value>
+<next>
+<block id="uzjI?,]8yAtWOr4dw.^+" type="controls_if">
+<mutation elseif="0" else="0" />
+<value name="IF0">
+<shadow type="logic_boolean"><field name="BOOL">TRUE</field></shadow>
+<block type="logic_compare">
+<field name="OP">GT</field>
+<value name="A">
+<shadow type="math_number"><field name="NUM">0</field></shadow>
+<block type="Sprite_blockCombine_get">
+<field name="property">Sprite.x</field>
+<value name="mySprite">
+<block type="variables_get">
+<field name="VAR">curBlock</field>
+</block>
+</value>
+</block>
+</value>
+<value name="B">
+<shadow type="math_number">
+<field name="NUM">140</field>
+</shadow>
+</value>
+</block>
+</value>
+<statement name="DO0">
+<block id="%ef{t,:LwP@Kc[-bx6[n" type="typescript_statement">
+<mutation numlines="1" line0="curBlock.x -&#61; 48" />
+</block>
+</statement>
+</block>
+</next>
+</block>
+</next>
+</block>
+</statement>
+<statement name="DO1">
+<block id="9q!:IoOmWx)4lP|Rgf1)" type="spritesetimage">
+<value name="sprite">
+<block type="variables_get">
+<field name="VAR">curBlock</field>
+</block>
+</value>
+<value name="img">
+<shadow type="screen_image_picker">
+<field name="img">assets.image&#96;4BlockV&#96;</field>
+</shadow>
+</value>
+<next>
+<block id="-TEt[@6iLn)64s!H/QTC" type="variables_set">
+<field name="VAR">vertical</field>
+<value name="VALUE">
+<shadow type="math_number"><field name="NUM">0</field></shadow>
+<block type="logic_boolean">
+<field name="BOOL">TRUE</field>
+</block>
+</value>
+<next>
+<block id="^s#~@f}$/{cQ2%9=}}P3" type="controls_if">
+<mutation elseif="0" else="0" />
+<value name="IF0">
+<shadow type="logic_boolean"><field name="BOOL">TRUE</field></shadow>
+<block type="logic_compare">
+<field name="OP">GT</field>
+<value name="A">
+<shadow type="math_number"><field name="NUM">0</field></shadow>
+<block type="Sprite_blockCombine_get">
+<field name="property">Sprite.y</field>
+<value name="mySprite">
+<block type="variables_get">
+<field name="VAR">curBlock</field>
+</block>
+</value>
+</block>
+</value>
+<value name="B">
+<shadow type="math_number">
+<field name="NUM">80</field>
+</shadow>
+</value>
+</block>
+</value>
+<statement name="DO0">
+<block id="u_gZ_%vC.TX-m3Gi1y[q" type="typescript_statement">
+<mutation numlines="1" line0="curBlock.y -&#61; 48" />
+</block>
+</statement>
+</block>
+</next>
+</block>
+</next>
+</block>
+</statement>
+</block>
+</statement>
+</block>
+<block id="Y}I,W/3n/0_rK=%F%k^)" type="keyonevent">
+<field name="button">controller.A</field>
+<field name="event">ControllerButtonEvent.Pressed</field>
+<statement name="HANDLER">
+<block id="@J)hmsWHth/K_P%!IHD7" type="controls_if">
+<mutation elseif="1" else="0" />
+<value name="IF0">
+<shadow type="logic_boolean"><field name="BOOL">TRUE</field></shadow>
+<block type="logic_operation">
+<field name="OP">AND</field>
+<value name="A">
+<shadow type="logic_boolean"><field name="BOOL">TRUE</field></shadow>
+<block type="variables_get">
+<field name="VAR">vertical</field>
+</block>
+</value>
+<value name="B">
+<shadow type="logic_boolean"><field name="BOOL">TRUE</field></shadow>
+<block type="logic_compare">
+<field name="OP">EQ</field>
+<value name="A">
+<shadow type="math_number"><field name="NUM">0</field></shadow>
+<block type="variables_get">
+<field name="VAR">selectorPanel</field>
+</block>
+</value>
+<value name="B">
+<shadow type="math_number"><field name="NUM">0</field></shadow>
+<block type="logic_boolean">
+<field name="BOOL">FALSE</field>
+</block>
+</value>
+</block>
+</value>
+</block>
+</value>
+<value name="IF1">
+<shadow type="logic_boolean"><field name="BOOL">TRUE</field></shadow>
+<block type="logic_compare">
+<field name="OP">EQ</field>
+<value name="A">
+<shadow type="math_number"><field name="NUM">0</field></shadow>
+<block type="variables_get">
+<field name="VAR">selectorPanel</field>
+</block>
+</value>
+<value name="B">
+<shadow type="math_number"><field name="NUM">0</field></shadow>
+<block type="logic_boolean">
+<field name="BOOL">FALSE</field>
+</block>
+</value>
+</block>
+</value>
+<statement name="DO0">
+<block id="?KaSruu{q@!/ZX/Yt=?u" type="variables_set">
+<field name="VAR">testBlock</field>
+<value name="VALUE">
+<shadow type="math_number"><field name="NUM">0</field></shadow>
+<block type="spritescreate">
+<value name="img">
+<shadow type="screen_image_picker">
+<field name="img">assets.image&#96;4BlockV&#96;</field>
+</shadow>
+</value>
+<value name="kind">
+<shadow type="spritekind">
+<field name="MEMBER">Player</field>
+</shadow>
+</value>
+</block>
+</value>
+<next>
+<block id="{PjEBh!01Z.[@Sm=mI0y" type="Sprite_blockCombine_set">
+<field name="property">Sprite.z</field>
+<value name="mySprite">
+<block type="variables_get">
+<field name="VAR">testBlock</field>
+</block>
+</value>
+<value name="value">
+<shadow type="math_number">
+<field name="NUM">1</field>
+</shadow>
+</value>
+<next>
+<block id="9U||c3t9R*9AN+,vp@^P" type="Sprite_blockCombine_set">
+<field name="property">Sprite.x&#64;set</field>
+<value name="mySprite">
+<block type="variables_get">
+<field name="VAR">testBlock</field>
+</block>
+</value>
+<value name="value">
+<block type="Sprite_blockCombine_get">
+<field name="property">Sprite.x</field>
+<value name="mySprite">
+<block type="variables_get">
+<field name="VAR">curBlock</field>
+</block>
+</value>
+</block>
+</value>
+<next>
+<block id="eSt9!?+,5:6V$$v?jAVK" type="Sprite_blockCombine_set">
+<field name="property">Sprite.y&#64;set</field>
+<value name="mySprite">
+<block type="variables_get">
+<field name="VAR">testBlock</field>
+</block>
+</value>
+<value name="value">
+<block type="Sprite_blockCombine_get">
+<field name="property">Sprite.y</field>
+<value name="mySprite">
+<block type="variables_get">
+<field name="VAR">curBlock</field>
+</block>
+</value>
+</block>
+</value>
+<next>
+<block id="|kJ,Een6bYLF@F{i[vv," type="array_push">
+<value name="list">
+<block type="variables_get">
+<field name="VAR">placedBlocks</field>
+</block>
+</value>
+<value name="value">
+<block type="variables_get">
+<field name="VAR">testBlock</field>
+</block>
+</value>
+<next>
+<block id="e8+wi(oTAku-S:-*H)We" type="variables_set">
+<field name="VAR">layoutPos</field>
+<value name="VALUE">
+<shadow type="math_number"><field name="NUM">0</field></shadow>
+<block id=";:oNB4H,__y.{l|t)(R-" type="function_call_output">
+<mutation name="blockToLayout" >
+<arg name="blockX" type="number" id="1y85yoc83h3i1q43l8f8" />
+<arg name="blockY" type="number" id="2l5e0e36diafkecqgj95w" />
+</mutation>
+<value name="1y85yoc83h3i1q43l8f8">
+<block type="Sprite_blockCombine_get">
+<field name="property">Sprite.x</field>
+<value name="mySprite">
+<block type="variables_get">
+<field name="VAR">testBlock</field>
+</block>
+</value>
+</block>
+</value>
+<value name="2l5e0e36diafkecqgj95w">
+<block type="Sprite_blockCombine_get">
+<field name="property">Sprite.y</field>
+<value name="mySprite">
+<block type="variables_get">
+<field name="VAR">testBlock</field>
+</block>
+</value>
+</block>
+</value>
+</block>
+</value>
+<next>
+<block id="K@2_+aPhVL_kp+[+s`o+" type="typescript_statement">
+<mutation numlines="1" line0="currentLayout&#91;layoutPos.y &#43; 0&#93;&#91;layoutPos.x&#93; &#43;&#61; symbolWireSouth&#59;" />
+<next>
+<block id="Jt=vb7LPV=R?`;AwTJjg" type="typescript_statement">
+<mutation numlines="1" line0="currentLayout&#91;layoutPos.y &#43; 1&#93;&#91;layoutPos.x&#93; &#43;&#61; symbolWireNorth &#43; symbolWireSouth&#59;" />
+<next>
+<block id="cg|ybnegocPXCB9Q8R2w" type="typescript_statement">
+<mutation numlines="1" line0="currentLayout&#91;layoutPos.y &#43; 2&#93;&#91;layoutPos.x&#93; &#43;&#61; symbolWireNorth &#43; symbolWireSouth&#59;" />
+<next>
+<block id="1!65k[gsC|Uu4TVC}i.b" type="typescript_statement">
+<mutation numlines="1" line0="currentLayout&#91;layoutPos.y &#43; 3&#93;&#91;layoutPos.x&#93; &#43;&#61; symbolWireNorth&#59;" />
+</block>
+</next>
+</block>
+</next>
+</block>
+</next>
+</block>
+</next>
+</block>
+</next>
+<comment pinned="false">console.log&#40;curBlock.x &#43; &#34;&#44;&#34; &#43; curBlock.y&#41;&#59;&#10;console.log&#40;&#41;&#59;</comment>
+</block>
+</next>
+</block>
+</next>
+</block>
+</next>
+</block>
+</next>
+</block>
+</statement>
+<statement name="DO1">
+<block id="VChWs-*ZQR+6b+~93%at" type="variables_set">
+<field name="VAR">testBlock</field>
+<value name="VALUE">
+<shadow type="math_number"><field name="NUM">0</field></shadow>
+<block type="spritescreate">
+<value name="img">
+<shadow type="screen_image_picker">
+<field name="img">assets.image&#96;4BlockH&#96;</field>
+</shadow>
+</value>
+<value name="kind">
+<shadow type="spritekind">
+<field name="MEMBER">Player</field>
+</shadow>
+</value>
+</block>
+</value>
+<next>
+<block id="JPcO~*1Y$%:W8r~yyKmd" type="Sprite_blockCombine_set">
+<field name="property">Sprite.z</field>
+<value name="mySprite">
+<block type="variables_get">
+<field name="VAR">testBlock</field>
+</block>
+</value>
+<value name="value">
+<shadow type="math_number">
+<field name="NUM">1</field>
+</shadow>
+</value>
+<next>
+<block id="~`e.nKe+?]0pbU.xhyF*" type="Sprite_blockCombine_set">
+<field name="property">Sprite.x&#64;set</field>
+<value name="mySprite">
+<block type="variables_get">
+<field name="VAR">testBlock</field>
+</block>
+</value>
+<value name="value">
+<block type="Sprite_blockCombine_get">
+<field name="property">Sprite.x</field>
+<value name="mySprite">
+<block type="variables_get">
+<field name="VAR">curBlock</field>
+</block>
+</value>
+</block>
+</value>
+<next>
+<block id="Hzmx]Q~+w;87my@?2g0#" type="Sprite_blockCombine_set">
+<field name="property">Sprite.y&#64;set</field>
+<value name="mySprite">
+<block type="variables_get">
+<field name="VAR">testBlock</field>
+</block>
+</value>
+<value name="value">
+<block type="Sprite_blockCombine_get">
+<field name="property">Sprite.y</field>
+<value name="mySprite">
+<block type="variables_get">
+<field name="VAR">curBlock</field>
+</block>
+</value>
+</block>
+</value>
+<next>
+<block id="8HPMFC,Y3_gk4u_Egscc" type="array_push">
+<value name="list">
+<block type="variables_get">
+<field name="VAR">placedBlocks</field>
+</block>
+</value>
+<value name="value">
+<block type="variables_get">
+<field name="VAR">testBlock</field>
+</block>
+</value>
+<next>
+<block id="1:=y^F6i490kChpxH5U+" type="console_log">
+<value name="value">
+<shadow type="text"><field name="TEXT"></field></shadow>
+<block type="text_join">
+<mutation items="3" />
+<value name="ADD0">
+<shadow type="text"><field name="TEXT"></field></shadow>
+<block type="Sprite_blockCombine_get">
+<field name="property">Sprite.x</field>
+<value name="mySprite">
+<block type="variables_get">
+<field name="VAR">curBlock</field>
+</block>
+</value>
+</block>
+</value>
+<value name="ADD1">
+<shadow type="text">
+<field name="TEXT">&#44;</field>
+</shadow>
+</value>
+<value name="ADD2">
+<shadow type="text"><field name="TEXT"></field></shadow>
+<block type="Sprite_blockCombine_get">
+<field name="property">Sprite.y</field>
+<value name="mySprite">
+<block type="variables_get">
+<field name="VAR">curBlock</field>
+</block>
+</value>
+</block>
+</value>
+</block>
+</value>
+<next>
+<block id="nwZZqM1a,gFm_~Vi0t.~" type="variables_set">
+<field name="VAR">layoutPos2</field>
+<value name="VALUE">
+<shadow type="math_number"><field name="NUM">0</field></shadow>
+<block id="V#DXMzRn3-i|7Nf]AUv;" type="function_call_output">
+<mutation name="blockToLayout" >
+<arg name="blockX" type="number" id="1y85yoc83h3i1q43l8f8" />
+<arg name="blockY" type="number" id="2l5e0e36diafkecqgj95w" />
+</mutation>
+<value name="1y85yoc83h3i1q43l8f8">
+<block type="Sprite_blockCombine_get">
+<field name="property">Sprite.x</field>
+<value name="mySprite">
+<block type="variables_get">
+<field name="VAR">testBlock</field>
+</block>
+</value>
+</block>
+</value>
+<value name="2l5e0e36diafkecqgj95w">
+<block type="Sprite_blockCombine_get">
+<field name="property">Sprite.y</field>
+<value name="mySprite">
+<block type="variables_get">
+<field name="VAR">testBlock</field>
+</block>
+</value>
+</block>
+</value>
+</block>
+</value>
+<next>
+<block id="7$u(xM`;|}+}TB{~#3qX" type="variables_set">
+<field name="VAR">wireWidth</field>
+<value name="VALUE">
+<shadow type="math_number">
+<field name="NUM">4</field>
+</shadow>
+</value>
+<next>
+<block id="x2rR`=s2AT.#D|*,aGfC" type="typescript_statement">
+<mutation numlines="1" line0="currentLayout&#91;layoutPos2.y&#93;&#91;layoutPos2.x &#43; 0&#93; &#43;&#61; symbolWireEast&#59;" />
+<next>
+<block id="RY3fSNMnfg|J7p,I1+G1" type="typescript_statement">
+<mutation numlines="1" line0="currentLayout&#91;layoutPos2.y&#93;&#91;layoutPos2.x &#43; 1&#93; &#43;&#61; symbolWireEast &#43; symbolWireWest&#59;" />
+<next>
+<block id="9dDEZ1(5iwZSYx3N,l(H" type="typescript_statement">
+<mutation numlines="1" line0="currentLayout&#91;layoutPos2.y&#93;&#91;layoutPos2.x &#43; 2&#93; &#43;&#61; symbolWireEast &#43; symbolWireWest&#59;" />
+<next>
+<block id="$:k*YKrM5Ie#2+Xl)kHc" type="typescript_statement">
+<mutation numlines="1" line0="currentLayout&#91;layoutPos2.y&#93;&#91;layoutPos2.x &#43; 3&#93; &#43;&#61; symbolWireWest&#59;" />
+</block>
+</next>
+</block>
+</next>
+</block>
+</next>
+</block>
+</next>
+<comment pinned="false">console.log&#40;&#96;sprite position&#61;$&#123;testBlock.x&#125;&#44;$&#123;testBlock.y&#125;&#96;&#41;&#59;&#10;console.log&#40;&#96;layout position&#61;$&#123;layoutPos.x&#125;&#44;$&#123;layoutPos.y&#125;&#96;&#41;&#59;</comment>
+</block>
+</next>
+</block>
+</next>
+</block>
+</next>
+</block>
+</next>
+</block>
+</next>
+</block>
+</next>
+</block>
+</next>
+</block>
+</statement>
+<next>
+<block id=",!T8^R.i:Cw$,!Dpl:IE" type="controls_if">
+<mutation elseif="0" else="0" />
+<value name="IF0">
+<shadow type="logic_boolean"><field name="BOOL">TRUE</field></shadow>
+<block type="logic_compare">
+<field name="OP">EQ</field>
+<value name="A">
+<shadow type="math_number"><field name="NUM">0</field></shadow>
+<block type="variables_get">
+<field name="VAR">selectorPanel</field>
+</block>
+</value>
+<value name="B">
+<shadow type="math_number"><field name="NUM">0</field></shadow>
+<block type="logic_boolean">
+<field name="BOOL">TRUE</field>
+</block>
+</value>
+</block>
+</value>
+<statement name="DO0">
+<block id="2qZbP`nN!^kZ}R+8U,*~" type="controls_if">
+<mutation elseif="0" else="1" />
+<value name="IF0">
+<shadow type="logic_boolean"><field name="BOOL">TRUE</field></shadow>
+<block type="logic_compare">
+<field name="OP">EQ</field>
+<value name="A">
+<shadow type="math_number"><field name="NUM">0</field></shadow>
+<block type="variables_get">
+<field name="VAR">selectedButton</field>
+</block>
+</value>
+<value name="B">
+<shadow type="math_number">
+<field name="NUM">1</field>
+</shadow>
+</value>
+</block>
+</value>
+<statement name="DO0">
+<block id="W6OLD$6(+=^A_0(b/hrx" type="pxt_controls_for">
+<value name="VAR">
+<shadow type="variables_get_reporter">
+<field name="VAR">i</field>
+</shadow>
+</value>
+<value name="TO">
+<shadow type="math_whole_number"><field name="NUM">0</field></shadow>
+<block type="math_arithmetic">
+<field name="OP">MINUS</field>
+<value name="A">
+<shadow type="math_number"><field name="NUM">0</field></shadow>
+<block type="lists_length">
+<value name="VALUE">
+<block type="variables_get">
+<field name="VAR">placedBlocks</field>
+</block>
+</value>
+</block>
+</value>
+<value name="B">
+<shadow type="math_number">
+<field name="NUM">1</field>
+</shadow>
+</value>
+</block>
+</value>
+<statement name="DO">
+<block id="w^O5zCoj=9kz7ei:Savl" type="spritedestroy">
+<value name="sprite">
+<block type="lists_index_get">
+<value name="LIST">
+<block type="variables_get">
+<field name="VAR">placedBlocks</field>
+</block>
+</value>
+<value name="INDEX">
+<shadow type="math_number"><field name="NUM">0</field></shadow>
+<block type="variables_get">
+<field name="VAR">i</field>
+</block>
+</value>
+</block>
+</value>
+</block>
+</statement>
+<next>
+<block id="kxI)Ck$0hWKGY)_K{Udu" type="console_log">
+<value name="value">
+<shadow type="text"><field name="TEXT"></field></shadow>
+<block type="typescript_expression">
+<field name="EXPRESSION">getLayoutString&#40;currentLayout&#41;</field>
+</block>
+</value>
+<next>
+<block id="~JA*NI8m%C.zQ;{*m^Ni" type="typescript_statement">
+<mutation numlines="1" line0="currentLayout &#61; copyLayout&#40;startingLayout&#41;&#59;" />
+<next>
+<block id="08C-AN]2,7yQobs|0=[a" type="console_log">
+<value name="value">
+<shadow type="text"><field name="TEXT"></field></shadow>
+<block type="typescript_expression">
+<field name="EXPRESSION">getLayoutString&#40;currentLayout&#41;</field>
+</block>
+</value>
+</block>
+</next>
+</block>
+</next>
+</block>
+</next>
+</block>
+</statement>
+<statement name="ELSE">
+<block id="~M:kzew|%Jk2?UzbuB%;" type="typescript_statement">
+<mutation declaredvars="positivePos" numlines="1" line0="let positivePos &#61; findSymbolInLayout&#40;currentLayout&#44; symbolPositive&#41;&#59;" />
+<next>
+<block id="yZcBG#S3Us#{S]7gH@?," type="typescript_statement">
+<mutation declaredvars="negativePos" numlines="1" line0="let negativePos &#61; findSymbolInLayout&#40;currentLayout&#44; symbolNegative&#41;&#59;" />
+<next>
+<block id="KKPPQy#njXBsULZTUM}u" type="typescript_statement">
+<mutation declaredvars="negativePathCheck" numlines="1" line0="let negativePathCheck &#61; pathTo&#40;currentLayout&#44; positivePos.x&#44; positivePos.y&#44; symbolGoal&#41;&#59;" />
+<next>
+<block id="g3Kj!!8SyKEes}1YPt^U" type="typescript_statement">
+<mutation declaredvars="positivePathCheck" numlines="1" line0="let positivePathCheck &#61; pathTo&#40;currentLayout&#44; negativePos.x&#44; negativePos.y&#44; symbolGoal&#41;&#59;" />
+<next>
+<block id="Q@QO,?FE7Q,}]*YNzq+!" type="typescript_statement">
+<mutation declaredvars="shortCircuitCheck" numlines="1" line0="let shortCircuitCheck &#61; pathTo&#40;currentLayout&#44; positivePos.x&#44; positivePos.y&#44; symbolNegative&#41;&#59;" />
+<next>
+<block id="g(jGk4z(LkMwyItwZX@8" type="controls_if">
+<mutation elseif="1" else="1" />
+<value name="IF0">
+<shadow type="logic_boolean"><field name="BOOL">TRUE</field></shadow>
+<block type="logic_operation">
+<field name="OP">AND</field>
+<value name="A">
+<shadow type="logic_boolean"><field name="BOOL">TRUE</field></shadow>
+<block type="logic_operation">
+<field name="OP">AND</field>
+<value name="A">
+<shadow type="logic_boolean"><field name="BOOL">TRUE</field></shadow>
+<block type="variables_get">
+<field name="VAR">positivePathCheck</field>
+</block>
+</value>
+<value name="B">
+<shadow type="logic_boolean"><field name="BOOL">TRUE</field></shadow>
+<block type="variables_get">
+<field name="VAR">negativePathCheck</field>
+</block>
+</value>
+</block>
+</value>
+<value name="B">
+<shadow type="logic_boolean"><field name="BOOL">TRUE</field></shadow>
+<block type="logic_negate">
+<value name="BOOL">
+<shadow type="logic_boolean"><field name="BOOL">TRUE</field></shadow>
+<block type="variables_get">
+<field name="VAR">shortCircuitCheck</field>
+</block>
+</value>
+</block>
+</value>
+</block>
+</value>
+<value name="IF1">
+<shadow type="logic_boolean"><field name="BOOL">TRUE</field></shadow>
+<block type="logic_operation">
+<field name="OP">AND</field>
+<value name="A">
+<shadow type="logic_boolean"><field name="BOOL">TRUE</field></shadow>
+<block type="variables_get">
+<field name="VAR">positivePathCheck</field>
+</block>
+</value>
+<value name="B">
+<shadow type="logic_boolean"><field name="BOOL">TRUE</field></shadow>
+<block type="variables_get">
+<field name="VAR">negativePathCheck</field>
+</block>
+</value>
+</block>
+</value>
+<statement name="DO0">
+<block id="vjTeGHIr#tyZZ2gpDc;4" type="console_log">
+<value name="value">
+<shadow type="text">
+<field name="TEXT">Path Found Fully</field>
+</shadow>
+</value>
+</block>
+</statement>
+<statement name="DO1">
+<block id="|t^n?Lf.jqM1do}1y}.e" type="console_log">
+<value name="value">
+<shadow type="text">
+<field name="TEXT">Shortcircuit</field>
+</shadow>
+</value>
+</block>
+</statement>
+<statement name="ELSE">
+<block id="m;XGpOPg]N3Ma0[X^q1," type="console_log">
+<value name="value">
+<shadow type="text">
+<field name="TEXT">Path Not Found</field>
+</shadow>
+</value>
+</block>
+</statement>
+<comment pinned="false">Win code goes here&#10;Shortcircuit fail goes here&#10;Wire connection fail goes here</comment>
+</block>
+</next>
+</block>
+</next>
+</block>
+</next>
+</block>
+</next>
+</block>
+</next>
+</block>
+</statement>
+<comment pinned="false">TODO&#58; How do we clear the currentLayout?&#10;a hint is that there should be an easy way to reset it!</comment>
+</block>
+</statement>
+</block>
+</next>
+<comment pinned="false">console.log&#40;getLayoutString&#40;currentLayout&#41;&#41;&#59;&#10;symbolGoal &#61; &#34;G&#34;</comment>
+</block>
+</statement>
+</block>
+<block id="V@SP^;/86l/kJ:6=t@Lh" type="keyonevent">
+<field name="button">controller.left</field>
+<field name="event">ControllerButtonEvent.Pressed</field>
+<statement name="HANDLER">
+<block id="2P2a5JlzjIsJ@d?M|!f1" type="controls_if">
+<mutation elseif="0" else="1" />
+<value name="IF0">
+<shadow type="logic_boolean"><field name="BOOL">TRUE</field></shadow>
+<block type="logic_compare">
+<field name="OP">EQ</field>
+<value name="A">
+<shadow type="math_number"><field name="NUM">0</field></shadow>
+<block type="variables_get">
+<field name="VAR">selectorPanel</field>
+</block>
+</value>
+<value name="B">
+<shadow type="math_number"><field name="NUM">0</field></shadow>
+<block type="logic_boolean">
+<field name="BOOL">FALSE</field>
+</block>
+</value>
+</block>
+</value>
+<statement name="DO0">
+<block id="Q*R1}hmlxQ|`R6=6SH1;" type="controls_if">
+<mutation elseif="1" else="0" />
+<value name="IF0">
+<shadow type="logic_boolean"><field name="BOOL">TRUE</field></shadow>
+<block type="logic_operation">
+<field name="OP">AND</field>
+<value name="A">
+<shadow type="logic_boolean"><field name="BOOL">TRUE</field></shadow>
+<block type="variables_get">
+<field name="VAR">vertical</field>
+</block>
+</value>
+<value name="B">
+<shadow type="logic_boolean"><field name="BOOL">TRUE</field></shadow>
+<block type="logic_compare">
+<field name="OP">GT</field>
+<value name="A">
+<shadow type="math_number"><field name="NUM">0</field></shadow>
+<block type="math_arithmetic">
+<field name="OP">MINUS</field>
+<value name="A">
+<shadow type="math_number"><field name="NUM">0</field></shadow>
+<block type="Sprite_blockCombine_get">
+<field name="property">Sprite.x</field>
+<value name="mySprite">
+<block type="variables_get">
+<field name="VAR">curBlock</field>
+</block>
+</value>
+</block>
+</value>
+<value name="B">
+<shadow type="math_number">
+<field name="NUM">16</field>
+</shadow>
+</value>
+</block>
+</value>
+<value name="B">
+<shadow type="math_number">
+<field name="NUM">0</field>
+</shadow>
+</value>
+</block>
+</value>
+</block>
+</value>
+<value name="IF1">
+<shadow type="logic_boolean"><field name="BOOL">TRUE</field></shadow>
+<block type="logic_compare">
+<field name="OP">GT</field>
+<value name="A">
+<shadow type="math_number"><field name="NUM">0</field></shadow>
+<block type="math_arithmetic">
+<field name="OP">MINUS</field>
+<value name="A">
+<shadow type="math_number"><field name="NUM">0</field></shadow>
+<block type="Sprite_blockCombine_get">
+<field name="property">Sprite.x</field>
+<value name="mySprite">
+<block type="variables_get">
+<field name="VAR">curBlock</field>
+</block>
+</value>
+</block>
+</value>
+<value name="B">
+<shadow type="math_number">
+<field name="NUM">32</field>
+</shadow>
+</value>
+</block>
+</value>
+<value name="B">
+<shadow type="math_number">
+<field name="NUM">0</field>
+</shadow>
+</value>
+</block>
+</value>
+<statement name="DO0">
+<block id="V~i(ZrPE)%Ks+,|f/g]L" type="typescript_statement">
+<mutation numlines="1" line0="curBlock.x -&#61; 16&#59;" />
+</block>
+</statement>
+<statement name="DO1">
+<block id="ZiFkm{.ux$Q9A{eW=~}y" type="typescript_statement">
+<mutation numlines="1" line0="curBlock.x -&#61; 16" />
+</block>
+</statement>
+</block>
+</statement>
+<statement name="ELSE">
+<block id="W/PL~TODgv`Jh@tT;:NX" type="spritesetimage">
+<value name="sprite">
+<block type="variables_get">
+<field name="VAR">bottomOverlayTest</field>
+</block>
+</value>
+<value name="img">
+<shadow type="screen_image_picker">
+<field name="img">assets.image&#96;bottomOverlay1&#96;</field>
+</shadow>
+</value>
+<next>
+<block id="qXjvw^~s{/qy:4u%5WU*" type="variables_set">
+<field name="VAR">selectedButton</field>
+<value name="VALUE">
+<shadow type="math_number">
+<field name="NUM">1</field>
+</shadow>
+</value>
+</block>
+</next>
+</block>
+</statement>
+</block>
+</statement>
+</block>
+<block id="wJFoKH?i0}zug9HXx^ab" type="keyonevent">
+<field name="button">controller.right</field>
+<field name="event">ControllerButtonEvent.Pressed</field>
+<statement name="HANDLER">
+<block id="AA!q#CQ`iX1:mWmGC6?s" type="controls_if">
+<mutation elseif="0" else="1" />
+<value name="IF0">
+<shadow type="logic_boolean"><field name="BOOL">TRUE</field></shadow>
+<block type="logic_compare">
+<field name="OP">EQ</field>
+<value name="A">
+<shadow type="math_number"><field name="NUM">0</field></shadow>
+<block type="variables_get">
+<field name="VAR">selectorPanel</field>
+</block>
+</value>
+<value name="B">
+<shadow type="math_number"><field name="NUM">0</field></shadow>
+<block type="logic_boolean">
+<field name="BOOL">FALSE</field>
+</block>
+</value>
+</block>
+</value>
+<statement name="DO0">
+<block id="1~Zrz)_x7@GtW{8jcUuv" type="controls_if">
+<mutation elseif="1" else="0" />
+<value name="IF0">
+<shadow type="logic_boolean"><field name="BOOL">TRUE</field></shadow>
+<block type="logic_operation">
+<field name="OP">AND</field>
+<value name="A">
+<shadow type="logic_boolean"><field name="BOOL">TRUE</field></shadow>
+<block type="variables_get">
+<field name="VAR">vertical</field>
+</block>
+</value>
+<value name="B">
+<shadow type="logic_boolean"><field name="BOOL">TRUE</field></shadow>
+<block type="logic_compare">
+<field name="OP">LT</field>
+<value name="A">
+<shadow type="math_number"><field name="NUM">0</field></shadow>
+<block type="math_arithmetic">
+<field name="OP">ADD</field>
+<value name="A">
+<shadow type="math_number"><field name="NUM">0</field></shadow>
+<block type="Sprite_blockCombine_get">
+<field name="property">Sprite.x</field>
+<value name="mySprite">
+<block type="variables_get">
+<field name="VAR">curBlock</field>
+</block>
+</value>
+</block>
+</value>
+<value name="B">
+<shadow type="math_number">
+<field name="NUM">16</field>
+</shadow>
+</value>
+</block>
+</value>
+<value name="B">
+<shadow type="math_number">
+<field name="NUM">160</field>
+</shadow>
+</value>
+</block>
+</value>
+</block>
+</value>
+<value name="IF1">
+<shadow type="logic_boolean"><field name="BOOL">TRUE</field></shadow>
+<block type="logic_compare">
+<field name="OP">LT</field>
+<value name="A">
+<shadow type="math_number"><field name="NUM">0</field></shadow>
+<block type="math_arithmetic">
+<field name="OP">ADD</field>
+<value name="A">
+<shadow type="math_number"><field name="NUM">0</field></shadow>
+<block type="Sprite_blockCombine_get">
+<field name="property">Sprite.x</field>
+<value name="mySprite">
+<block type="variables_get">
+<field name="VAR">curBlock</field>
+</block>
+</value>
+</block>
+</value>
+<value name="B">
+<shadow type="math_number">
+<field name="NUM">32</field>
+</shadow>
+</value>
+</block>
+</value>
+<value name="B">
+<shadow type="math_number">
+<field name="NUM">160</field>
+</shadow>
+</value>
+</block>
+</value>
+<statement name="DO0">
+<block id="uln,X#V/6yGd+hPPTS4V" type="Sprite_blockCombine_change">
+<field name="property">Sprite.x&#64;set</field>
+<value name="mySprite">
+<block type="variables_get">
+<field name="VAR">curBlock</field>
+</block>
+</value>
+<value name="value">
+<shadow type="math_number">
+<field name="NUM">16</field>
+</shadow>
+</value>
+</block>
+</statement>
+<statement name="DO1">
+<block id="V$lBW^)m1BE:DFUVVP@@" type="Sprite_blockCombine_change">
+<field name="property">Sprite.x&#64;set</field>
+<value name="mySprite">
+<block type="variables_get">
+<field name="VAR">curBlock</field>
+</block>
+</value>
+<value name="value">
+<shadow type="math_number">
+<field name="NUM">16</field>
+</shadow>
+</value>
+</block>
+</statement>
+</block>
+</statement>
+<statement name="ELSE">
+<block id="4ea+,4TULWZ)!c6{nq$M" type="spritesetimage">
+<value name="sprite">
+<block type="variables_get">
+<field name="VAR">bottomOverlayTest</field>
+</block>
+</value>
+<value name="img">
+<shadow type="screen_image_picker">
+<field name="img">assets.image&#96;bottomOverlay2&#96;</field>
+</shadow>
+</value>
+<next>
+<block id="G@_?CNX#5phK;!`SM;g+" type="variables_set">
+<field name="VAR">selectedButton</field>
+<value name="VALUE">
+<shadow type="math_number">
+<field name="NUM">2</field>
+</shadow>
+</value>
+</block>
+</next>
+</block>
+</statement>
+</block>
+</statement>
+</block>
+<block id=")DSt+.D1AF$#V6T^)X!#" type="keyonevent">
+<field name="button">controller.down</field>
+<field name="event">ControllerButtonEvent.Pressed</field>
+<statement name="HANDLER">
+<block id="M1gO_7rg#{s!OQJ7yIrc" type="controls_if">
+<mutation elseif="0" else="1" />
+<value name="IF0">
+<shadow type="logic_boolean"><field name="BOOL">TRUE</field></shadow>
+<block type="logic_compare">
+<field name="OP">EQ</field>
+<value name="A">
+<shadow type="math_number"><field name="NUM">0</field></shadow>
+<block type="variables_get">
+<field name="VAR">vertical</field>
+</block>
+</value>
+<value name="B">
+<shadow type="math_number"><field name="NUM">0</field></shadow>
+<block type="logic_boolean">
+<field name="BOOL">TRUE</field>
+</block>
+</value>
+</block>
+</value>
+<statement name="DO0">
+<block id="p(IQFPGh%XBH%^^#n!/s" type="controls_if">
+<mutation elseif="0" else="1" />
+<value name="IF0">
+<shadow type="logic_boolean"><field name="BOOL">TRUE</field></shadow>
+<block type="logic_compare">
+<field name="OP">LT</field>
+<value name="A">
+<shadow type="math_number"><field name="NUM">0</field></shadow>
+<block type="math_arithmetic">
+<field name="OP">ADD</field>
+<value name="A">
+<shadow type="math_number"><field name="NUM">0</field></shadow>
+<block type="Sprite_blockCombine_get">
+<field name="property">Sprite.y</field>
+<value name="mySprite">
+<block type="variables_get">
+<field name="VAR">curBlock</field>
+</block>
+</value>
+</block>
+</value>
+<value name="B">
+<shadow type="math_number">
+<field name="NUM">16</field>
+</shadow>
+</value>
+</block>
+</value>
+<value name="B">
+<shadow type="math_number">
+<field name="NUM">90</field>
+</shadow>
+</value>
+</block>
+</value>
+<statement name="DO0">
+<block id="3P1IoH%OvPv_Z@D/|WYD" type="Sprite_blockCombine_change">
+<field name="property">Sprite.y&#64;set</field>
+<value name="mySprite">
+<block type="variables_get">
+<field name="VAR">curBlock</field>
+</block>
+</value>
+<value name="value">
+<shadow type="math_number">
+<field name="NUM">16</field>
+</shadow>
+</value>
+</block>
+</statement>
+<statement name="ELSE">
+<block id="RrmVcN_[UaZca$x:Dk!W" type="spritesetimage">
+<value name="sprite">
+<block type="variables_get">
+<field name="VAR">curBlock</field>
+</block>
+</value>
+<value name="img">
+<shadow type="screen_image_picker">
+<field name="img">assets.image&#96;empty&#96;</field>
+</shadow>
+</value>
+<next>
+<block id="Og8,O!w9s}BI7fC+iB=:" type="variables_set">
+<field name="VAR">selectorPanel</field>
+<value name="VALUE">
+<shadow type="math_number"><field name="NUM">0</field></shadow>
+<block type="logic_boolean">
+<field name="BOOL">TRUE</field>
+</block>
+</value>
+<next>
+<block id="ymQ9[Nb1tGwqK5/k[DC." type="variables_set">
+<field name="VAR">selectedButton</field>
+<value name="VALUE">
+<shadow type="math_number">
+<field name="NUM">2</field>
+</shadow>
+</value>
+<next>
+<block id="{8MNh!7~*C?l]N;#b[pA" type="spritesetimage">
+<value name="sprite">
+<block type="variables_get">
+<field name="VAR">bottomOverlayTest</field>
+</block>
+</value>
+<value name="img">
+<shadow type="screen_image_picker">
+<field name="img">assets.image&#96;bottomOverlay2&#96;</field>
+</shadow>
+</value>
+</block>
+</next>
+</block>
+</next>
+</block>
+</next>
+</block>
+</statement>
+</block>
+</statement>
+<statement name="ELSE">
+<block id="vZSg819K(8BWm:;QU-{W" type="controls_if">
+<mutation elseif="0" else="1" />
+<value name="IF0">
+<shadow type="logic_boolean"><field name="BOOL">TRUE</field></shadow>
+<block type="logic_compare">
+<field name="OP">LT</field>
+<value name="A">
+<shadow type="math_number"><field name="NUM">0</field></shadow>
+<block type="math_arithmetic">
+<field name="OP">ADD</field>
+<value name="A">
+<shadow type="math_number"><field name="NUM">0</field></shadow>
+<block type="Sprite_blockCombine_get">
+<field name="property">Sprite.y</field>
+<value name="mySprite">
+<block type="variables_get">
+<field name="VAR">curBlock</field>
+</block>
+</value>
+</block>
+</value>
+<value name="B">
+<shadow type="math_number">
+<field name="NUM">16</field>
+</shadow>
+</value>
+</block>
+</value>
+<value name="B">
+<shadow type="math_number">
+<field name="NUM">106</field>
+</shadow>
+</value>
+</block>
+</value>
+<statement name="DO0">
+<block id="b:YP1nR:ZoK^`7xJ:-$." type="Sprite_blockCombine_change">
+<field name="property">Sprite.y&#64;set</field>
+<value name="mySprite">
+<block type="variables_get">
+<field name="VAR">curBlock</field>
+</block>
+</value>
+<value name="value">
+<shadow type="math_number">
+<field name="NUM">16</field>
+</shadow>
+</value>
+</block>
+</statement>
+<statement name="ELSE">
+<block id="YjHH4djFu/~Sk+(f~Il8" type="spritesetimage">
+<value name="sprite">
+<block type="variables_get">
+<field name="VAR">curBlock</field>
+</block>
+</value>
+<value name="img">
+<shadow type="screen_image_picker">
+<field name="img">assets.image&#96;empty&#96;</field>
+</shadow>
+</value>
+<next>
+<block id="I*g:UxRF*Ul;wMzZAvN#" type="variables_set">
+<field name="VAR">selectorPanel</field>
+<value name="VALUE">
+<shadow type="math_number"><field name="NUM">0</field></shadow>
+<block type="logic_boolean">
+<field name="BOOL">TRUE</field>
+</block>
+</value>
+<next>
+<block id="@uU[MOn=L3qUz*ToZ^M+" type="variables_set">
+<field name="VAR">selectedButton</field>
+<value name="VALUE">
+<shadow type="math_number">
+<field name="NUM">2</field>
+</shadow>
+</value>
+<next>
+<block id="6@`t5:A,gg`xod9lI(:," type="spritesetimage">
+<value name="sprite">
+<block type="variables_get">
+<field name="VAR">bottomOverlayTest</field>
+</block>
+</value>
+<value name="img">
+<shadow type="screen_image_picker">
+<field name="img">assets.image&#96;bottomOverlay2&#96;</field>
+</shadow>
+</value>
+</block>
+</next>
+</block>
+</next>
+</block>
+</next>
+</block>
+</statement>
+</block>
+</statement>
+</block>
+</statement>
+</block>
+<block id="~665x(lq2xMCR}e9]t!l" type="function_definition">
+<mutation name="hasSymbols" >
+<arg name="required" type="string" id="7la3836hhktz532lht6b" />
+<arg name="toCheck" type="string" id="z07gm2ht6v8uhcuq4pftn" />
+</mutation>
+<statement name="STACK">
+<block id="I?Y0l:RZw}Q4^Mq%tS3n" type="pxt_controls_for">
+<value name="VAR">
+<shadow type="variables_get_reporter">
+<field name="VAR">j</field>
+</shadow>
+</value>
+<value name="TO">
+<shadow type="math_whole_number"><field name="NUM">0</field></shadow>
+<block type="math_arithmetic">
+<field name="OP">MINUS</field>
+<value name="A">
+<shadow type="math_number"><field name="NUM">0</field></shadow>
+<block type="text_length">
+<value name="VALUE">
+<block type="argument_reporter_string">
+<field name="VALUE">required</field>
+</block>
+</value>
+</block>
+</value>
+<value name="B">
+<shadow type="math_number">
+<field name="NUM">1</field>
+</shadow>
+</value>
+</block>
+</value>
+<statement name="DO">
+<block id="O1`#U8,bMBQ0?jL[T?cg" type="controls_if">
+<mutation elseif="0" else="0" />
+<value name="IF0">
+<shadow type="logic_boolean"><field name="BOOL">TRUE</field></shadow>
+<block type="logic_compare">
+<field name="OP">EQ</field>
+<value name="A">
+<shadow type="math_number"><field name="NUM">0</field></shadow>
+<block type="string_indexof">
+<value name="this">
+<shadow type="text"><field name="TEXT"></field></shadow>
+<block type="argument_reporter_string">
+<field name="VALUE">toCheck</field>
+</block>
+</value>
+<value name="searchValue">
+<block type="lists_index_get">
+<value name="LIST">
+<block type="argument_reporter_string">
+<field name="VALUE">required</field>
+</block>
+</value>
+<value name="INDEX">
+<shadow type="math_number"><field name="NUM">0</field></shadow>
+<block type="variables_get">
+<field name="VAR">j</field>
+</block>
+</value>
+</block>
+</value>
+</block>
+</value>
+<value name="B">
+<shadow type="math_number">
+<field name="NUM">-1</field>
+</shadow>
+</value>
+</block>
+</value>
+<statement name="DO0">
+<block id=",@e.TJhs6tTrJ2N3:v2{" type="function_return">
+<value name="RETURN_VALUE">
+<shadow type="math_number"><field name="NUM">0</field></shadow>
+<block type="logic_boolean">
+<field name="BOOL">FALSE</field>
+</block>
+</value>
+</block>
+</statement>
+</block>
+</statement>
+<next>
+<block id="LlF*N[i+PCuo|Z|$Ge,w" type="function_return">
+<value name="RETURN_VALUE">
+<shadow type="math_number"><field name="NUM">0</field></shadow>
+<block type="logic_boolean">
+<field name="BOOL">TRUE</field>
+</block>
+</value>
+</block>
+</next>
+</block>
+</statement>
+<comment pinned="false">Returns true if &#39;toCheck&#39; contains all the characters found in &#39;required&#39;</comment>
+</block>
+<block id="P#WwuC]6E#~u^_5yRkj*" type="function_definition">
+<mutation name="blockToLayout" >
+<arg name="blockX" type="number" id="1y85yoc83h3i1q43l8f8" />
+<arg name="blockY" type="number" id="2l5e0e36diafkecqgj95w" />
+</mutation>
+<statement name="STACK">
+<block id="HJ^~n^m-H7/_3Lr#`z2D" type="variables_set">
+<field name="VAR">gridSpacing</field>
+<value name="VALUE">
+<shadow type="math_number">
+<field name="NUM">16</field>
+</shadow>
+</value>
+<next>
+<block id="fTJD0LfjX8@*h@XEL.:_" type="controls_if">
+<mutation elseif="0" else="1" />
+<value name="IF0">
+<shadow type="logic_boolean"><field name="BOOL">TRUE</field></shadow>
+<block type="logic_negate">
+<value name="BOOL">
+<shadow type="logic_boolean"><field name="BOOL">TRUE</field></shadow>
+<block type="variables_get">
+<field name="VAR">vertical</field>
+</block>
+</value>
+</block>
+</value>
+<statement name="DO0">
+<block id="kC:L?/w=$R)aO7Es1+(I" type="function_return">
+<value name="RETURN_VALUE">
+<shadow type="math_number"><field name="NUM">0</field></shadow>
+<block type="typescript_expression">
+<field name="EXPRESSION">&#123;&#10;            x&#58; &#40;blockX - 32&#41; &#47; gridSpacing&#44;&#10;            y&#58; &#40;blockY - 8&#41; &#47; gridSpacing&#10;        &#125;</field>
+</block>
+</value>
+</block>
+</statement>
+<statement name="ELSE">
+<block id="3ek2?Km-@ya*iL^KF_j~" type="function_return">
+<value name="RETURN_VALUE">
+<shadow type="math_number"><field name="NUM">0</field></shadow>
+<block type="typescript_expression">
+<field name="EXPRESSION">&#123;&#10;            x&#58; &#40;blockX - 8&#41; &#47; gridSpacing&#44;&#10;            y&#58; &#40;blockY - 28&#41; &#47; gridSpacing&#10;        &#125;</field>
+</block>
+</value>
+</block>
+</statement>
+<comment pinned="false">The returned object has a .x and .y property</comment>
+</block>
+</next>
+</block>
+</statement>
+<comment pinned="false">Converts a block&#39;s position on MakeCode screen to coordinates in a layout</comment>
+</block>
+<block id="B*ekQ@:Mg%vPnmZ9LaqS" type="function_definition">
+<mutation name="padString" >
+<arg name="s" type="string" id="2qgrq1sokztgvi7hs7jv" />
+<arg name="n" type="number" id="hlc24i5h9ejiinefol32" />
+</mutation>
+<statement name="STACK">
+<block id="^T6/,63hg`[(Vz0UoHi|" type="variables_set">
+<field name="VAR">newString</field>
+<value name="VALUE">
+<shadow type="math_number"><field name="NUM">0</field></shadow>
+<block type="argument_reporter_string">
+<field name="VALUE">s</field>
+</block>
+</value>
+<next>
+<block id="`?J+rnbP!tV%SzN%AyS~" type="typescript_statement">
+<mutation numlines="1" line0="newString &#61; newString.replaceAll&#40;&#39; &#39;&#44; &#39;_&#39;&#41;&#59;" />
+<next>
+<block id="#$#TH1hI0pT{tLS,P3vr" type="device_while">
+<value name="COND">
+<shadow type="logic_boolean"><field name="BOOL">TRUE</field></shadow>
+<block type="logic_compare">
+<field name="OP">LT</field>
+<value name="A">
+<shadow type="math_number"><field name="NUM">0</field></shadow>
+<block type="text_length">
+<value name="VALUE">
+<block type="variables_get">
+<field name="VAR">newString</field>
+</block>
+</value>
+</block>
+</value>
+<value name="B">
+<shadow type="math_number"><field name="NUM">0</field></shadow>
+<block type="argument_reporter_number">
+<field name="VALUE">n</field>
+</block>
+</value>
+</block>
+</value>
+<statement name="DO">
+<block id="5m%V6fv-85T]Met$L2y|" type="variables_set">
+<field name="VAR">newString</field>
+<value name="VALUE">
+<shadow type="math_number"><field name="NUM">0</field></shadow>
+<block type="text_join">
+<mutation items="2" />
+<value name="ADD0">
+<shadow type="text"><field name="TEXT"></field></shadow>
+<block type="variables_get">
+<field name="VAR">newString</field>
+</block>
+</value>
+<value name="ADD1">
+<shadow type="text">
+<field name="TEXT">_</field>
+</shadow>
+</value>
+</block>
+</value>
+</block>
+</statement>
+<next>
+<block id="cr9#X)At]bu+l7S4jB=Y" type="function_return">
+<value name="RETURN_VALUE">
+<shadow type="math_number"><field name="NUM">0</field></shadow>
+<block type="typescript_expression">
+<field name="EXPRESSION">newString.split&#40;&#39;&#39;&#41;.sort&#40;&#41;.join&#40;&#39;&#39;&#41;</field>
+</block>
+</value>
+</block>
+</next>
+</block>
+</next>
+</block>
+</next>
+</block>
+</statement>
+</block>
+<block id="xRRgvHNlG#rZ^u`HECiY" type="pxt-on-start">
+<statement name="HANDLER">
+<block id="Br1,}n60T|W~Qah`5MZJ" type="typescript_statement">
+<mutation declaredvars="curBlock" numlines="1" line0="let curBlock&#58; Sprite &#61; null" />
+<next>
+<block id="wy?D@{Gq%D3]Lns9OS]H" type="variables_set">
+<field name="VAR">prePlacedBlocks</field>
+<value name="VALUE">
+<shadow type="math_number">
+<field name="NUM">1</field>
+</shadow>
+</value>
+<next>
+<block id="ik~hpDn;Xpbulr34XJm3" type="variables_set">
+<field name="VAR">selectedButton</field>
+<value name="VALUE">
+<shadow type="math_number">
+<field name="NUM">2</field>
+</shadow>
+</value>
+<next>
+<block id="(BV(16*MV8B_a#tg(bJQ" type="variables_set">
+<field name="VAR">battery</field>
+<value name="VALUE">
+<shadow type="math_number"><field name="NUM">0</field></shadow>
+<block type="spritescreate">
+<value name="img">
+<shadow type="screen_image_picker">
+<field name="img">assets.image&#96;batteryBlock&#96;</field>
+</shadow>
+</value>
+<value name="kind">
+<shadow type="spritekind"/>
+<block type="math_number">
+<field name="NUM">0</field>
+</block>
+</value>
+</block>
+</value>
+<next>
+<block id="PsV~;[n_Im4(!OszOSe^" type="variables_set">
+<field name="VAR">lightbulb</field>
+<value name="VALUE">
+<shadow type="math_number"><field name="NUM">0</field></shadow>
+<block type="spritescreate">
+<value name="img">
+<shadow type="screen_image_picker">
+<field name="img">assets.image&#96;Lightbulb&#96;</field>
+</shadow>
+</value>
+<value name="kind">
+<shadow type="spritekind"/>
+<block type="math_number">
+<field name="NUM">0</field>
+</block>
+</value>
+</block>
+</value>
+<next>
+<block id="+*09qy~mW,3@GOn`Q^cN" type="Sprite_blockCombine_set">
+<field name="property">Sprite.x&#64;set</field>
+<value name="mySprite">
+<block type="variables_get">
+<field name="VAR">battery</field>
+</block>
+</value>
+<value name="value">
+<shadow type="math_number">
+<field name="NUM">21</field>
+</shadow>
+</value>
+<next>
+<block id="?b^jZutN^|I|SiT|Fx;0" type="Sprite_blockCombine_set">
+<field name="property">Sprite.y&#64;set</field>
+<value name="mySprite">
+<block type="variables_get">
+<field name="VAR">battery</field>
+</block>
+</value>
+<value name="value">
+<shadow type="math_number">
+<field name="NUM">58</field>
+</shadow>
+</value>
+<next>
+<block id="#6fRC{DY[nI8Xaf%CZOp" type="variables_set">
+<field name="VAR">vertical</field>
+<value name="VALUE">
+<shadow type="math_number"><field name="NUM">0</field></shadow>
+<block type="logic_boolean">
+<field name="BOOL">TRUE</field>
+</block>
+</value>
+<next>
+<block id="=Q#n^Ha(`:Ug@C[NGo5c" type="variables_set">
+<field name="VAR">curBlock</field>
+<value name="VALUE">
+<shadow type="math_number"><field name="NUM">0</field></shadow>
+<block type="spritescreate">
+<value name="img">
+<shadow type="screen_image_picker">
+<field name="img">assets.image&#96;4BlockV&#96;</field>
+</shadow>
+</value>
+<value name="kind">
+<shadow type="spritekind">
+<field name="MEMBER">Player</field>
+</shadow>
+</value>
+</block>
+</value>
+<next>
+<block id="j~tkVcMnO,1HymqH-8f:" type="variables_set">
+<field name="VAR">bottomOverlayTest</field>
+<value name="VALUE">
+<shadow type="math_number"><field name="NUM">0</field></shadow>
+<block type="spritescreate">
+<value name="img">
+<shadow type="screen_image_picker">
+<field name="img">assets.image&#96;bottomOverlay&#96;</field>
+</shadow>
+</value>
+<value name="kind">
+<shadow type="spritekind">
+<field name="MEMBER">Player</field>
+</shadow>
+</value>
+</block>
+</value>
+<next>
+<block id="h)Lnu9,`h|LhH3Wi+^dO" type="Sprite_blockCombine_set">
+<field name="property">Sprite.z</field>
+<value name="mySprite">
+<block type="variables_get">
+<field name="VAR">bottomOverlayTest</field>
+</block>
+</value>
+<value name="value">
+<shadow type="math_number">
+<field name="NUM">100</field>
+</shadow>
+</value>
+<next>
+<block id="mT{ouWDkA0S`tqHK5-(q" type="Sprite_blockCombine_set">
+<field name="property">Sprite.x&#64;set</field>
+<value name="mySprite">
+<block type="variables_get">
+<field name="VAR">curBlock</field>
+</block>
+</value>
+<value name="value">
+<shadow type="math_number">
+<field name="NUM">8</field>
+</shadow>
+</value>
+<next>
+<block id="g9C5U`N(~s5,r:TKzW0M" type="Sprite_blockCombine_set">
+<field name="property">Sprite.y&#64;set</field>
+<value name="mySprite">
+<block type="variables_get">
+<field name="VAR">curBlock</field>
+</block>
+</value>
+<value name="value">
+<shadow type="math_number">
+<field name="NUM">28</field>
+</shadow>
+</value>
+<next>
+<block id="(LP)KWGjYcoi[=Qf::5=" type="Sprite_blockCombine_set">
+<field name="property">Sprite.z</field>
+<value name="mySprite">
+<block type="variables_get">
+<field name="VAR">curBlock</field>
+</block>
+</value>
+<value name="value">
+<shadow type="math_number">
+<field name="NUM">1</field>
+</shadow>
+</value>
+<next>
+<block id="73b]#8o;KisXV)D.UYye" type="gamesetbackgroundimage">
+<value name="img">
+<shadow type="background_image_picker">
+<field name="img">assets.image&#96;bg&#96;</field>
+</shadow>
+</value>
+<next>
+<block id="se}p?5d2s}%$=yj/9F8J" type="controls_if">
+<mutation elseif="0" else="0" />
+<value name="IF0">
+<shadow type="logic_boolean"><field name="BOOL">TRUE</field></shadow>
+<block type="logic_compare">
+<field name="OP">EQ</field>
+<value name="A">
+<shadow type="math_number"><field name="NUM">0</field></shadow>
+<block type="variables_get">
+<field name="VAR">prePlacedBlocks</field>
+</block>
+</value>
+<value name="B">
+<shadow type="math_number">
+<field name="NUM">1</field>
+</shadow>
+</value>
+</block>
+</value>
+<statement name="DO0">
+<block id="X,ZMgk%QI5YB1+_Z.dA!" type="variables_set">
+<field name="VAR">blockOverlay</field>
+<value name="VALUE">
+<shadow type="math_number"><field name="NUM">0</field></shadow>
+<block type="spritescreate">
+<value name="img">
+<shadow type="screen_image_picker">
+<field name="img">assets.image&#96;placedBlocksOverlay&#96;</field>
+</shadow>
+</value>
+<value name="kind">
+<shadow type="spritekind"/>
+<block type="math_number">
+<field name="NUM">0</field>
+</block>
+</value>
+</block>
+</value>
+</block>
+</statement>
+<next>
+<block id="vO@_#0M|oF=u`GnH2j{/" type="variables_set">
+<field name="VAR">layoutHeight</field>
+<value name="VALUE">
+<shadow type="math_number">
+<field name="NUM">7</field>
+</shadow>
+</value>
+<next>
+<block id="AQb]+`o_:20Rd,$CBIV#" type="variables_set">
+<field name="VAR">layoutWidth</field>
+<value name="VALUE">
+<shadow type="math_number">
+<field name="NUM">10</field>
+</shadow>
+</value>
+<next>
+<block id="n17{Kam-huUTZ#vXr=js" type="variables_set">
+<field name="VAR">symbolPositive</field>
+<value name="VALUE">
+<shadow type="math_number"><field name="NUM">0</field></shadow>
+<block type="text">
+<field name="TEXT">&#43;</field>
+</block>
+</value>
+<next>
+<block id="F+TKXl)SpC?=myEJzRgo" type="variables_set">
+<field name="VAR">symbolNegative</field>
+<value name="VALUE">
+<shadow type="math_number"><field name="NUM">0</field></shadow>
+<block type="text">
+<field name="TEXT">-</field>
+</block>
+</value>
+<next>
+<block id="U2U4d$B{bPb6tlJiXoxm" type="variables_set">
+<field name="VAR">symbolWireNorth</field>
+<value name="VALUE">
+<shadow type="math_number"><field name="NUM">0</field></shadow>
+<block type="text">
+<field name="TEXT">&#94;</field>
+</block>
+</value>
+<next>
+<block id=",OjzbA28|g1[jk4TSh,m" type="variables_set">
+<field name="VAR">symbolWireSouth</field>
+<value name="VALUE">
+<shadow type="math_number"><field name="NUM">0</field></shadow>
+<block type="text">
+<field name="TEXT">v</field>
+</block>
+</value>
+<next>
+<block id="~6NpK?;zd%4kgL3HjIB)" type="variables_set">
+<field name="VAR">symbolWireEast</field>
+<value name="VALUE">
+<shadow type="math_number"><field name="NUM">0</field></shadow>
+<block type="text">
+<field name="TEXT">&#62;</field>
+</block>
+</value>
+<next>
+<block id="$Bb$j,AgOe:F0W2HXn(O" type="variables_set">
+<field name="VAR">symbolWireWest</field>
+<value name="VALUE">
+<shadow type="math_number"><field name="NUM">0</field></shadow>
+<block type="text">
+<field name="TEXT">&#60;</field>
+</block>
+</value>
+<next>
+<block id="}S;jK{A?pThf8%]EmAiv" type="variables_set">
+<field name="VAR">symbolGoal</field>
+<value name="VALUE">
+<shadow type="math_number"><field name="NUM">0</field></shadow>
+<block type="text">
+<field name="TEXT">G</field>
+</block>
+</value>
+<next>
+<block id="w@4C)rIOH*66X^tXMjt%" type="variables_set">
+<field name="VAR">symbolVisited</field>
+<value name="VALUE">
+<shadow type="math_number"><field name="NUM">0</field></shadow>
+<block type="text">
+<field name="TEXT">X</field>
+</block>
+</value>
+<next>
+<block id="-}kSXpdGBk+M:s`%a^7O" type="variables_set">
+<field name="VAR">emptyLayout</field>
+<value name="VALUE">
+<shadow type="math_number"><field name="NUM">0</field></shadow>
+<block type="lists_create_with">
+<mutation items="7" />
+<value name="ADD0">
+<block type="lists_create_with">
+<mutation items="10" />
+<value name="ADD0">
+<shadow type="text">
+<field name="TEXT">  </field>
+</shadow>
+</value>
+<value name="ADD1">
+<shadow type="text">
+<field name="TEXT">  </field>
+</shadow>
+</value>
+<value name="ADD2">
+<shadow type="text">
+<field name="TEXT">  </field>
+</shadow>
+</value>
+<value name="ADD3">
+<shadow type="text">
+<field name="TEXT">  </field>
+</shadow>
+</value>
+<value name="ADD4">
+<shadow type="text">
+<field name="TEXT">  </field>
+</shadow>
+</value>
+<value name="ADD5">
+<shadow type="text">
+<field name="TEXT">  </field>
+</shadow>
+</value>
+<value name="ADD6">
+<shadow type="text">
+<field name="TEXT">  </field>
+</shadow>
+</value>
+<value name="ADD7">
+<shadow type="text">
+<field name="TEXT">  </field>
+</shadow>
+</value>
+<value name="ADD8">
+<shadow type="text">
+<field name="TEXT">  </field>
+</shadow>
+</value>
+<value name="ADD9">
+<shadow type="text">
+<field name="TEXT">  </field>
+</shadow>
+</value>
+</block>
+</value>
+<value name="ADD1">
+<block type="lists_create_with">
+<mutation items="10" />
+<value name="ADD0">
+<shadow type="text">
+<field name="TEXT">  </field>
+</shadow>
+</value>
+<value name="ADD1">
+<shadow type="text">
+<field name="TEXT">  </field>
+</shadow>
+</value>
+<value name="ADD2">
+<shadow type="text">
+<field name="TEXT">  </field>
+</shadow>
+</value>
+<value name="ADD3">
+<shadow type="text">
+<field name="TEXT">  </field>
+</shadow>
+</value>
+<value name="ADD4">
+<shadow type="text">
+<field name="TEXT">  </field>
+</shadow>
+</value>
+<value name="ADD5">
+<shadow type="text">
+<field name="TEXT">  </field>
+</shadow>
+</value>
+<value name="ADD6">
+<shadow type="text">
+<field name="TEXT">  </field>
+</shadow>
+</value>
+<value name="ADD7">
+<shadow type="text">
+<field name="TEXT">  </field>
+</shadow>
+</value>
+<value name="ADD8">
+<shadow type="text">
+<field name="TEXT">  </field>
+</shadow>
+</value>
+<value name="ADD9">
+<shadow type="text">
+<field name="TEXT">  </field>
+</shadow>
+</value>
+</block>
+</value>
+<value name="ADD2">
+<block type="lists_create_with">
+<mutation items="10" />
+<value name="ADD0">
+<shadow type="text">
+<field name="TEXT">  </field>
+</shadow>
+</value>
+<value name="ADD1">
+<shadow type="text">
+<field name="TEXT">  </field>
+</shadow>
+</value>
+<value name="ADD2">
+<shadow type="text">
+<field name="TEXT">  </field>
+</shadow>
+</value>
+<value name="ADD3">
+<shadow type="text">
+<field name="TEXT">  </field>
+</shadow>
+</value>
+<value name="ADD4">
+<shadow type="text">
+<field name="TEXT">  </field>
+</shadow>
+</value>
+<value name="ADD5">
+<shadow type="text">
+<field name="TEXT">  </field>
+</shadow>
+</value>
+<value name="ADD6">
+<shadow type="text">
+<field name="TEXT">  </field>
+</shadow>
+</value>
+<value name="ADD7">
+<shadow type="text">
+<field name="TEXT">  </field>
+</shadow>
+</value>
+<value name="ADD8">
+<shadow type="text">
+<field name="TEXT">  </field>
+</shadow>
+</value>
+<value name="ADD9">
+<shadow type="text">
+<field name="TEXT">  </field>
+</shadow>
+</value>
+</block>
+</value>
+<value name="ADD3">
+<block type="lists_create_with">
+<mutation items="10" />
+<value name="ADD0">
+<shadow type="text">
+<field name="TEXT">  </field>
+</shadow>
+</value>
+<value name="ADD1">
+<shadow type="text">
+<field name="TEXT">  </field>
+</shadow>
+</value>
+<value name="ADD2">
+<shadow type="text">
+<field name="TEXT">  </field>
+</shadow>
+</value>
+<value name="ADD3">
+<shadow type="text">
+<field name="TEXT">  </field>
+</shadow>
+</value>
+<value name="ADD4">
+<shadow type="text">
+<field name="TEXT">  </field>
+</shadow>
+</value>
+<value name="ADD5">
+<shadow type="text">
+<field name="TEXT">  </field>
+</shadow>
+</value>
+<value name="ADD6">
+<shadow type="text">
+<field name="TEXT">  </field>
+</shadow>
+</value>
+<value name="ADD7">
+<shadow type="text">
+<field name="TEXT">  </field>
+</shadow>
+</value>
+<value name="ADD8">
+<shadow type="text">
+<field name="TEXT">  </field>
+</shadow>
+</value>
+<value name="ADD9">
+<shadow type="text">
+<field name="TEXT">  </field>
+</shadow>
+</value>
+</block>
+</value>
+<value name="ADD4">
+<block type="lists_create_with">
+<mutation items="10" />
+<value name="ADD0">
+<shadow type="text">
+<field name="TEXT">  </field>
+</shadow>
+</value>
+<value name="ADD1">
+<shadow type="text">
+<field name="TEXT">  </field>
+</shadow>
+</value>
+<value name="ADD2">
+<shadow type="text">
+<field name="TEXT">  </field>
+</shadow>
+</value>
+<value name="ADD3">
+<shadow type="text">
+<field name="TEXT">  </field>
+</shadow>
+</value>
+<value name="ADD4">
+<shadow type="text">
+<field name="TEXT">  </field>
+</shadow>
+</value>
+<value name="ADD5">
+<shadow type="text">
+<field name="TEXT">  </field>
+</shadow>
+</value>
+<value name="ADD6">
+<shadow type="text">
+<field name="TEXT">  </field>
+</shadow>
+</value>
+<value name="ADD7">
+<shadow type="text">
+<field name="TEXT">  </field>
+</shadow>
+</value>
+<value name="ADD8">
+<shadow type="text">
+<field name="TEXT">  </field>
+</shadow>
+</value>
+<value name="ADD9">
+<shadow type="text">
+<field name="TEXT">  </field>
+</shadow>
+</value>
+</block>
+</value>
+<value name="ADD5">
+<block type="lists_create_with">
+<mutation items="10" />
+<value name="ADD0">
+<shadow type="text">
+<field name="TEXT">  </field>
+</shadow>
+</value>
+<value name="ADD1">
+<shadow type="text">
+<field name="TEXT">  </field>
+</shadow>
+</value>
+<value name="ADD2">
+<shadow type="text">
+<field name="TEXT">  </field>
+</shadow>
+</value>
+<value name="ADD3">
+<shadow type="text">
+<field name="TEXT">  </field>
+</shadow>
+</value>
+<value name="ADD4">
+<shadow type="text">
+<field name="TEXT">  </field>
+</shadow>
+</value>
+<value name="ADD5">
+<shadow type="text">
+<field name="TEXT">  </field>
+</shadow>
+</value>
+<value name="ADD6">
+<shadow type="text">
+<field name="TEXT">  </field>
+</shadow>
+</value>
+<value name="ADD7">
+<shadow type="text">
+<field name="TEXT">  </field>
+</shadow>
+</value>
+<value name="ADD8">
+<shadow type="text">
+<field name="TEXT">  </field>
+</shadow>
+</value>
+<value name="ADD9">
+<shadow type="text">
+<field name="TEXT">  </field>
+</shadow>
+</value>
+</block>
+</value>
+<value name="ADD6">
+<block type="lists_create_with">
+<mutation items="10" />
+<value name="ADD0">
+<shadow type="text">
+<field name="TEXT">  </field>
+</shadow>
+</value>
+<value name="ADD1">
+<shadow type="text">
+<field name="TEXT">  </field>
+</shadow>
+</value>
+<value name="ADD2">
+<shadow type="text">
+<field name="TEXT">  </field>
+</shadow>
+</value>
+<value name="ADD3">
+<shadow type="text">
+<field name="TEXT">  </field>
+</shadow>
+</value>
+<value name="ADD4">
+<shadow type="text">
+<field name="TEXT">  </field>
+</shadow>
+</value>
+<value name="ADD5">
+<shadow type="text">
+<field name="TEXT">  </field>
+</shadow>
+</value>
+<value name="ADD6">
+<shadow type="text">
+<field name="TEXT">  </field>
+</shadow>
+</value>
+<value name="ADD7">
+<shadow type="text">
+<field name="TEXT">  </field>
+</shadow>
+</value>
+<value name="ADD8">
+<shadow type="text">
+<field name="TEXT">  </field>
+</shadow>
+</value>
+<value name="ADD9">
+<shadow type="text">
+<field name="TEXT">  </field>
+</shadow>
+</value>
+</block>
+</value>
+</block>
+</value>
+<next>
+<block id="{H[+R_u^H28Sy|MuQ##9" type="variables_set">
+<field name="VAR">startingLayout</field>
+<value name="VALUE">
+<shadow type="math_number"><field name="NUM">0</field></shadow>
+<block type="lists_create_with">
+<mutation items="7" />
+<value name="ADD0">
+<block type="lists_create_with">
+<mutation items="10" />
+<value name="ADD0">
+<shadow type="text">
+<field name="TEXT">  </field>
+</shadow>
+</value>
+<value name="ADD1">
+<shadow type="text">
+<field name="TEXT">  </field>
+</shadow>
+</value>
+<value name="ADD2">
+<shadow type="text">
+<field name="TEXT">  </field>
+</shadow>
+</value>
+<value name="ADD3">
+<shadow type="text">
+<field name="TEXT">  </field>
+</shadow>
+</value>
+<value name="ADD4">
+<shadow type="text">
+<field name="TEXT">  </field>
+</shadow>
+</value>
+<value name="ADD5">
+<shadow type="text">
+<field name="TEXT">  </field>
+</shadow>
+</value>
+<value name="ADD6">
+<shadow type="text">
+<field name="TEXT">  </field>
+</shadow>
+</value>
+<value name="ADD7">
+<shadow type="text">
+<field name="TEXT">  </field>
+</shadow>
+</value>
+<value name="ADD8">
+<shadow type="text">
+<field name="TEXT">  </field>
+</shadow>
+</value>
+<value name="ADD9">
+<shadow type="text">
+<field name="TEXT">  </field>
+</shadow>
+</value>
+</block>
+</value>
+<value name="ADD1">
+<block type="lists_create_with">
+<mutation items="10" />
+<value name="ADD0">
+<shadow type="text">
+<field name="TEXT">  </field>
+</shadow>
+</value>
+<value name="ADD1">
+<shadow type="text">
+<field name="TEXT">  </field>
+</shadow>
+</value>
+<value name="ADD2">
+<shadow type="text">
+<field name="TEXT">  </field>
+</shadow>
+</value>
+<value name="ADD3">
+<shadow type="text">
+<field name="TEXT">  </field>
+</shadow>
+</value>
+<value name="ADD4">
+<shadow type="text">
+<field name="TEXT">  </field>
+</shadow>
+</value>
+<value name="ADD5">
+<shadow type="text">
+<field name="TEXT">  </field>
+</shadow>
+</value>
+<value name="ADD6">
+<shadow type="text">
+<field name="TEXT">  </field>
+</shadow>
+</value>
+<value name="ADD7">
+<shadow type="text">
+<field name="TEXT">  </field>
+</shadow>
+</value>
+<value name="ADD8">
+<shadow type="text">
+<field name="TEXT">  </field>
+</shadow>
+</value>
+<value name="ADD9">
+<shadow type="text">
+<field name="TEXT">  </field>
+</shadow>
+</value>
+</block>
+</value>
+<value name="ADD2">
+<block type="lists_create_with">
+<mutation items="10" />
+<value name="ADD0">
+<shadow type="text">
+<field name="TEXT">  </field>
+</shadow>
+</value>
+<value name="ADD1">
+<shadow type="text">
+<field name="TEXT">-&#62;</field>
+</shadow>
+</value>
+<value name="ADD2">
+<shadow type="text">
+<field name="TEXT">&#60;&#62;</field>
+</shadow>
+</value>
+<value name="ADD3">
+<shadow type="text">
+<field name="TEXT">&#60;&#62;</field>
+</shadow>
+</value>
+<value name="ADD4">
+<shadow type="text">
+<field name="TEXT">&#60;&#62;</field>
+</shadow>
+</value>
+<value name="ADD5">
+<shadow type="text">
+<field name="TEXT">&#60;&#62;</field>
+</shadow>
+</value>
+<value name="ADD6">
+<shadow type="text">
+<field name="TEXT">&#60;&#62;</field>
+</shadow>
+</value>
+<value name="ADD7">
+<shadow type="text">
+<field name="TEXT">&#60;&#62;</field>
+</shadow>
+</value>
+<value name="ADD8">
+<shadow type="text">
+<field name="TEXT">&#60; </field>
+</shadow>
+</value>
+<value name="ADD9">
+<shadow type="text">
+<field name="TEXT">  </field>
+</shadow>
+</value>
+</block>
+</value>
+<value name="ADD3">
+<block type="lists_create_with">
+<mutation items="10" />
+<value name="ADD0">
+<shadow type="text">
+<field name="TEXT">  </field>
+</shadow>
+</value>
+<value name="ADD1">
+<shadow type="text">
+<field name="TEXT">  </field>
+</shadow>
+</value>
+<value name="ADD2">
+<shadow type="text">
+<field name="TEXT">  </field>
+</shadow>
+</value>
+<value name="ADD3">
+<shadow type="text">
+<field name="TEXT">  </field>
+</shadow>
+</value>
+<value name="ADD4">
+<shadow type="text">
+<field name="TEXT">  </field>
+</shadow>
+</value>
+<value name="ADD5">
+<shadow type="text">
+<field name="TEXT">  </field>
+</shadow>
+</value>
+<value name="ADD6">
+<shadow type="text">
+<field name="TEXT">  </field>
+</shadow>
+</value>
+<value name="ADD7">
+<shadow type="text">
+<field name="TEXT">  </field>
+</shadow>
+</value>
+<value name="ADD8">
+<shadow type="text">
+<field name="TEXT">  </field>
+</shadow>
+</value>
+<value name="ADD9">
+<shadow type="text">
+<field name="TEXT">  </field>
+</shadow>
+</value>
+</block>
+</value>
+<value name="ADD4">
+<block type="lists_create_with">
+<mutation items="10" />
+<value name="ADD0">
+<shadow type="text">
+<field name="TEXT">  </field>
+</shadow>
+</value>
+<value name="ADD1">
+<shadow type="text">
+<field name="TEXT">&#43;&#62;</field>
+</shadow>
+</value>
+<value name="ADD2">
+<shadow type="text">
+<field name="TEXT">&#60;&#62;</field>
+</shadow>
+</value>
+<value name="ADD3">
+<shadow type="text">
+<field name="TEXT">&#60;&#62;</field>
+</shadow>
+</value>
+<value name="ADD4">
+<shadow type="text">
+<field name="TEXT">&#60;G&#62;</field>
+</shadow>
+</value>
+<value name="ADD5">
+<shadow type="text">
+<field name="TEXT">&#60;G</field>
+</shadow>
+</value>
+<value name="ADD6">
+<shadow type="text">
+<field name="TEXT">  </field>
+</shadow>
+</value>
+<value name="ADD7">
+<shadow type="text">
+<field name="TEXT">  </field>
+</shadow>
+</value>
+<value name="ADD8">
+<shadow type="text">
+<field name="TEXT">  </field>
+</shadow>
+</value>
+<value name="ADD9">
+<shadow type="text">
+<field name="TEXT">  </field>
+</shadow>
+</value>
+</block>
+</value>
+<value name="ADD5">
+<block type="lists_create_with">
+<mutation items="10" />
+<value name="ADD0">
+<shadow type="text">
+<field name="TEXT">  </field>
+</shadow>
+</value>
+<value name="ADD1">
+<shadow type="text">
+<field name="TEXT">  </field>
+</shadow>
+</value>
+<value name="ADD2">
+<shadow type="text">
+<field name="TEXT">  </field>
+</shadow>
+</value>
+<value name="ADD3">
+<shadow type="text">
+<field name="TEXT">  </field>
+</shadow>
+</value>
+<value name="ADD4">
+<shadow type="text">
+<field name="TEXT">  </field>
+</shadow>
+</value>
+<value name="ADD5">
+<shadow type="text">
+<field name="TEXT">  </field>
+</shadow>
+</value>
+<value name="ADD6">
+<shadow type="text">
+<field name="TEXT">  </field>
+</shadow>
+</value>
+<value name="ADD7">
+<shadow type="text">
+<field name="TEXT">  </field>
+</shadow>
+</value>
+<value name="ADD8">
+<shadow type="text">
+<field name="TEXT">  </field>
+</shadow>
+</value>
+<value name="ADD9">
+<shadow type="text">
+<field name="TEXT">  </field>
+</shadow>
+</value>
+</block>
+</value>
+<value name="ADD6">
+<block type="lists_create_with">
+<mutation items="10" />
+<value name="ADD0">
+<shadow type="text">
+<field name="TEXT">  </field>
+</shadow>
+</value>
+<value name="ADD1">
+<shadow type="text">
+<field name="TEXT">  </field>
+</shadow>
+</value>
+<value name="ADD2">
+<shadow type="text">
+<field name="TEXT">  </field>
+</shadow>
+</value>
+<value name="ADD3">
+<shadow type="text">
+<field name="TEXT">  </field>
+</shadow>
+</value>
+<value name="ADD4">
+<shadow type="text">
+<field name="TEXT">  </field>
+</shadow>
+</value>
+<value name="ADD5">
+<shadow type="text">
+<field name="TEXT">  </field>
+</shadow>
+</value>
+<value name="ADD6">
+<shadow type="text">
+<field name="TEXT">  </field>
+</shadow>
+</value>
+<value name="ADD7">
+<shadow type="text">
+<field name="TEXT">  </field>
+</shadow>
+</value>
+<value name="ADD8">
+<shadow type="text">
+<field name="TEXT">  </field>
+</shadow>
+</value>
+<value name="ADD9">
+<shadow type="text">
+<field name="TEXT">  </field>
+</shadow>
+</value>
+</block>
+</value>
+</block>
+</value>
+<next>
+<block id="wzLv-r1s3W[mROAjXMH1" type="typescript_statement">
+<mutation declaredvars="currentLayout" numlines="1" line0="let currentLayout &#61; copyLayout&#40;startingLayout&#41;&#59;" />
+<next>
+<block id="Q#w-5Ehb;0PG)@1rVfSL" type="typescript_statement">
+<mutation numlines="4" line0="function pathTo&#40;layout&#58; string&#91;&#93;&#91;&#93;&#44; startX&#58; number&#44; startY&#58; number&#44; endingSymbols&#58; string&#41;&#58; boolean &#123;" line1="    &#47;&#47; Calls the helper function below with a copy of &#39;layout&#39; so we don&#39;t modify original" line2="    return pathToHelper&#40;copyLayout&#40;layout&#41;&#44; startX&#44; startY&#44; endingSymbols&#41;&#59;" line3="&#125;" />
+<next>
+<block id="g#Lh+=32x7ARJfyW{O]y" type="typescript_statement">
+<mutation numlines="55" line0="function pathToHelper&#40;layout&#58; string&#91;&#93;&#91;&#93;&#44; x&#58; number&#44; y&#58; number&#44; endingSymbols&#58; string&#41;&#58; boolean &#123;" line1="    &#47;&#47; If we are off the grid in the x direction&#44; then we are not at the goal" line2="    if &#40;x &#60; 0 &#124;&#124; x &#62;&#61; layoutWidth&#41; &#123;" line3="        return false&#59;" line4="    &#125;" line5="" line6="    &#47;&#47; If we are off the grid in the y direction&#44; then we are not at the goal" line7="    if &#40;y &#60; 0 &#124;&#124; y &#62;&#61; layoutHeight&#41; &#123;" line8="        return false&#59;" line9="    &#125;" line10="" line11="    let currentSymbols &#61; layout&#91;y&#93;&#91;x&#93;&#59;" line12="" line13="    &#47;&#47; If we have checked this spot before&#44; don&#39;t check again!" line14="    if &#40;currentSymbols.indexOf&#40;symbolVisited&#41; !&#61; -1&#41; &#123;" line15="        return false&#59;" line16="    &#125;" line17="" line18="    &#47;&#47; Mark this spot as visited &#40;add a &#39;X&#39;&#41;" line19="    layout&#91;y&#93;&#91;x&#93; &#61; currentSymbols &#43; symbolVisited&#59;" line20="" line21="    &#47;&#47; If this spot is our goal&#44; then we made it!" line22="    if &#40;hasSymbols&#40;endingSymbols&#44; currentSymbols&#41;&#41; &#123;" line23="        return true&#59;" line24="    &#125;" line25="" line26="    &#47;&#47; If we made it here&#44; then we need to keep checking" line27="    &#47;&#47; See if a path exists from any adjacent spot to our goal" line28="    &#47;&#47; Remember we avoid rechecking spots by looking for the &#39;V&#39;" line29="    &#47;&#47; markings we add as we go." line30="" line31="    let northCheck &#61; false&#59;" line32="    let eastCheck &#61; false&#59;" line33="    let southCheck &#61; false&#59;" line34="    let westCheck &#61; false&#59;" line35="" line36="    if &#40;hasSymbols&#40;symbolWireNorth&#44; currentSymbols&#41;&#41; &#123;" line37="        northCheck &#61; pathToHelper&#40;layout&#44; x&#44; y - 1&#44; endingSymbols&#41;&#59;" line38="    &#125;" line39="" line40="    if &#40;hasSymbols&#40;symbolWireSouth&#44; currentSymbols&#41;&#41; &#123;" line41="        southCheck &#61; pathToHelper&#40;layout&#44; x&#44; y &#43; 1&#44; endingSymbols&#41;&#59;" line42="    &#125;" line43="" line44="    if &#40;hasSymbols&#40;symbolWireWest&#44; currentSymbols&#41;&#41; &#123;" line45="        westCheck &#61; pathToHelper&#40;layout&#44; x - 1&#44; y&#44; endingSymbols&#41;&#59;" line46="    &#125;" line47="" line48="    if &#40;hasSymbols&#40;symbolWireEast&#44; currentSymbols&#41;&#41; &#123;" line49="        eastCheck &#61; pathToHelper&#40;layout&#44; x &#43; 1&#44; y&#44; endingSymbols&#41;&#59;" line50="    &#125;" line51="" line52="    &#47;&#47; If any direction has a path&#44; then return true" line53="    return northCheck &#124;&#124; southCheck &#124;&#124; westCheck &#124;&#124; eastCheck&#59;" line54="&#125;" />
+<next>
+<block id="Txw1^O2UBiK+A=Q$gcve" type="typescript_statement">
+<mutation numlines="11" line0="function copyLayout&#40;layout&#58; string&#91;&#93;&#91;&#93;&#41;&#58; string&#91;&#93;&#91;&#93; &#123;" line1="    let copyOfLayout &#61; &#91;&#93;&#59;" line2="    for &#40;let y &#61; 0&#59; y &#60; layoutHeight&#59; y&#43;&#43;&#41; &#123;" line3="        let row &#61; &#91;&#93;&#59;" line4="        for &#40;let x &#61; 0&#59; x &#60; layoutWidth&#59; x&#43;&#43;&#41; &#123;" line5="            row.push&#40;layout&#91;y&#93;&#91;x&#93;&#41;&#59;" line6="        &#125;" line7="        copyOfLayout.push&#40;row&#41;&#59;" line8="    &#125;" line9="    return copyOfLayout&#59;" line10="&#125;" />
+<next>
+<block id="p/@Ok2`iBl^ENm5zr_*]" type="typescript_statement">
+<mutation numlines="10" line0="function findSymbolInLayout&#40;layout&#58; string&#91;&#93;&#91;&#93;&#44; sym&#58; string&#41; &#123;" line1="    for &#40;let y2 &#61; 0&#59; y2 &#60; layoutHeight&#59; y2&#43;&#43;&#41; &#123;" line2="        for &#40;let x2 &#61; 0&#59; x2 &#60; layoutWidth&#59; x2&#43;&#43;&#41; &#123;" line3="            if &#40;hasSymbols&#40;sym&#44; layout&#91;y2&#93;&#91;x2&#93;&#41;&#41; &#123;" line4="                return &#123; x&#58; x2&#44; y&#58; y2 &#125;&#59;" line5="            &#125;" line6="        &#125;" line7="    &#125;" line8="    return null&#59;" line9="&#125;" />
+</block>
+</next>
+</block>
+</next>
+</block>
+</next>
+</block>
+</next>
+</block>
+</next>
+<comment pinned="false">This layout matches this level&#10;Note how there can be two symbols in a spot&#44; like a Goal and a Wire</comment>
+</block>
+</next>
+<comment pinned="false">Copy and paste the empty layout to setup your own layout</comment>
+</block>
+</next>
+</block>
+</next>
+</block>
+</next>
+</block>
+</next>
+</block>
+</next>
+</block>
+</next>
+</block>
+</next>
+</block>
+</next>
+</block>
+</next>
+</block>
+</next>
+</block>
+</next>
+</block>
+</next>
+</block>
+</next>
+</block>
+</next>
+</block>
+</next>
+</block>
+</next>
+</block>
+</next>
+</block>
+</next>
+</block>
+</next>
+</block>
+</next>
+</block>
+</next>
+</block>
+</next>
+</block>
+</next>
+</block>
+</next>
+</block>
+</next>
+</block>
+</next>
+</block>
+</statement>
+</block>
+<comment h="120" w="480" data="0">
+Takes a &#39;layout&#39; and returns a string that can be printed for debugging
+</comment>
+</xml>

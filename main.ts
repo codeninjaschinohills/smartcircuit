@@ -163,6 +163,7 @@ let curBlock: Sprite = null
 selectedButton = 2
 let battery = sprites.create(assets.image`batteryBlock`, 0)
 let lightbulb = sprites.create(assets.image`Lightbulb`,0)
+lightbulb.x = 
 battery.x = 21
 battery.y = 58
 vertical = true
