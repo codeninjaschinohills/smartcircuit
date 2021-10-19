@@ -1,7 +1,7 @@
 controller.up.onEvent(ControllerButtonEvent.Pressed, function () {
-    if (vertical && (curBlock.y - 16) >= 0) {
+    if (vertical && (curBlock.y - 32) >= 0) {
         curBlock.y -= 16
-    } else if ((curBlock.y - 16) > 0) {
+    } else if (!vertical && (curBlock.y - 16) > 0) {
         curBlock.y -= 16
     }
     if (selectorPanel == true) {
@@ -22,9 +22,15 @@ controller.B.onEvent(ControllerButtonEvent.Pressed, function () {
     if (vertical == true && selectorPanel == false) {
         curBlock.setImage(assets.image`4BlockH`)
         vertical = false
+        if (curBlock.x > 140) {
+            curBlock.x -= 48
+        }
     } else if (selectorPanel == false) {
         curBlock.setImage(assets.image`4BlockV`)
         vertical = true
+        if (curBlock.y > 80) {
+            curBlock.y -= 48
+        }
     }
 });
 
@@ -90,7 +96,7 @@ controller.A.onEvent(ControllerButtonEvent.Pressed, function () {
                 console.log("Path Found Fully");
                 //Win code goes here
 
-            } else if(positivePathCheck && negativePathCheck){
+            } else if (positivePathCheck && negativePathCheck) {
                 console.log("Shortcircuit");
                 //Shortcircuit fail goes here
 
