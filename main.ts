@@ -88,10 +88,10 @@ controller.A.onEvent(ControllerButtonEvent.Pressed, function () {
     if (selectorPanel == true) {
         if (selectedButton == 1) {
             for (let i = 0; i <= placedBlocks.length - 1; i++) {
-                placedBlocks[i].destroy()
+                //placedBlocks[i].destroy()
             }
             console.log(getLayoutString(currentLayout));
-            currentLayout = copyLayout(startingLayout);
+            // currentLayout = copyLayout(startingLayout);
             console.log(getLayoutString(currentLayout));
 
             if(switchOn){
