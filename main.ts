@@ -1,11 +1,79 @@
-let switchOn = false;
+let currentLevel = 1;
+let spacer = null
 
-let switchBlock = sprites.create(assets.image`switchOff`, 0)
-switchBlock.x = 96
-switchBlock.y = 72
-switchBlock.z = 5
+let goalPos1 = [149, 58]
+let goalPos2 = [80, 43]
+let goalPos3 = [149, 58]
+let goalXArr = [spacer, goalPos1[0], goalPos2[0], goalPos3[0]]
+let goalYArr = [spacer, goalPos1[1], goalPos2[1], goalPos3[1]]
 
+let batteryPos1 = [21, 58]
+let batteryPos2 = [21, 58]
+let batteryPos3 = [21, 58]
+let batteryXArr = [spacer, batteryPos1[0], batteryPos2[0], batteryPos3[0]]
+let batteryYArr = [spacer, batteryPos1[1], batteryPos2[1], batteryPos3[1]]
 
+let goalOn1 = assets.image`goalOn1`
+let goalOn2 = assets.image`goalOn2`
+//put in actual goal for level 3
+let goalOn3 = assets.image`goalOn1`
+let goalOnArr = [spacer, goalOn1, goalOn2, goalOn3]
+
+let goalOff1 = assets.image`goalOff1`
+let goalOff2 = assets.image`goalOff2`
+//put in actual goal for level 3
+let goalOff3 = assets.image`goalOff1`
+let goalOffArr = [spacer, goalOff1, goalOff2, goalOff3]
+
+let placedBlocks1 = assets.image`placedBlocksOverlay1`
+let placedBlocks2 = assets.image`placedBlocksOverlay2`
+let placedBlocks3 = assets.image`placedBlocksOverlay3`
+let placedBlocksArr = [spacer, placedBlocks1, placedBlocks2, placedBlocks3]
+
+let levLayout1 =
+    [
+        ['  ', '  ', '  ', '  ', '  ', '  ', '  ', '  ', '  ', '  '],
+        ['  ', '  ', '  ', '  ', '  ', '  ', '  ', '  ', '  ', '  '],
+        ['  ', '->', '<>', '<>', '<>', '<>', '<>', '<>', 'G<', 'G '],
+        ['  ', '  ', '  ', '  ', '  ', '  ', '  ', '  ', '  ', '  '],
+        ['  ', '+>', '<>', '<>', '<>', '< ', '  ', '  ', 'G ', 'G '],
+        ['  ', '  ', '  ', '  ', '  ', '  ', '  ', '  ', '  ', '  '],
+        ['  ', '  ', '  ', '  ', '  ', '  ', '  ', '  ', '  ', '  ']
+    ];
+let levLayout2 = 
+    [
+        ['  ', 'v ', '  ', '  ', '  ', '  ', '  ', '  ', '  ', '  '],
+        ['  ', 'v^', '  ', '  ', '  ', '  ', '  ', '  ', '  ', '  '],
+        ['  ', '-^', '  ', '  ', '  ', '  ', '  ', '  ', '  ', '  '],
+        ['  ', '  ', '  ', '  ', 'G ', 'G ', '  ', '  ', '  ', '  '],
+        ['  ', '+v', '  ', '  ', '  ', '  ', '  ', '  ', '  ', '  '],
+        ['  ', '^v', '  ', '  ', '  ', '  ', '  ', '  ', '  ', '  '],
+        ['  ', '^ ', '  ', '  ', '  ', '  ', '  ', '  ', '  ', '  ']
+    ];
+let levLayout3 = 
+//put in actual level 3 layout here I didn't see it on Kyle's branch
+    [
+        ['  ', '  ', '  ', '  ', '  ', '  ', '  ', '  ', '  ', '  '],
+        ['  ', '  ', '  ', '  ', '  ', '  ', '  ', '  ', '  ', '  '],
+        ['  ', '->', '<>', '<>', '<>', '<>', '<>', '<>', 'G<', 'G '],
+        ['  ', '  ', '  ', '  ', '  ', '  ', '  ', '  ', '  ', '  '],
+        ['  ', '+>', '<>', '<>', '<>', '< ', '  ', '  ', 'G ', 'G '],
+        ['  ', '  ', '  ', '  ', '  ', '  ', '  ', '  ', '  ', '  '],
+        ['  ', '  ', '  ', '  ', '  ', '  ', '  ', '  ', '  ', '  ']
+    ];
+let levLayoutArr = [spacer, levLayout1, levLayout2, levLayout3]
+
+let switchLevel = function(levelNum: number){
+    currentLevel = levelNum
+    goal.setImage(goalOffArr[levelNum]);
+    goal.x = goalXArr[levelNum]
+    goal.y = goalYArr[levelNum]
+    battery.x = batteryXArr[levelNum]
+    battery.y = batteryYArr[levelNum]
+    blockOverlay.setImage(placedBlocksArr[levelNum])
+    currentLayout = copyLayout(levLayoutArr[levelNum])
+    console.log(getLayoutString(currentLayout))
+}
 
 
 controller.up.onEvent(ControllerButtonEvent.Pressed, function () {
@@ -91,26 +159,12 @@ controller.A.onEvent(ControllerButtonEvent.Pressed, function () {
                 placedBlocks[i].destroy()
             }
             console.log(getLayoutString(currentLayout));
-            currentLayout = copyLayout(startingLayout);
+            currentLayout = copyLayout(levLayoutArr[currentLevel]);
             console.log(getLayoutString(currentLayout));
 
-            if(switchOn){
-                switchOn = false
-                let switchBlock = sprites.create(assets.image`switchOff`, 0)
-                switchBlock.x = 96
-                switchBlock.y = 72
-                switchBlock.z = 5
-            } else {
-                switchOn = true
-                let switchBlock = sprites.create(assets.image`switchOn`, 0)
-                switchBlock.x = 96
-                switchBlock.y = 72
-                switchBlock.z = 5
-            }
-
-            let goal = sprites.create(assets.image`goalLightOff`, 0);
-            goal.x = 149;
-            goal.y = 58;
+            goal.setImage(goalOffArr[currentLevel])
+            goal.x = goalXArr[currentLevel];
+            goal.y = goalYArr[currentLevel];
             goal.z = 1;
 
             // TODO: How do we clear the currentLayout?
@@ -122,11 +176,11 @@ controller.A.onEvent(ControllerButtonEvent.Pressed, function () {
             let positivePathCheck = pathTo(currentLayout, negativePos.x, negativePos.y, symbolGoal);
             let shortCircuitCheck = pathTo(currentLayout, positivePos.x, positivePos.y, symbolNegative);
 
-            if (positivePathCheck && negativePathCheck && !shortCircuitCheck && switchOn) {
+            if (positivePathCheck && negativePathCheck && !shortCircuitCheck) {
                 console.log("Path Found Fully");
-                let goal = sprites.create(assets.image`goalLightOn0`, 0);
-                goal.x = 149;
-                goal.y = 58;
+                goal.setImage(goalOnArr[currentLevel]);
+                goal.x = goalXArr[currentLevel]
+                goal.y = goalYArr[currentLevel];
                 goal.z = 1;
                 //Win code goes here
 
@@ -187,7 +241,6 @@ controller.down.onEvent(ControllerButtonEvent.Pressed, function () {
     }
 })
 
-let prePlacedBlocks = 1
 let placedBlocks: Sprite[] = []
 let testBlock: Sprite = null
 let selectorPanel = false
@@ -197,7 +250,7 @@ let selectedButton = 0
 let curBlock: Sprite = null
 selectedButton = 2
 let battery = sprites.create(assets.image`batteryBlock`, 0)
-let goal = sprites.create(assets.image`goalLightOff`, 0)
+let goal = sprites.create(goalOffArr[currentLevel], 0)
 battery.x = 21
 battery.y = 58
 goal.x = 149
@@ -211,10 +264,8 @@ curBlock.x = 8
 curBlock.y = 28
 curBlock.z = 3;
 scene.setBackgroundImage(assets.image`bg`)
-if (prePlacedBlocks == 1) {
-    let blockOverlay = sprites.create(assets.image`placedBlocksOverlay`, 0);
-    blockOverlay.z = 2;
-}
+let blockOverlay = sprites.create(placedBlocksArr[currentLevel], 0);
+blockOverlay.z = 2;
 
 
 let layoutHeight = 7;
@@ -417,3 +468,5 @@ if (pathTo(testLayout, pos.x, pos.y, symbolGoal)) {
     console.log("A PATH WAS FOUND!");
 }
 */
+
+switchLevel(1)
