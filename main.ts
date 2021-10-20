@@ -37,7 +37,7 @@ controller.B.onEvent(ControllerButtonEvent.Pressed, function () {
 controller.A.onEvent(ControllerButtonEvent.Pressed, function () {
     if (vertical && selectorPanel == false) {
         testBlock = sprites.create(assets.image`4BlockV`, SpriteKind.Player)
-        testBlock.z = 1
+        testBlock.z = 3
         testBlock.x = curBlock.x
         testBlock.y = curBlock.y
         //console.log(curBlock.x + "," + curBlock.y);
@@ -54,7 +54,7 @@ controller.A.onEvent(ControllerButtonEvent.Pressed, function () {
 
     } else if (selectorPanel == false) {
         testBlock = sprites.create(assets.image`4BlockH`, SpriteKind.Player)
-        testBlock.z = 1
+        testBlock.z = 3
         testBlock.x = curBlock.x
         testBlock.y = curBlock.y
         placedBlocks.push(testBlock)
@@ -84,6 +84,11 @@ controller.A.onEvent(ControllerButtonEvent.Pressed, function () {
             currentLayout = copyLayout(startingLayout);
             console.log(getLayoutString(currentLayout));
 
+            let goal = sprites.create(assets.image`goalLightOff`, 0);
+            goal.x = 149;
+            goal.y = 58;
+            goal.z = 1;
+
             // TODO: How do we clear the currentLayout?
             // a hint is that there should be an easy way to reset it!
         } else {
@@ -94,6 +99,10 @@ controller.A.onEvent(ControllerButtonEvent.Pressed, function () {
             let shortCircuitCheck = pathTo(currentLayout, positivePos.x, positivePos.y, symbolNegative);
             if (positivePathCheck && negativePathCheck && !shortCircuitCheck) {
                 console.log("Path Found Fully");
+                let goal = sprites.create(assets.image`goalLightOn0`, 0);
+                goal.x = 149;
+                goal.y = 58;
+                goal.z = 1;
                 //Win code goes here
 
             } else if(positivePathCheck && negativePathCheck){
@@ -152,6 +161,7 @@ controller.down.onEvent(ControllerButtonEvent.Pressed, function () {
         }
     }
 })
+
 let prePlacedBlocks = 1
 let placedBlocks: Sprite[] = []
 let testBlock: Sprite = null
@@ -162,21 +172,23 @@ let selectedButton = 0
 let curBlock: Sprite = null
 selectedButton = 2
 let battery = sprites.create(assets.image`batteryBlock`, 0)
-let goal = sprites.create(assets.image`goalThing`, 0)
+let goal = sprites.create(assets.image`goalLightOff`, 0)
 battery.x = 21
 battery.y = 58
 goal.x = 149
 goal.y = 58
+goal.z = 0;
 vertical = true
 curBlock = sprites.create(assets.image`4BlockV`, SpriteKind.Player)
 bottomOverlayTest = sprites.create(assets.image`bottomOverlay`, SpriteKind.Player)
 bottomOverlayTest.z = 100
 curBlock.x = 8
 curBlock.y = 28
-curBlock.z = 1;
+curBlock.z = 3;
 scene.setBackgroundImage(assets.image`bg`)
 if (prePlacedBlocks == 1) {
     let blockOverlay = sprites.create(assets.image`placedBlocksOverlay`, 0);
+    blockOverlay.z = 2;
 }
 
 
