@@ -1,3 +1,13 @@
+let switchOn = false;
+
+let switchBlock = sprites.create(assets.image`switchOff`, 0)
+switchBlock.x = 96
+switchBlock.y = 72
+switchBlock.z = 5
+
+
+
+
 controller.up.onEvent(ControllerButtonEvent.Pressed, function () {
     if (vertical && (curBlock.y - 32) >= 0) {
         curBlock.y -= 16
@@ -84,6 +94,20 @@ controller.A.onEvent(ControllerButtonEvent.Pressed, function () {
             currentLayout = copyLayout(startingLayout);
             console.log(getLayoutString(currentLayout));
 
+            if(switchOn){
+                switchOn = false
+                let switchBlock = sprites.create(assets.image`switchOff`, 0)
+                switchBlock.x = 96
+                switchBlock.y = 72
+                switchBlock.z = 5
+            } else {
+                switchOn = true
+                let switchBlock = sprites.create(assets.image`switchOn`, 0)
+                switchBlock.x = 96
+                switchBlock.y = 72
+                switchBlock.z = 5
+            }
+
             let goal = sprites.create(assets.image`goalLightOff`, 0);
             goal.x = 149;
             goal.y = 58;
@@ -97,7 +121,8 @@ controller.A.onEvent(ControllerButtonEvent.Pressed, function () {
             let negativePathCheck = pathTo(currentLayout, positivePos.x, positivePos.y, symbolGoal);
             let positivePathCheck = pathTo(currentLayout, negativePos.x, negativePos.y, symbolGoal);
             let shortCircuitCheck = pathTo(currentLayout, positivePos.x, positivePos.y, symbolNegative);
-            if (positivePathCheck && negativePathCheck && !shortCircuitCheck) {
+
+            if (positivePathCheck && negativePathCheck && !shortCircuitCheck && switchOn) {
                 console.log("Path Found Fully");
                 let goal = sprites.create(assets.image`goalLightOn0`, 0);
                 goal.x = 149;
