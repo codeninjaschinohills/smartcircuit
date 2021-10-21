@@ -157,6 +157,7 @@ let curBlock: Sprite = null
 selectedButton = 2
 let battery = sprites.create(assets.image`batteryBlock`, 0)
 let goal = sprites.create(assets.image`goalThing`, 0)
+let switchA = sprites.create(assets.image`switch`, 0)
 battery.x = 21 + 16
 battery.y = 42 + 16
 goal.x = 149
