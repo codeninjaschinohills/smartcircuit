@@ -59,6 +59,11 @@
         "mimeType": "image/x-mkcd-f4",
         "displayName": "switch"
     },
+    "image13": {
+        "data": "hwQQABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAsAsAAAAAAAArsgAAAAAAACu7AAAAAAAAsLsLAAAAAAAAsAsAAAAAAAAAuwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+        "mimeType": "image/x-mkcd-f4",
+        "displayName": "SwitchF"
+    },
     "anim2": {
         "namespace": "myAnimations",
         "id": "anim2",
