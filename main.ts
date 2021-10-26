@@ -1,12 +1,14 @@
 let switchOn = false;
 
 let switchBlock = sprites.create(assets.image`Offswitch`, 0)
-switchBlock.x = 96
+switchBlock.x = 80
 switchBlock.y = 72
 switchBlock.z = 5
 
-
-
+let switchPlatform = sprites.create(assets.image`switchOff`, 0)
+switchPlatform.x = 96
+switchPlatform.y = 72
+switchPlatform.z = 5
 
 controller.up.onEvent(ControllerButtonEvent.Pressed, function () {
     if (vertical && (curBlock.y - 32) >= 0) {
@@ -85,6 +87,8 @@ controller.A.onEvent(ControllerButtonEvent.Pressed, function () {
         // symbolGoal = "G"
 
     }
+
+    
     if (selectorPanel == true) {
         if (selectedButton == 1) {
             for (let i = 0; i <= placedBlocks.length - 1; i++) {
@@ -97,15 +101,11 @@ controller.A.onEvent(ControllerButtonEvent.Pressed, function () {
             if(switchOn){
                 switchOn = false
                 switchBlock.setImage(assets.image`Offswitch`)
-                switchBlock.x = 96
-                switchBlock.y = 72
-                switchBlock.z = 5
+
             } else {
                 switchOn = true
                 switchBlock.setImage(assets.image`Onswitch`)
-                switchBlock.x = 96
-                switchBlock.y = 72
-                switchBlock.z = 5
+
             }
             let goal = sprites.create(assets.image`goalLightOff`, 0);
             goal.x = 149;
