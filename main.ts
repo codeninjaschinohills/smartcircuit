@@ -1,6 +1,6 @@
 let switchOn = false;
 
-let switchBlock = sprites.create(assets.image`switchOff`, 0)
+let switchBlock = sprites.create(assets.image`Offswitch`, 0)
 switchBlock.x = 96
 switchBlock.y = 72
 switchBlock.z = 5
@@ -96,18 +96,17 @@ controller.A.onEvent(ControllerButtonEvent.Pressed, function () {
 
             if(switchOn){
                 switchOn = false
-                let switchBlock = sprites.create(assets.image`switchOff`, 0)
+                switchBlock.setImage(assets.image`Offswitch`)
                 switchBlock.x = 96
                 switchBlock.y = 72
                 switchBlock.z = 5
             } else {
                 switchOn = true
-                let switchBlock = sprites.create(assets.image`switchOn`, 0)
+                switchBlock.setImage(assets.image`Onswitch`)
                 switchBlock.x = 96
                 switchBlock.y = 72
                 switchBlock.z = 5
             }
-
             let goal = sprites.create(assets.image`goalLightOff`, 0);
             goal.x = 149;
             goal.y = 58;
