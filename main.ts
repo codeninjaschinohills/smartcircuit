@@ -1,12 +1,5 @@
-namespace SpriteKind {
-    export const MenuButton = SpriteKind.create()
-}
-let menuOpen = true;
-
 let currentLevel = 1;
 let spacer = null
-
-
 
 let goalPos1 = [149, 58]
 let goalPos2 = [80, 43]
@@ -87,6 +80,7 @@ let switchLevel = function(levelNum: number){
 
 
     currentLevel = levelNum
+
     //goal = sprites.create(goalOffArr[currentLevel], 0)
     goal.setImage(goalOffArr[levelNum]);
     goal.x = goalXArr[levelNum]
@@ -99,8 +93,11 @@ let switchLevel = function(levelNum: number){
 
     //blockOverlay = sprites.create(placedBlocksArr[currentLevel], 0);
     blockOverlay.setImage(tempImg)
+
+
+
     currentLayout = copyLayout(levLayoutArr[levelNum])
-    //console.log(getLayoutString(currentLayout))
+    console.log(getLayoutString(currentLayout))
 }
 
 
@@ -185,7 +182,21 @@ controller.A.onEvent(ControllerButtonEvent.Pressed, function() {
             currentLayout[layoutPos.y][layoutPos.x + 2] += symbolWireEast + symbolWireWest;
             currentLayout[layoutPos.y][layoutPos.x + 3] += symbolWireWest;
 
+
             //console.log(getLayoutString(currentLayout));
+
+        // symbolGoal = "G"
+
+    }
+    if (selectorPanel == true) {
+        if (selectedButton == 1) {
+            for (let i = 0; i <= placedBlocks.length - 1; i++) {
+                placedBlocks[i].destroy()
+            }
+            console.log(getLayoutString(currentLayout));
+            currentLayout = copyLayout(levLayoutArr[currentLevel]);
+            console.log(getLayoutString(currentLayout));
+
 
             // symbolGoal = "G"
 
@@ -319,11 +330,14 @@ scene.setBackgroundImage(assets.image`bg`)
 let blockOverlay = sprites.create(placedBlocksArr[currentLevel], 0);
 blockOverlay.z = 2;
 
+
 blockOverlay.setFlag(SpriteFlag.Invisible, true);
 curBlock.setFlag(SpriteFlag.Invisible, true);
 goal.setFlag(SpriteFlag.Invisible, true);
 battery.setFlag(SpriteFlag.Invisible, true);
 bottomOverlayTest.setFlag(SpriteFlag.Invisible, true);
+
+
 
 
 let layoutHeight = 7;
@@ -526,6 +540,7 @@ if (pathTo(testLayout, pos.x, pos.y, symbolGoal)) {
     console.log("A PATH WAS FOUND!");
 }
 */
+
 
 //switchLevel(1)
 
@@ -2168,3 +2183,4 @@ if (area == 2) {
     Credits.z = 10;
     StartButton.z = 10;
 }
+
