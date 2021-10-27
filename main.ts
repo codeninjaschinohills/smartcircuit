@@ -1,5 +1,12 @@
+namespace SpriteKind {
+    export const MenuButton = SpriteKind.create()
+}
+let menuOpen = true;
+
 let currentLevel = 1;
 let spacer = null
+
+
 
 let goalPos1 = [149, 58]
 let goalPos2 = [80, 43]
@@ -40,7 +47,7 @@ let levLayout1 =
         ['  ', '  ', '  ', '  ', '  ', '  ', '  ', '  ', '  ', '  '],
         ['  ', '  ', '  ', '  ', '  ', '  ', '  ', '  ', '  ', '  ']
     ];
-let levLayout2 = 
+let levLayout2 =
     [
         ['  ', 'v ', '  ', '  ', '  ', '  ', '  ', '  ', '  ', '  '],
         ['  ', 'v^', '  ', '  ', '  ', '  ', '  ', '  ', '  ', '  '],
@@ -50,8 +57,8 @@ let levLayout2 =
         ['  ', '^v', '  ', '  ', '  ', '  ', '  ', '  ', '  ', '  '],
         ['  ', '^ ', '  ', '  ', '  ', '  ', '  ', '  ', '  ', '  ']
     ];
-let levLayout3 = 
-//put in actual level 3 layout here I didn't see it on Kyle's branch
+let levLayout3 =
+    //put in actual level 3 layout here I didn't see it on Kyle's branch
     [
         ['  ', '  ', '  ', '  ', '  ', '  ', '  ', '  ', '  ', '  '],
         ['  ', '  ', '  ', '  ', '  ', '  ', '  ', '  ', '  ', '  '],
@@ -63,7 +70,7 @@ let levLayout3 =
     ];
 let levLayoutArr = [spacer, levLayout1, levLayout2, levLayout3]
 
-let switchLevel = function(levelNum: number){
+let switchLevel = function (levelNum: number) {
 
     blockOverlay.setFlag(SpriteFlag.Invisible, false);
     curBlock.setFlag(SpriteFlag.Invisible, false);
@@ -80,7 +87,6 @@ let switchLevel = function(levelNum: number){
 
 
     currentLevel = levelNum
-
     //goal = sprites.create(goalOffArr[currentLevel], 0)
     goal.setImage(goalOffArr[levelNum]);
     goal.x = goalXArr[levelNum]
@@ -93,16 +99,13 @@ let switchLevel = function(levelNum: number){
 
     //blockOverlay = sprites.create(placedBlocksArr[currentLevel], 0);
     blockOverlay.setImage(tempImg)
-
-
-
     currentLayout = copyLayout(levLayoutArr[levelNum])
-    console.log(getLayoutString(currentLayout))
+    //console.log(getLayoutString(currentLayout))
 }
 
 
 controller.up.onEvent(ControllerButtonEvent.Pressed, function () {
-    if(!menuOpen){
+    if (!menuOpen) {
         if (vertical && (curBlock.y - 32) >= 0) {
             curBlock.y -= 16
         } else if (!vertical && (curBlock.y - 16) > 0) {
@@ -126,17 +129,17 @@ controller.up.onEvent(ControllerButtonEvent.Pressed, function () {
     }
 })
 controller.B.onEvent(ControllerButtonEvent.Pressed, function () {
-    if(!menuOpen){
+    if (!menuOpen) {
         if (vertical == true && selectorPanel == false) {
             curBlock.setImage(assets.image`4BlockH`)
             vertical = false
-            if(curBlock.x > 140){
+            if (curBlock.x > 140) {
                 curBlock.x -= 48
             }
         } else if (selectorPanel == false) {
             curBlock.setImage(assets.image`4BlockV`)
             vertical = true
-            if(curBlock.y > 80){
+            if (curBlock.y > 80) {
                 curBlock.y -= 48
             }
         }
@@ -145,8 +148,8 @@ controller.B.onEvent(ControllerButtonEvent.Pressed, function () {
     }
 });
 
-controller.A.onEvent(ControllerButtonEvent.Pressed, function() {
-    if(!menuOpen){
+controller.A.onEvent(ControllerButtonEvent.Pressed, function () {
+    if (!menuOpen) {
         if (vertical && selectorPanel == false) {
             testBlock = sprites.create(assets.image`4BlockV`, SpriteKind.Player)
             testBlock.z = 3
@@ -182,21 +185,7 @@ controller.A.onEvent(ControllerButtonEvent.Pressed, function() {
             currentLayout[layoutPos.y][layoutPos.x + 2] += symbolWireEast + symbolWireWest;
             currentLayout[layoutPos.y][layoutPos.x + 3] += symbolWireWest;
 
-
             //console.log(getLayoutString(currentLayout));
-
-        // symbolGoal = "G"
-
-    }
-    if (selectorPanel == true) {
-        if (selectedButton == 1) {
-            for (let i = 0; i <= placedBlocks.length - 1; i++) {
-                placedBlocks[i].destroy()
-            }
-            console.log(getLayoutString(currentLayout));
-            currentLayout = copyLayout(levLayoutArr[currentLevel]);
-            console.log(getLayoutString(currentLayout));
-
 
             // symbolGoal = "G"
 
@@ -232,7 +221,7 @@ controller.A.onEvent(ControllerButtonEvent.Pressed, function() {
                     goal.z = 1;
                     //Win code goes here
 
-                } else if(positivePathCheck && negativePathCheck){
+                } else if (positivePathCheck && negativePathCheck) {
                     console.log("Shortcircuit");
                     //Shortcircuit fail goes here
 
@@ -247,7 +236,7 @@ controller.A.onEvent(ControllerButtonEvent.Pressed, function() {
     }
 })
 controller.left.onEvent(ControllerButtonEvent.Pressed, function () {
-    if(!menuOpen){
+    if (!menuOpen) {
         if (selectorPanel == false) {
             if (vertical && (curBlock.x - 16) > 0) {
                 curBlock.x -= 16;
@@ -263,7 +252,7 @@ controller.left.onEvent(ControllerButtonEvent.Pressed, function () {
     }
 })
 controller.right.onEvent(ControllerButtonEvent.Pressed, function () {
-    if(!menuOpen){
+    if (!menuOpen) {
         if (selectorPanel == false) {
             if (vertical && (curBlock.x + 16) < 160) {
                 curBlock.x += 16
@@ -279,7 +268,7 @@ controller.right.onEvent(ControllerButtonEvent.Pressed, function () {
     }
 })
 controller.down.onEvent(ControllerButtonEvent.Pressed, function () {
-    if(!menuOpen){
+    if (!menuOpen) {
         if (vertical == true) {
             if (curBlock.y + 16 < 90) {
                 curBlock.y += 16
@@ -330,14 +319,11 @@ scene.setBackgroundImage(assets.image`bg`)
 let blockOverlay = sprites.create(placedBlocksArr[currentLevel], 0);
 blockOverlay.z = 2;
 
-
 blockOverlay.setFlag(SpriteFlag.Invisible, true);
 curBlock.setFlag(SpriteFlag.Invisible, true);
 goal.setFlag(SpriteFlag.Invisible, true);
 battery.setFlag(SpriteFlag.Invisible, true);
 bottomOverlayTest.setFlag(SpriteFlag.Invisible, true);
-
-
 
 
 let layoutHeight = 7;
@@ -541,10 +527,9 @@ if (pathTo(testLayout, pos.x, pos.y, symbolGoal)) {
 }
 */
 
-
 //switchLevel(1)
 
-let up  = function() {
+let up = function () {
     if (area == 1) {
         if (levelsOpened == false) {
             StartButton.setImage(img`
@@ -728,7 +713,7 @@ let up  = function() {
         }
     }
 };
-let onB = function() {
+let onB = function () {
     Credits.setImage(img`
         ................................
         ..8888888888888888888888888888..
@@ -1002,7 +987,7 @@ let onA = function () {
         }
         if (selected == 3) {
             menuOpen = false;
-            
+
             blockOverlay.setFlag(SpriteFlag.Invisible, false);
             curBlock.setFlag(SpriteFlag.Invisible, false);
             goal.setFlag(SpriteFlag.Invisible, false);
@@ -1012,7 +997,7 @@ let onA = function () {
             switchLevel(2);
         } else if (selected == 4) {
             menuOpen = false;
-            
+
             blockOverlay.setFlag(SpriteFlag.Invisible, false);
             curBlock.setFlag(SpriteFlag.Invisible, false);
             goal.setFlag(SpriteFlag.Invisible, false);
@@ -1022,7 +1007,7 @@ let onA = function () {
             switchLevel(1);
         } else if (selected == 5) {
             menuOpen = false;
-            
+
             blockOverlay.setFlag(SpriteFlag.Invisible, false);
             curBlock.setFlag(SpriteFlag.Invisible, false);
             goal.setFlag(SpriteFlag.Invisible, false);
@@ -1036,7 +1021,7 @@ let onA = function () {
 
     }
 };
-let left = function() {
+let left = function () {
     if (area == 1) {
         if (levelsOpened == true) {
             Level_1.setImage(img`
@@ -1242,7 +1227,7 @@ let left = function() {
     }
 };
 
-let right = function() {
+let right = function () {
     if (area == 1) {
         if (levelsOpened == true) {
             Level_1.setImage(img`
@@ -1447,7 +1432,7 @@ let right = function() {
         selectedSS = 2
     }
 };
-let down = function() {
+let down = function () {
     if (area == 1) {
         if (levelsOpened == false) {
             StartButton.setImage(img`
@@ -2183,4 +2168,3 @@ if (area == 2) {
     Credits.z = 10;
     StartButton.z = 10;
 }
-
