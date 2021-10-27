@@ -34,6 +34,7 @@ let goalOffArr = [spacer, goalOff1, goalOff2, goalOff3]
 
 let placedBlocks1 = assets.image`placedBlocksOverlay1`
 let placedBlocks2 = assets.image`placedBlocksOverlay2`
+//put in actual layout for level 3
 let placedBlocks3 = assets.image`placedBlocksOverlay3`
 let placedBlocksArr = [spacer, placedBlocks1, placedBlocks2, placedBlocks3]
 
@@ -70,17 +71,27 @@ let levLayout3 =
     ];
 let levLayoutArr = [spacer, levLayout1, levLayout2, levLayout3]
 
+let tempImg: Image = placedBlocksArr[currentLevel]
+
 let switchLevel = function(levelNum: number){
+
+    blockOverlay.setFlag(SpriteFlag.Invisible, false);
+    curBlock.setFlag(SpriteFlag.Invisible, false);
+    battery.setFlag(SpriteFlag.Invisible, false);
+    goal.setFlag(SpriteFlag.Invisible, false);
+    bottomOverlayTest.setFlag(SpriteFlag.Invisible, false);
+
     currentLevel = levelNum
-    goal = sprites.create(goalOffArr[currentLevel], 0)
+    //goal = sprites.create(goalOffArr[currentLevel], 0)
     goal.setImage(goalOffArr[levelNum]);
     goal.x = goalXArr[levelNum]
     goal.y = goalYArr[levelNum]
-    battery = sprites.create(assets.image`batteryBlock`, 0)
+    //battery = sprites.create(assets.image`batteryBlock`, 0)
     battery.x = batteryXArr[levelNum]
     battery.y = batteryYArr[levelNum]
-    blockOverlay = sprites.create(placedBlocksArr[currentLevel], 0);
+    //blockOverlay = sprites.create(tempImg);
     blockOverlay.setImage(placedBlocksArr[levelNum])
+    blockOverlay.setFlag(SpriteFlag.Invisible, false);
     currentLayout = copyLayout(levLayoutArr[levelNum])
     //console.log(getLayoutString(currentLayout))
 }
@@ -259,25 +270,29 @@ let vertical = false
 let selectedButton = 0
 let curBlock: Sprite = null
 selectedButton = 2
-let battery: Sprite = null;
-let goal: Sprite = null;
-//battery.x = 21
-//battery.y = 58
-//goal.x = 149
-//goal.y = 58
-//goal.z = 0;
+let battery = sprites.create(assets.image`batteryBlock`, 0)
+let goal = sprites.create(goalOffArr[currentLevel], 0)
+battery.x = 21
+battery.y = 58
+goal.x = 149
+goal.y = 58
+goal.z = 0;
 vertical = true
-//curBlock = sprites.create(assets.image`4BlockV`, SpriteKind.Player)
-//bottomOverlayTest = sprites.create(assets.image`bottomOverlay`, SpriteKind.Player)
-//bottomOverlayTest.z = 100
-//curBlock.x = 8
-//curBlock.y = 28
-//curBlock.z = 3;
-//scene.setBackgroundImage(assets.image`bg`)
-let blockOverlay: Sprite = null
-//blockOverlay.z = 2;
+curBlock = sprites.create(assets.image`4BlockV`, SpriteKind.Player)
+bottomOverlayTest = sprites.create(assets.image`bottomOverlay`, SpriteKind.Player)
+bottomOverlayTest.z = 100
+curBlock.x = 8
+curBlock.y = 28
+curBlock.z = 3;
+scene.setBackgroundImage(assets.image`bg`)
+let blockOverlay = sprites.create(placedBlocksArr[currentLevel], 0);
+blockOverlay.z = 2;
 
-
+blockOverlay.setFlag(SpriteFlag.Invisible, true);
+curBlock.setFlag(SpriteFlag.Invisible, true);
+battery.setFlag(SpriteFlag.Invisible, true);
+goal.setFlag(SpriteFlag.Invisible, true);
+bottomOverlayTest.setFlag(SpriteFlag.Invisible, true);
 
 let layoutHeight = 7;
 let layoutWidth = 10;
@@ -939,90 +954,11 @@ controller.A.onEvent(ControllerButtonEvent.Pressed, function () {
             levelsOpened = true
         }
         if (selected == 3) {
-            menuOpen = false;
-            //let placedBlocks: Sprite[] = []
-            //let testBlock: Sprite = null
-            //let selectorPanel = false
-            //let bottomOverlayTest: Sprite = null
-            //let vertical = false
-            //let selectedButton = 0
-            //let curBlock: Sprite = null
-            //selectedButton = 2
-            let battery = sprites.create(assets.image`batteryBlock`, 0)
-            let goal = sprites.create(goalOffArr[currentLevel], 0)
-            //battery.x = 21
-            //battery.y = 58
-            //goal.x = 149
-            //goal.y = 58
-            //goal.z = 0;
-            vertical = true
-            curBlock = sprites.create(assets.image`4BlockV`, SpriteKind.Player)
-            bottomOverlayTest = sprites.create(assets.image`bottomOverlay`, SpriteKind.Player)
-            bottomOverlayTest.z = 100
-            //curBlock.x = 8
-            //curBlock.y = 28
-            //curBlock.z = 3;
-            //scene.setBackgroundImage(assets.image`bg`)
-            //let blockOverlay = sprites.create(placedBlocksArr[currentLevel], 0);
-            //blockOverlay.z = 2;
-            
             switchLevel(2);
         } else if (selected == 4) {
-            menuOpen = false;
-            let placedBlocks: Sprite[] = []
-            let testBlock: Sprite = null
-            let selectorPanel = false
-            let bottomOverlayTest: Sprite = null
-            let vertical = false
-            let selectedButton = 0
-            let curBlock: Sprite = null
-            selectedButton = 2
-            let battery = sprites.create(assets.image`batteryBlock`, 0)
-            let goal = sprites.create(goalOffArr[currentLevel], 0)
-            battery.x = 21
-            battery.y = 58
-            goal.x = 149
-            goal.y = 58
-            goal.z = 0;
-            vertical = true
-            curBlock = sprites.create(assets.image`4BlockV`, SpriteKind.Player)
-            bottomOverlayTest = sprites.create(assets.image`bottomOverlay`, SpriteKind.Player)
-            bottomOverlayTest.z = 100
-            curBlock.x = 8
-            curBlock.y = 28
-            curBlock.z = 3;
-            scene.setBackgroundImage(assets.image`bg`)
-            //let blockOverlay = sprites.create(placedBlocksArr[currentLevel], 0);
-            //blockOverlay.z = 2;
-            switchLevel(1);
-        } else if (selected == 5) {
-            menuOpen = false;
-            let placedBlocks: Sprite[] = []
-            let testBlock: Sprite = null
-            let selectorPanel = false
-            let bottomOverlayTest: Sprite = null
-            let vertical = false
-            let selectedButton = 0
-            let curBlock: Sprite = null
-            selectedButton = 2
-            let battery = sprites.create(assets.image`batteryBlock`, 0)
-            let goal = sprites.create(goalOffArr[currentLevel], 0)
-            battery.x = 21
-            battery.y = 58
-            goal.x = 149
-            goal.y = 58
-            goal.z = 0;
-            vertical = true
-            curBlock = sprites.create(assets.image`4BlockV`, SpriteKind.Player)
-            bottomOverlayTest = sprites.create(assets.image`bottomOverlay`, SpriteKind.Player)
-            bottomOverlayTest.z = 100
-            curBlock.x = 8
-            curBlock.y = 28
-            curBlock.z = 3;
-            scene.setBackgroundImage(assets.image`bg`)
-            //let blockOverlay = sprites.create(placedBlocksArr[currentLevel], 0);
-            //blockOverlay.z = 2;
             switchLevel(3);
+        } else if (selected == 5) {
+            switchLevel(1);
         }
     }
     if (area == 2) {
