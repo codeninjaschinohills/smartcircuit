@@ -71,183 +71,225 @@ let levLayout3 =
 let levLayoutArr = [spacer, levLayout1, levLayout2, levLayout3]
 
 let switchLevel = function(levelNum: number){
+
+    blockOverlay.setFlag(SpriteFlag.Invisible, false);
+    curBlock.setFlag(SpriteFlag.Invisible, false);
+    goal.setFlag(SpriteFlag.Invisible, false);
+    battery.setFlag(SpriteFlag.Invisible, false);
+    bottomOverlayTest.setFlag(SpriteFlag.Invisible, false);
+
+    Title.setFlag(SpriteFlag.Invisible, true);
+    StartButton.setFlag(SpriteFlag.Invisible, true);
+    Credits.setFlag(SpriteFlag.Invisible, true);
+    Level_1.setFlag(SpriteFlag.Invisible, true);
+    Level_2.setFlag(SpriteFlag.Invisible, true);
+    Level_3.setFlag(SpriteFlag.Invisible, true);
+
+
     currentLevel = levelNum
-    goal = sprites.create(goalOffArr[currentLevel], 0)
+    //goal = sprites.create(goalOffArr[currentLevel], 0)
     goal.setImage(goalOffArr[levelNum]);
     goal.x = goalXArr[levelNum]
     goal.y = goalYArr[levelNum]
-    battery = sprites.create(assets.image`batteryBlock`, 0)
+    //battery = sprites.create(assets.image`batteryBlock`, 0)
     battery.x = batteryXArr[levelNum]
     battery.y = batteryYArr[levelNum]
-    blockOverlay = sprites.create(placedBlocksArr[currentLevel], 0);
-    blockOverlay.setImage(placedBlocksArr[levelNum])
+
+    let tempImg = placedBlocksArr[currentLevel]
+
+    //blockOverlay = sprites.create(placedBlocksArr[currentLevel], 0);
+    blockOverlay.setImage(tempImg)
     currentLayout = copyLayout(levLayoutArr[levelNum])
     //console.log(getLayoutString(currentLayout))
 }
 
 
 controller.up.onEvent(ControllerButtonEvent.Pressed, function () {
-    if (vertical && (curBlock.y - 32) >= 0) {
-        curBlock.y -= 16
-    } else if (!vertical && (curBlock.y - 16) > 0) {
-        curBlock.y -= 16
-    }
-    if (selectorPanel == true) {
-        if (vertical == true) {
-            curBlock.setImage(assets.image`4BlockV`)
-            curBlock.y = 76
-            selectorPanel = false
-            bottomOverlayTest.setImage(assets.image`bottomOverlay`)
-        } else {
-            curBlock.setImage(assets.image`4BlockH`)
-            curBlock.y = 104
-            selectorPanel = false
-            bottomOverlayTest.setImage(assets.image`bottomOverlay`)
+    if(!menuOpen){
+        if (vertical && (curBlock.y - 32) >= 0) {
+            curBlock.y -= 16
+        } else if (!vertical && (curBlock.y - 16) > 0) {
+            curBlock.y -= 16
         }
+        if (selectorPanel == true) {
+            if (vertical == true) {
+                curBlock.setImage(assets.image`4BlockV`)
+                curBlock.y = 76
+                selectorPanel = false
+                bottomOverlayTest.setImage(assets.image`bottomOverlay`)
+            } else {
+                curBlock.setImage(assets.image`4BlockH`)
+                curBlock.y = 104
+                selectorPanel = false
+                bottomOverlayTest.setImage(assets.image`bottomOverlay`)
+            }
+        }
+    } else {
+        up();
     }
 })
 controller.B.onEvent(ControllerButtonEvent.Pressed, function () {
-    if (vertical == true && selectorPanel == false) {
-        curBlock.setImage(assets.image`4BlockH`)
-        vertical = false
-        if(curBlock.x > 140){
-            curBlock.x -= 48
+    if(!menuOpen){
+        if (vertical == true && selectorPanel == false) {
+            curBlock.setImage(assets.image`4BlockH`)
+            vertical = false
+            if(curBlock.x > 140){
+                curBlock.x -= 48
+            }
+        } else if (selectorPanel == false) {
+            curBlock.setImage(assets.image`4BlockV`)
+            vertical = true
+            if(curBlock.y > 80){
+                curBlock.y -= 48
+            }
         }
-    } else if (selectorPanel == false) {
-        curBlock.setImage(assets.image`4BlockV`)
-        vertical = true
-        if(curBlock.y > 80){
-            curBlock.y -= 48
-        }
+    } else {
+        onB();
     }
 });
 
-controller.A.onEvent(ControllerButtonEvent.Pressed, function () {
-    if (vertical && selectorPanel == false) {
-        testBlock = sprites.create(assets.image`4BlockV`, SpriteKind.Player)
-        testBlock.z = 3
-        testBlock.x = curBlock.x
-        testBlock.y = curBlock.y
-        //console.log(curBlock.x + "," + curBlock.y);
-        //console.log();
+controller.A.onEvent(ControllerButtonEvent.Pressed, function() {
+    if(!menuOpen){
+        if (vertical && selectorPanel == false) {
+            testBlock = sprites.create(assets.image`4BlockV`, SpriteKind.Player)
+            testBlock.z = 3
+            testBlock.x = curBlock.x
+            testBlock.y = curBlock.y
+            //console.log(curBlock.x + "," + curBlock.y);
+            //console.log();
 
-        placedBlocks.push(testBlock)
+            placedBlocks.push(testBlock)
 
-        let layoutPos = blockToLayout(testBlock.x, testBlock.y)
+            let layoutPos = blockToLayout(testBlock.x, testBlock.y)
 
-        currentLayout[layoutPos.y + 0][layoutPos.x] += symbolWireSouth;
-        currentLayout[layoutPos.y + 1][layoutPos.x] += symbolWireNorth + symbolWireSouth;
-        currentLayout[layoutPos.y + 2][layoutPos.x] += symbolWireNorth + symbolWireSouth;
-        currentLayout[layoutPos.y + 3][layoutPos.x] += symbolWireNorth;
+            currentLayout[layoutPos.y + 0][layoutPos.x] += symbolWireSouth;
+            currentLayout[layoutPos.y + 1][layoutPos.x] += symbolWireNorth + symbolWireSouth;
+            currentLayout[layoutPos.y + 2][layoutPos.x] += symbolWireNorth + symbolWireSouth;
+            currentLayout[layoutPos.y + 3][layoutPos.x] += symbolWireNorth;
 
-    } else if (selectorPanel == false) {
-        testBlock = sprites.create(assets.image`4BlockH`, SpriteKind.Player)
-        testBlock.z = 3
-        testBlock.x = curBlock.x
-        testBlock.y = curBlock.y
-        placedBlocks.push(testBlock)
-        console.log(curBlock.x + "," + curBlock.y);
+        } else if (selectorPanel == false) {
+            testBlock = sprites.create(assets.image`4BlockH`, SpriteKind.Player)
+            testBlock.z = 3
+            testBlock.x = curBlock.x
+            testBlock.y = curBlock.y
+            placedBlocks.push(testBlock)
+            console.log(curBlock.x + "," + curBlock.y);
 
-        let layoutPos = blockToLayout(testBlock.x, testBlock.y);
-        //console.log(`sprite position=${testBlock.x},${testBlock.y}`);
-        //console.log(`layout position=${layoutPos.x},${layoutPos.y}`);
+            let layoutPos = blockToLayout(testBlock.x, testBlock.y);
+            //console.log(`sprite position=${testBlock.x},${testBlock.y}`);
+            //console.log(`layout position=${layoutPos.x},${layoutPos.y}`);
 
-        let wireWidth = 4;
-        currentLayout[layoutPos.y][layoutPos.x + 0] += symbolWireEast;
-        currentLayout[layoutPos.y][layoutPos.x + 1] += symbolWireEast + symbolWireWest;
-        currentLayout[layoutPos.y][layoutPos.x + 2] += symbolWireEast + symbolWireWest;
-        currentLayout[layoutPos.y][layoutPos.x + 3] += symbolWireWest;
+            let wireWidth = 4;
+            currentLayout[layoutPos.y][layoutPos.x + 0] += symbolWireEast;
+            currentLayout[layoutPos.y][layoutPos.x + 1] += symbolWireEast + symbolWireWest;
+            currentLayout[layoutPos.y][layoutPos.x + 2] += symbolWireEast + symbolWireWest;
+            currentLayout[layoutPos.y][layoutPos.x + 3] += symbolWireWest;
 
-        //console.log(getLayoutString(currentLayout));
-
-        // symbolGoal = "G"
-
-    }
-    if (selectorPanel == true) {
-        if (selectedButton == 1) {
-            for (let i = 0; i <= placedBlocks.length - 1; i++) {
-                placedBlocks[i].destroy()
-            }
-            //console.log(getLayoutString(currentLayout));
-            currentLayout = copyLayout(levLayoutArr[currentLevel]);
             //console.log(getLayoutString(currentLayout));
 
-            goal.setImage(goalOffArr[currentLevel])
-            goal.x = goalXArr[currentLevel];
-            goal.y = goalYArr[currentLevel];
-            goal.z = 1;
+            // symbolGoal = "G"
 
-            // TODO: How do we clear the currentLayout?
-            // a hint is that there should be an easy way to reset it!
-        } else {
-            let positivePos = findSymbolInLayout(currentLayout, symbolPositive);
-            let negativePos = findSymbolInLayout(currentLayout, symbolNegative);
-            let negativePathCheck = pathTo(currentLayout, positivePos.x, positivePos.y, symbolGoal);
-            let positivePathCheck = pathTo(currentLayout, negativePos.x, negativePos.y, symbolGoal);
-            let shortCircuitCheck = pathTo(currentLayout, positivePos.x, positivePos.y, symbolNegative);
+        }
+        if (selectorPanel == true) {
+            if (selectedButton == 1) {
+                for (let i = 0; i <= placedBlocks.length - 1; i++) {
+                    placedBlocks[i].destroy()
+                }
+                //console.log(getLayoutString(currentLayout));
+                currentLayout = copyLayout(levLayoutArr[currentLevel]);
+                //console.log(getLayoutString(currentLayout));
 
-            if (positivePathCheck && negativePathCheck && !shortCircuitCheck) {
-                console.log("Path Found Fully");
-                goal.setImage(goalOnArr[currentLevel]);
-                goal.x = goalXArr[currentLevel]
+                goal.setImage(goalOffArr[currentLevel])
+                goal.x = goalXArr[currentLevel];
                 goal.y = goalYArr[currentLevel];
                 goal.z = 1;
-                //Win code goes here
 
-            } else if(positivePathCheck && negativePathCheck){
-                console.log("Shortcircuit");
-                //Shortcircuit fail goes here
-
+                // TODO: How do we clear the currentLayout?
+                // a hint is that there should be an easy way to reset it!
             } else {
-                console.log("Path Not Found");
-                //Wire connection fail goes here
+                let positivePos = findSymbolInLayout(currentLayout, symbolPositive);
+                let negativePos = findSymbolInLayout(currentLayout, symbolNegative);
+                let negativePathCheck = pathTo(currentLayout, positivePos.x, positivePos.y, symbolGoal);
+                let positivePathCheck = pathTo(currentLayout, negativePos.x, negativePos.y, symbolGoal);
+                let shortCircuitCheck = pathTo(currentLayout, positivePos.x, positivePos.y, symbolNegative);
+
+                if (positivePathCheck && negativePathCheck && !shortCircuitCheck) {
+                    console.log("Path Found Fully");
+                    goal.setImage(goalOnArr[currentLevel]);
+                    goal.x = goalXArr[currentLevel]
+                    goal.y = goalYArr[currentLevel];
+                    goal.z = 1;
+                    //Win code goes here
+
+                } else if(positivePathCheck && negativePathCheck){
+                    console.log("Shortcircuit");
+                    //Shortcircuit fail goes here
+
+                } else {
+                    console.log("Path Not Found");
+                    //Wire connection fail goes here
+                }
             }
         }
+    } else {
+        onA();
     }
 })
 controller.left.onEvent(ControllerButtonEvent.Pressed, function () {
-    if (selectorPanel == false) {
-        if (vertical && (curBlock.x - 16) > 0) {
-            curBlock.x -= 16;
-        } else if ((curBlock.x - 32) > 0) {
-            curBlock.x -= 16
+    if(!menuOpen){
+        if (selectorPanel == false) {
+            if (vertical && (curBlock.x - 16) > 0) {
+                curBlock.x -= 16;
+            } else if ((curBlock.x - 32) > 0) {
+                curBlock.x -= 16
+            }
+        } else {
+            bottomOverlayTest.setImage(assets.image`bottomOverlay1`)
+            selectedButton = 1
         }
     } else {
-        bottomOverlayTest.setImage(assets.image`bottomOverlay1`)
-        selectedButton = 1
+        left();
     }
 })
 controller.right.onEvent(ControllerButtonEvent.Pressed, function () {
-    if (selectorPanel == false) {
-        if (vertical && (curBlock.x + 16) < 160) {
-            curBlock.x += 16
-        } else if ((curBlock.x + 32) < 160) {
-            curBlock.x += 16
+    if(!menuOpen){
+        if (selectorPanel == false) {
+            if (vertical && (curBlock.x + 16) < 160) {
+                curBlock.x += 16
+            } else if ((curBlock.x + 32) < 160) {
+                curBlock.x += 16
+            }
+        } else {
+            bottomOverlayTest.setImage(assets.image`bottomOverlay2`)
+            selectedButton = 2
         }
     } else {
-        bottomOverlayTest.setImage(assets.image`bottomOverlay2`)
-        selectedButton = 2
+        right();
     }
 })
 controller.down.onEvent(ControllerButtonEvent.Pressed, function () {
-    if (vertical == true) {
-        if (curBlock.y + 16 < 90) {
-            curBlock.y += 16
+    if(!menuOpen){
+        if (vertical == true) {
+            if (curBlock.y + 16 < 90) {
+                curBlock.y += 16
+            } else {
+                curBlock.setImage(assets.image`empty`)
+                selectorPanel = true
+                selectedButton = 2
+                bottomOverlayTest.setImage(assets.image`bottomOverlay2`)
+            }
         } else {
-            curBlock.setImage(assets.image`empty`)
-            selectorPanel = true
-            selectedButton = 2
-            bottomOverlayTest.setImage(assets.image`bottomOverlay2`)
+            if (curBlock.y + 16 < 106) {
+                curBlock.y += 16
+            } else {
+                curBlock.setImage(assets.image`empty`)
+                selectorPanel = true
+                selectedButton = 2
+                bottomOverlayTest.setImage(assets.image`bottomOverlay2`)
+            }
         }
     } else {
-        if (curBlock.y + 16 < 106) {
-            curBlock.y += 16
-        } else {
-            curBlock.setImage(assets.image`empty`)
-            selectorPanel = true
-            selectedButton = 2
-            bottomOverlayTest.setImage(assets.image`bottomOverlay2`)
-        }
+        down();
     }
 })
 
@@ -259,24 +301,29 @@ let vertical = false
 let selectedButton = 0
 let curBlock: Sprite = null
 selectedButton = 2
-let battery: Sprite = null;
-let goal: Sprite = null;
-//battery.x = 21
-//battery.y = 58
-//goal.x = 149
-//goal.y = 58
-//goal.z = 0;
+let battery = sprites.create(assets.image`batteryBlock`, 0)
+let goal = sprites.create(goalOffArr[currentLevel], 0)
+battery.x = 21
+battery.y = 58
+goal.x = 149
+goal.y = 58
+goal.z = 0;
 vertical = true
-//curBlock = sprites.create(assets.image`4BlockV`, SpriteKind.Player)
-//bottomOverlayTest = sprites.create(assets.image`bottomOverlay`, SpriteKind.Player)
-//bottomOverlayTest.z = 100
-//curBlock.x = 8
-//curBlock.y = 28
-//curBlock.z = 3;
-//scene.setBackgroundImage(assets.image`bg`)
-let blockOverlay: Sprite = null
-//blockOverlay.z = 2;
+curBlock = sprites.create(assets.image`4BlockV`, SpriteKind.Player)
+bottomOverlayTest = sprites.create(assets.image`bottomOverlay`, SpriteKind.Player)
+bottomOverlayTest.z = 100
+curBlock.x = 8
+curBlock.y = 28
+curBlock.z = 3;
+scene.setBackgroundImage(assets.image`bg`)
+let blockOverlay = sprites.create(placedBlocksArr[currentLevel], 0);
+blockOverlay.z = 2;
 
+blockOverlay.setFlag(SpriteFlag.Invisible, true);
+curBlock.setFlag(SpriteFlag.Invisible, true);
+goal.setFlag(SpriteFlag.Invisible, true);
+battery.setFlag(SpriteFlag.Invisible, true);
+bottomOverlayTest.setFlag(SpriteFlag.Invisible, true);
 
 
 let layoutHeight = 7;
@@ -482,7 +529,7 @@ if (pathTo(testLayout, pos.x, pos.y, symbolGoal)) {
 
 //switchLevel(1)
 
-controller.up.onEvent(ControllerButtonEvent.Pressed, function () {
+let up  = function() {
     if (area == 1) {
         if (levelsOpened == false) {
             StartButton.setImage(img`
@@ -665,8 +712,8 @@ controller.up.onEvent(ControllerButtonEvent.Pressed, function () {
             selected = 3
         }
     }
-})
-controller.B.onEvent(ControllerButtonEvent.Pressed, function () {
+};
+let onB = function() {
     Credits.setImage(img`
         ................................
         ..8888888888888888888888888888..
@@ -714,8 +761,8 @@ controller.B.onEvent(ControllerButtonEvent.Pressed, function () {
         . 
         `)
     levelsOpened = false
-})
-controller.A.onEvent(ControllerButtonEvent.Pressed, function () {
+};
+let onA = function () {
     if (area == 1) {
         if (selected == 2) {
             Credits.setImage(img`
@@ -940,96 +987,41 @@ controller.A.onEvent(ControllerButtonEvent.Pressed, function () {
         }
         if (selected == 3) {
             menuOpen = false;
-            //let placedBlocks: Sprite[] = []
-            //let testBlock: Sprite = null
-            //let selectorPanel = false
-            //let bottomOverlayTest: Sprite = null
-            //let vertical = false
-            //let selectedButton = 0
-            //let curBlock: Sprite = null
-            //selectedButton = 2
-            let battery = sprites.create(assets.image`batteryBlock`, 0)
-            let goal = sprites.create(goalOffArr[currentLevel], 0)
-            //battery.x = 21
-            //battery.y = 58
-            //goal.x = 149
-            //goal.y = 58
-            //goal.z = 0;
-            vertical = true
-            curBlock = sprites.create(assets.image`4BlockV`, SpriteKind.Player)
-            bottomOverlayTest = sprites.create(assets.image`bottomOverlay`, SpriteKind.Player)
-            bottomOverlayTest.z = 100
-            //curBlock.x = 8
-            //curBlock.y = 28
-            //curBlock.z = 3;
-            //scene.setBackgroundImage(assets.image`bg`)
-            //let blockOverlay = sprites.create(placedBlocksArr[currentLevel], 0);
-            //blockOverlay.z = 2;
             
+            blockOverlay.setFlag(SpriteFlag.Invisible, false);
+            curBlock.setFlag(SpriteFlag.Invisible, false);
+            goal.setFlag(SpriteFlag.Invisible, false);
+            battery.setFlag(SpriteFlag.Invisible, false);
+            bottomOverlayTest.setFlag(SpriteFlag.Invisible, false);
+
             switchLevel(2);
         } else if (selected == 4) {
             menuOpen = false;
-            let placedBlocks: Sprite[] = []
-            let testBlock: Sprite = null
-            let selectorPanel = false
-            let bottomOverlayTest: Sprite = null
-            let vertical = false
-            let selectedButton = 0
-            let curBlock: Sprite = null
-            selectedButton = 2
-            let battery = sprites.create(assets.image`batteryBlock`, 0)
-            let goal = sprites.create(goalOffArr[currentLevel], 0)
-            battery.x = 21
-            battery.y = 58
-            goal.x = 149
-            goal.y = 58
-            goal.z = 0;
-            vertical = true
-            curBlock = sprites.create(assets.image`4BlockV`, SpriteKind.Player)
-            bottomOverlayTest = sprites.create(assets.image`bottomOverlay`, SpriteKind.Player)
-            bottomOverlayTest.z = 100
-            curBlock.x = 8
-            curBlock.y = 28
-            curBlock.z = 3;
-            scene.setBackgroundImage(assets.image`bg`)
-            //let blockOverlay = sprites.create(placedBlocksArr[currentLevel], 0);
-            //blockOverlay.z = 2;
+            
+            blockOverlay.setFlag(SpriteFlag.Invisible, false);
+            curBlock.setFlag(SpriteFlag.Invisible, false);
+            goal.setFlag(SpriteFlag.Invisible, false);
+            battery.setFlag(SpriteFlag.Invisible, false);
+            bottomOverlayTest.setFlag(SpriteFlag.Invisible, false);
+
             switchLevel(1);
         } else if (selected == 5) {
             menuOpen = false;
-            let placedBlocks: Sprite[] = []
-            let testBlock: Sprite = null
-            let selectorPanel = false
-            let bottomOverlayTest: Sprite = null
-            let vertical = false
-            let selectedButton = 0
-            let curBlock: Sprite = null
-            selectedButton = 2
-            let battery = sprites.create(assets.image`batteryBlock`, 0)
-            let goal = sprites.create(goalOffArr[currentLevel], 0)
-            battery.x = 21
-            battery.y = 58
-            goal.x = 149
-            goal.y = 58
-            goal.z = 0;
-            vertical = true
-            curBlock = sprites.create(assets.image`4BlockV`, SpriteKind.Player)
-            bottomOverlayTest = sprites.create(assets.image`bottomOverlay`, SpriteKind.Player)
-            bottomOverlayTest.z = 100
-            curBlock.x = 8
-            curBlock.y = 28
-            curBlock.z = 3;
-            scene.setBackgroundImage(assets.image`bg`)
-            //let blockOverlay = sprites.create(placedBlocksArr[currentLevel], 0);
-            //blockOverlay.z = 2;
+            
+            blockOverlay.setFlag(SpriteFlag.Invisible, false);
+            curBlock.setFlag(SpriteFlag.Invisible, false);
+            goal.setFlag(SpriteFlag.Invisible, false);
+            battery.setFlag(SpriteFlag.Invisible, false);
+            bottomOverlayTest.setFlag(SpriteFlag.Invisible, false);
+
             switchLevel(3);
         }
     }
     if (area == 2) {
 
     }
-})
-controller.left.onEvent(ControllerButtonEvent.Pressed, function () {
+};
+let left = function() {
     if (area == 1) {
         if (levelsOpened == true) {
             Level_1.setImage(img`
@@ -1233,8 +1225,9 @@ controller.left.onEvent(ControllerButtonEvent.Pressed, function () {
         MenuS.setPosition(75, 80)
         selectedSS = 1
     }
-})
-controller.right.onEvent(ControllerButtonEvent.Pressed, function () {
+};
+
+let right = function() {
     if (area == 1) {
         if (levelsOpened == true) {
             Level_1.setImage(img`
@@ -1438,8 +1431,8 @@ controller.right.onEvent(ControllerButtonEvent.Pressed, function () {
         MenuS.setPosition(75, 80)
         selectedSS = 2
     }
-})
-controller.down.onEvent(ControllerButtonEvent.Pressed, function () {
+};
+let down = function() {
     if (area == 1) {
         if (levelsOpened == false) {
             StartButton.setImage(img`
@@ -1681,7 +1674,7 @@ controller.down.onEvent(ControllerButtonEvent.Pressed, function () {
         MenuS.setPosition(75, 80)
         selectedSS = 3
     }
-});
+};
 let selectedSS = 0
 let tabOpen = 0
 let MenuS: Sprite = null
