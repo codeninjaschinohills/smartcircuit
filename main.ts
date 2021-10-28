@@ -97,22 +97,13 @@ let currentLayout = copyLayout(levLayout1);
 
 let switchLevel = function (levelNum: number) {
 
-    blockOverlay.setFlag(SpriteFlag.Invisible, false);
-    curBlock.setFlag(SpriteFlag.Invisible, false);
-    goal.setFlag(SpriteFlag.Invisible, false);
-    battery.setFlag(SpriteFlag.Invisible, false);
-    bottomOverlayTest.setFlag(SpriteFlag.Invisible, false);
+    menusVisible(false);
 
-    Title.setFlag(SpriteFlag.Invisible, true);
-    StartButton.setFlag(SpriteFlag.Invisible, true);
-    Credits.setFlag(SpriteFlag.Invisible, true);
-    Level_1.setFlag(SpriteFlag.Invisible, true);
-    Level_2.setFlag(SpriteFlag.Invisible, true);
-    Level_3.setFlag(SpriteFlag.Invisible, true);
-    Good_job.setFlag(SpriteFlag.Invisible, true)
-    Next_Level.setFlag(SpriteFlag.Invisible, true)
-    MenuS.setFlag(SpriteFlag.Invisible, true)
-    Restart.setFlag(SpriteFlag.Invisible, true)
+    circuitVisible(true);
+    if (!levelHasSwitch[levelNum]){
+        switchBlock.setFlag(SpriteFlag.Invisible, true);
+        switchPlatform.setFlag(SpriteFlag.Invisible, true);
+    }
 
 
     currentLevel = levelNum
@@ -258,10 +249,17 @@ controller.A.onEvent(ControllerButtonEvent.Pressed, function () {
 
                 } else if (positivePathCheck && negativePathCheck) {
                     console.log("Shortcircuit");
-                    // Shortcircuit fail goes here
+
+                    
                 } else {
                     console.log("Path Not Found");
-                    // Wire connection fail goes here
+                    menuOpen = true;
+                    area = 3;
+
+                    circuitVisible(false);
+                    tryAgainVisible(true);
+
+                    up();
                 }
             } else if(selectedButton == 2){
                 setSwitch(!switchOn)
@@ -297,12 +295,7 @@ controller.A.onEvent(ControllerButtonEvent.Pressed, function () {
         Restart.setFlag(SpriteFlag.Invisible, true)
         Good_job.setFlag(SpriteFlag.Invisible, true)
 
-        Title.setFlag(SpriteFlag.Invisible, false);
-        StartButton.setFlag(SpriteFlag.Invisible, false);
-        Credits.setFlag(SpriteFlag.Invisible, false);
-        Level_1.setFlag(SpriteFlag.Invisible, false);
-        Level_2.setFlag(SpriteFlag.Invisible, false);
-        Level_3.setFlag(SpriteFlag.Invisible, false);
+        areaOneVisible(true);
     } else {
         onA();
     }
