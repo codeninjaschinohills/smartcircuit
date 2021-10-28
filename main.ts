@@ -100,6 +100,8 @@ let levLayout3 =
     ];
 let levLayoutArr = [spacer, levLayout1, levLayout2, levLayout3]
 
+let currentLayout = copyLayout(levLayout1);
+
 let switchLevel = function (levelNum: number) {
 
     setSwitch(false);
@@ -131,11 +133,8 @@ let switchLevel = function (levelNum: number) {
     battery.y = batteryYArr[levelNum]
 
     let tempImg = placedBlocksArr[currentLevel]
-
-    //blockOverlay = sprites.create(placedBlocksArr[currentLevel], 0);
     blockOverlay.setImage(tempImg)
     currentLayout = copyLayout(levLayoutArr[levelNum])
-    //console.log(getLayoutString(currentLayout))
 }
 
 
@@ -442,48 +441,6 @@ battery.setFlag(SpriteFlag.Invisible, true);
 bottomOverlayTest.setFlag(SpriteFlag.Invisible, true);
 switchBlock.setFlag(SpriteFlag.Invisible, true);
 switchPlatform.setFlag(SpriteFlag.Invisible, true)
-
-
-let layoutHeight = 7;
-let layoutWidth = 10;
-
-let symbolPositive = '+';
-let symbolNegative = '-';
-let symbolWireNorth = '^';
-let symbolWireSouth = 'v';
-let symbolWireEast = '>';
-let symbolWireWest = '<';
-let symbolGoal = 'G';
-let symbolVisited = 'X';
-
-// Copy and paste the empty layout to setup your own layout
-let emptyLayout =
-    [
-        ['  ', '  ', '  ', '  ', '  ', '  ', '  ', '  ', '  ', '  '],
-        ['  ', '  ', '  ', '  ', '  ', '  ', '  ', '  ', '  ', '  '],
-        ['  ', '  ', '  ', '  ', '  ', '  ', '  ', '  ', '  ', '  '],
-        ['  ', '  ', '  ', '  ', '  ', '  ', '  ', '  ', '  ', '  '],
-        ['  ', '  ', '  ', '  ', '  ', '  ', '  ', '  ', '  ', '  '],
-        ['  ', '  ', '  ', '  ', '  ', '  ', '  ', '  ', '  ', '  '],
-        ['  ', '  ', '  ', '  ', '  ', '  ', '  ', '  ', '  ', '  ']
-    ];
-
-// This layout matches this level
-// Note how there can be two symbols in a spot, like a Goal and a Wire
-let startingLayout =
-    [
-        ['  ', '  ', '  ', '  ', '  ', '  ', '  ', '  ', '  ', '  '],
-        ['  ', '  ', '  ', '  ', '  ', '  ', '  ', '  ', '  ', '  '],
-        ['  ', '->', '<>', '<>', '<>', '<>', '<>', '<>', 'G<', 'G '],
-        ['  ', '  ', '  ', '  ', '  ', '  ', '  ', '  ', '  ', '  '],
-        ['  ', '+>', '<>', '<>', '<>', '< ', '  ', '  ', 'G ', 'G '],
-        ['  ', '  ', '  ', '  ', '  ', '  ', '  ', '  ', '  ', '  '],
-        ['  ', '  ', '  ', '  ', '  ', '  ', '  ', '  ', '  ', '  ']
-    ];
-
-let currentLayout = copyLayout(startingLayout);
-
-//switchLevel(1)
 
 let up = function () {
     if (area == 1) {

@@ -1,5 +1,29 @@
 // path.ts (Useful path functions)
 
+let layoutHeight = 7;
+let layoutWidth = 10;
+
+let symbolPositive = '+';
+let symbolNegative = '-';
+let symbolWireNorth = '^';
+let symbolWireSouth = 'v';
+let symbolWireEast = '>';
+let symbolWireWest = '<';
+let symbolGoal = 'G';
+let symbolVisited = 'X';
+
+// Copy and paste the empty layout to setup your own layout
+let emptyLayout =
+    [
+        ['  ', '  ', '  ', '  ', '  ', '  ', '  ', '  ', '  ', '  '],
+        ['  ', '  ', '  ', '  ', '  ', '  ', '  ', '  ', '  ', '  '],
+        ['  ', '  ', '  ', '  ', '  ', '  ', '  ', '  ', '  ', '  '],
+        ['  ', '  ', '  ', '  ', '  ', '  ', '  ', '  ', '  ', '  '],
+        ['  ', '  ', '  ', '  ', '  ', '  ', '  ', '  ', '  ', '  '],
+        ['  ', '  ', '  ', '  ', '  ', '  ', '  ', '  ', '  ', '  '],
+        ['  ', '  ', '  ', '  ', '  ', '  ', '  ', '  ', '  ', '  ']
+    ];
+
 // Returns true if there is a path by wire from 'startX', 'startY' layout coordinates
 // to a spot in 'layout' containing all the 'endingSymbols'
 function pathTo(layout: string[][], startX: number, startY: number, endingSymbols: string): boolean {
