@@ -101,7 +101,7 @@ let switchLevel = function (levelNum: number) {
     Level_1.setFlag(SpriteFlag.Invisible, true);
     Level_2.setFlag(SpriteFlag.Invisible, true);
     Level_3.setFlag(SpriteFlag.Invisible, true);
-    //Good_job.setFlag(SpriteFlag.Invisible, true)
+    Good_job.setFlag(SpriteFlag.Invisible, true)
     Next_Level.setFlag(SpriteFlag.Invisible, true)
     MenuS.setFlag(SpriteFlag.Invisible, true)
     Restart.setFlag(SpriteFlag.Invisible, true)
@@ -216,6 +216,7 @@ controller.A.onEvent(ControllerButtonEvent.Pressed, function () {
                 for (let i = 0; i <= placedBlocks.length - 1; i++) {
                     placedBlocks[i].destroy()
                 }
+
                 //console.log(getLayoutString(currentLayout));
                 currentLayout = copyLayout(levLayoutArr[currentLevel]);
                 //console.log(getLayoutString(currentLayout));
@@ -234,7 +235,7 @@ controller.A.onEvent(ControllerButtonEvent.Pressed, function () {
                 let positivePathCheck = pathTo(currentLayout, negativePos.x, negativePos.y, symbolGoal);
                 let shortCircuitCheck = pathTo(currentLayout, positivePos.x, positivePos.y, symbolNegative);
 
-                if (positivePathCheck && negativePathCheck && !shortCircuitCheck && switchOn && testVar) {
+                if (positivePathCheck && negativePathCheck && !shortCircuitCheck && switchOn) {
                     console.log("Path Found Fully");
                     goal.setImage(goalOnArr[currentLevel]);
                     goal.x = goalXArr[currentLevel]
@@ -248,11 +249,14 @@ controller.A.onEvent(ControllerButtonEvent.Pressed, function () {
                         placedBlocks[i].destroy()
                     }
 
-
                     MenuS.setFlag(SpriteFlag.Invisible, false);
                     Next_Level.setFlag(SpriteFlag.Invisible, false)
                     Restart.setFlag(SpriteFlag.Invisible, false)
+                    Good_job.setFlag(SpriteFlag.Invisible, false)
 
+                    switchBlock.setFlag(SpriteFlag.Invisible, true);
+                    switchPlatform.setFlag(SpriteFlag.Invisible, true)
+                    switchOn = true
 
                     blockOverlay.setFlag(SpriteFlag.Invisible, true);
                     curBlock.setFlag(SpriteFlag.Invisible, true);
@@ -284,22 +288,55 @@ controller.A.onEvent(ControllerButtonEvent.Pressed, function () {
             }
         }
     } else if (selectedSS == 1) {
+        //Restart.setFlag(SpriteFlag.Invisible, true)
+        //Next_Level.setFlag(SpriteFlag.Invisible, true)
+        //MenuS.setFlag(SpriteFlag.Invisible, true)
+
+        if (currentLevel == 3) {
+            switchBlock.setFlag(SpriteFlag.Invisible, false);
+            switchPlatform.setFlag(SpriteFlag.Invisible, false)
+            switchOn = false
+            switchBlock.setImage(assets.image`Offswitch`)
+            switchPlatform.setImage(assets.image`switchOff`)
+        }
+
         switchLevel(currentLevel)
-        Restart.setFlag(SpriteFlag.Invisible, true)
-        Next_Level.setFlag(SpriteFlag.Invisible, true)
-        MenuS.setFlag(SpriteFlag.Invisible, true)
-        testVar = false;
         menuOpen = false
+        selectedSS = 0
         //console.log("1")
     } else if (selectedSS == 2) {
-        switchLevel(currentLevel+1)
+        //MenuS.setFlag(SpriteFlag.Invisible, true);
+        //Next_Level.setFlag(SpriteFlag.Invisible, true)
+        //Restart.setFlag(SpriteFlag.Invisible, true)
+
+        if(currentLevel == 2){
+            switchBlock.setFlag(SpriteFlag.Invisible, false);
+            switchPlatform.setFlag(SpriteFlag.Invisible, false)
+            switchOn = false
+        }
+
+        switchLevel(currentLevel + 1)
+        menuOpen = false
+        selectedSS = 0
+        //console.log("2")
+    } else if (selectedSS == 3) {
+        console.log("3")
+        menuOpen = true
+        area = 1
+        selectedSS = 0
+
+
         MenuS.setFlag(SpriteFlag.Invisible, true);
         Next_Level.setFlag(SpriteFlag.Invisible, true)
         Restart.setFlag(SpriteFlag.Invisible, true)
-        menuOpen = false
-        //console.log("2")
-    } else if (selectedSS == 3) {
-        //console.log("3")
+        Good_job.setFlag(SpriteFlag.Invisible, true)
+
+        Title.setFlag(SpriteFlag.Invisible, false);
+        StartButton.setFlag(SpriteFlag.Invisible, false);
+        Credits.setFlag(SpriteFlag.Invisible, false);
+        Level_1.setFlag(SpriteFlag.Invisible, false);
+        Level_2.setFlag(SpriteFlag.Invisible, false);
+        Level_3.setFlag(SpriteFlag.Invisible, false);
     } else {
         onA();
     }
@@ -1066,6 +1103,8 @@ let onA = function () {
         if (selected == 3) {
             menuOpen = false;
 
+            console.log('3')
+
             blockOverlay.setFlag(SpriteFlag.Invisible, false);
             curBlock.setFlag(SpriteFlag.Invisible, false);
             goal.setFlag(SpriteFlag.Invisible, false);
@@ -1080,6 +1119,8 @@ let onA = function () {
         } else if (selected == 5) {
             menuOpen = false;
 
+            console.log("5")
+
             blockOverlay.setFlag(SpriteFlag.Invisible, false);
             curBlock.setFlag(SpriteFlag.Invisible, false);
             goal.setFlag(SpriteFlag.Invisible, false);
@@ -1093,6 +1134,8 @@ let onA = function () {
             switchLevel(1);
         } else if (selected == 4) {
             menuOpen = false;
+
+            console.log("4");
 
             blockOverlay.setFlag(SpriteFlag.Invisible, false);
             curBlock.setFlag(SpriteFlag.Invisible, false);
@@ -1258,7 +1301,7 @@ let left = function () {
         }
     }
     if (area == 2) {
-        Next_Level = sprites.create(img`
+        Next_Level.setImage(img`
             ................................
             ..8888888888888888888888888888..
             .888888888888888888888888888888.
@@ -1275,8 +1318,8 @@ let left = function () {
             .888888888888888888888888888888.
             ..8888888888888888888888888888..
             ................................
-            `, SpriteKind.Player)
-        Restart = sprites.create(img`
+            `)
+        Restart.setImage(img`
             ................................
             ..5555555555555555555555555555..
             .588888888888888888888888888885.
@@ -1293,8 +1336,8 @@ let left = function () {
             .588888888888888888888888888885.
             ..5555555555555555555555555555..
             ................................
-            `, SpriteKind.Player)
-        MenuS = sprites.create(img`
+            `)
+        MenuS.setImage(img`
             ................................
             ..8888888888888888888888888888..
             .888888888888888888888888888888.
@@ -1311,7 +1354,7 @@ let left = function () {
             .888888888888888888888888888888.
             ..8888888888888888888888888888..
             ................................
-            `, SpriteKind.Player)
+            `)
         Restart.setPosition(50, 60)
         Next_Level.setPosition(100, 60)
         MenuS.setPosition(75, 80)
@@ -1464,7 +1507,7 @@ let right = function () {
         }
     }
     if (area == 2) {
-        Next_Level = sprites.create(img`
+        Next_Level.setImage(img`
             ................................
             ..5555555555555555555555555555..
             .588888888888888888888888888885.
@@ -1481,8 +1524,8 @@ let right = function () {
             .588888888888888888888888888885.
             ..5555555555555555555555555555..
             ................................
-            `, SpriteKind.Player)
-        Restart = sprites.create(img`
+            `)
+        Restart.setImage(img`
             ................................
             ..8888888888888888888888888888..
             .888888888888888888888888888888.
@@ -1499,8 +1542,8 @@ let right = function () {
             .888888888888888888888888888888.
             ..8888888888888888888888888888..
             ................................
-            `, SpriteKind.Player)
-        MenuS = sprites.create(img`
+            `)
+        MenuS .setImage(img`
             ................................
             ..8888888888888888888888888888..
             .888888888888888888888888888888.
@@ -1517,7 +1560,7 @@ let right = function () {
             .888888888888888888888888888888.
             ..8888888888888888888888888888..
             ................................
-            `, SpriteKind.Player)
+            `)
         Restart.setPosition(50, 60)
         Next_Level.setPosition(100, 60)
         MenuS.setPosition(75, 80)
@@ -1707,7 +1750,7 @@ let down = function () {
         }
     }
     if (area == 2) {
-        Next_Level = sprites.create(img`
+        Next_Level.setImage(img`
             ................................
             ..8888888888888888888888888888..
             .888888888888888888888888888888.
@@ -1724,8 +1767,8 @@ let down = function () {
             .888888888888888888888888888888.
             ..8888888888888888888888888888..
             ................................
-            `, SpriteKind.Player)
-        Restart = sprites.create(img`
+            `)
+        Restart.setImage(img`
             ................................
             ..8888888888888888888888888888..
             .888888888888888888888888888888.
@@ -1742,8 +1785,8 @@ let down = function () {
             .888888888888888888888888888888.
             ..8888888888888888888888888888..
             ................................
-            `, SpriteKind.Player)
-        MenuS = sprites.create(img`
+            `)
+        MenuS.setImage(img`
             ................................
             ..5555555555555555555555555555..
             .588888888888888888888888888885.
@@ -1760,7 +1803,7 @@ let down = function () {
             .588888888888888888888888888885.
             ..5555555555555555555555555555..
             ................................
-            `, SpriteKind.Player)
+            `)
         Restart.setPosition(50, 60)
         Next_Level.setPosition(100, 60)
         MenuS.setPosition(75, 80)
@@ -1840,10 +1883,30 @@ MenuS = sprites.create(img`
 Restart.setPosition(50, 60)
 Next_Level.setPosition(100, 60)
 MenuS.setPosition(75, 80)
+Good_job = sprites.create(img`
+        ...................................................................................
+        ...................................................................................
+        88888888..888888888..888888888..8888888.......88888888888..888888888..8888888...888
+        81888818..818888818..818888818..81888818......81888188818..818888818..81888818..818
+        88888888..888888888..888888888..88888888......88888888888..888888888..88888888..888
+        888.......888...888..888...888..888..888..........888......888...888..888..888..888
+        888.......888...888..888...888..888..888..........888......888...888..888..888..888
+        888.......888...888..888...888..888..888..........888......888...888..8888888...888
+        888.8888..888...888..888...888..888..888..........888......888...888..8888888...818
+        888.8818..888...888..888...888..888..888..........888......888...888..888..888..888
+        888.8888..888888888..888888888..888..888..........888......888888888..888..888.....
+        88888888..888888888..888888888..88888888......8888888......888888888..88888888..888
+        81888818..818888818..818888818..81888818......8188818......818888818..81888818..818
+        88888888..888888888..888888888..8888888.......8888888......888888888..8888888...888
+        ...................................................................................
+        ...................................................................................
+        `, SpriteKind.Player)
+Good_job.setPosition(75, 15)
 
 Restart.setFlag(SpriteFlag.Invisible, true)
 Next_Level.setFlag(SpriteFlag.Invisible, true)
 MenuS.setFlag(SpriteFlag.Invisible, true)
+Good_job.setFlag(SpriteFlag.Invisible, true)
 
 area = 1
 scene.setBackgroundImage(img`
