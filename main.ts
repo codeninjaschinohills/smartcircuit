@@ -19,6 +19,7 @@ switchPlatform.y = 72
 switchPlatform.z = 5
 
 let levelHasSwitch = [false, false, false, true]
+let levelGoalAnimation = [null, null, assets.animation`fanOn`, null]
 
 function setSwitch(value: boolean) {
     if (value) {
@@ -45,13 +46,13 @@ let batteryXArr = [spacer, batteryPos1[0], batteryPos2[0], batteryPos3[0]]
 let batteryYArr = [spacer, batteryPos1[1], batteryPos2[1], batteryPos3[1]]
 
 let goalOn1 = assets.image`goalOn1`
-let goalOn2 = assets.image`goalOn2`
+let goalOn2 = assets.animation`fanOn`[0]
 //put in actual goal for level 3
 let goalOn3 = assets.image`goalOn1`
 let goalOnArr = [spacer, goalOn1, goalOn2, goalOn3]
 
 let goalOff1 = assets.image`goalOff1`
-let goalOff2 = assets.image`goalOff2`
+let goalOff2 = assets.animation`fanOff`[0]
 //put in actual goal for level 3
 let goalOff3 = assets.image`goalOff1`
 let goalOffArr = [spacer, goalOff1, goalOff2, goalOff3]
@@ -219,11 +220,16 @@ controller.A.onEvent(ControllerButtonEvent.Pressed, function () {
                 if (positivePathCheck && negativePathCheck && !shortCircuitCheck && (switchOn || !levelHasSwitch[currentLevel] )) {
                     console.log("Path Found Fully");
                     goal.setImage(goalOnArr[currentLevel]);
+                    if (levelGoalAnimation[currentLevel] != null){
+                        animation.runImageAnimation(goal, levelGoalAnimation[currentLevel], 40, true)
+                    }
                     goal.x = goalXArr[currentLevel]
                     goal.y = goalYArr[currentLevel];
                     goal.z = 1;
 
-                    pause(700)
+                    pause(900)
+
+                    animation.stopAnimation(animation.AnimationTypes.All, goal);
 
                     for (let i = 0; i <= placedBlocks.length - 1; i++) {
                         placedBlocks[i].destroy()
@@ -377,7 +383,7 @@ let selectedButton = 0
 let curBlock: Sprite = null
 selectedButton = 3
 let battery = sprites.create(assets.image`batteryBlock`, 0)
-let goal = sprites.create(goalOffArr[currentLevel], 0)
+let goal = sprites.create(assets.image`goalOn1`, 0)
 battery.x = 21
 battery.y = 58
 goal.x = 149
