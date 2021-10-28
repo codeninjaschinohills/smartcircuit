@@ -2,29 +2,11 @@ namespace SpriteKind {
     export const MenuButton = SpriteKind.create()
 }
 
-let testVar = true
-
 let menuOpen = true;
-
-let curButtonSelected= 1;
-
+let curButtonSelected = 1;
 let currentLevel = 1;
 let spacer = null
-
-
-let switchOn = true;
-
-function setSwitch(value: boolean){
-    if (value) {
-        switchOn = true
-        switchBlock.setImage(assets.image`OnSwitch`)
-        switchPlatform.setImage(assets.image`switchOn`)
-    } else {
-        switchOn = false
-        switchBlock.setImage(assets.image`Offswitch`)
-        switchPlatform.setImage(assets.image`switchOff`)
-    }
-}
+let switchOn = false;
 
 let switchBlock = sprites.create(assets.image`Offswitch`, 0)
 switchBlock.x = 100
@@ -37,6 +19,18 @@ switchPlatform.y = 72
 switchPlatform.z = 5
 
 let levelHasSwitch = [false, false, false, true]
+
+function setSwitch(value: boolean) {
+    if (value) {
+        switchOn = true
+        switchBlock.setImage(assets.image`OnSwitch`)
+        switchPlatform.setImage(assets.image`switchOn`)
+    } else {
+        switchOn = false
+        switchBlock.setImage(assets.image`Offswitch`)
+        switchPlatform.setImage(assets.image`switchOff`)
+    }
+}
 
 let goalPos1 = [149, 58]
 let goalPos2 = [80, 43]
@@ -99,7 +93,6 @@ let levLayout3 =
         ['  ', '  ', '  ', '  ', '  ', '  ', '  ', '  ', '  ', '  ']
     ];
 let levLayoutArr = [spacer, levLayout1, levLayout2, levLayout3]
-
 let currentLayout = copyLayout(levLayout1);
 
 let switchLevel = function (levelNum: number) {
@@ -135,7 +128,6 @@ let switchLevel = function (levelNum: number) {
     currentLayout = copyLayout(levLayoutArr[levelNum])
 }
 
-
 controller.up.onEvent(ControllerButtonEvent.Pressed, function () {
     if (!menuOpen) {
         if (vertical && (curBlock.y - 32) >= 0) {
@@ -160,6 +152,7 @@ controller.up.onEvent(ControllerButtonEvent.Pressed, function () {
         up();
     }
 })
+
 controller.B.onEvent(ControllerButtonEvent.Pressed, function () {
     if (!menuOpen) {
         if (vertical == true && selectorPanel == false) {
@@ -313,6 +306,7 @@ controller.A.onEvent(ControllerButtonEvent.Pressed, function () {
     }
     
 })
+
 controller.left.onEvent(ControllerButtonEvent.Pressed, function () {
     if (!menuOpen) {
         if (selectorPanel == false) {
@@ -332,6 +326,7 @@ controller.left.onEvent(ControllerButtonEvent.Pressed, function () {
         left();
     }
 })
+
 controller.right.onEvent(ControllerButtonEvent.Pressed, function () {
     if (!menuOpen) {
         if (selectorPanel == false) {
@@ -351,6 +346,7 @@ controller.right.onEvent(ControllerButtonEvent.Pressed, function () {
         right();
     }
 })
+
 controller.down.onEvent(ControllerButtonEvent.Pressed, function () {
     if (!menuOpen) {
         if (vertical == true) {
@@ -402,7 +398,6 @@ curBlock.z = 3;
 scene.setBackgroundImage(assets.image`bg`)
 let blockOverlay = sprites.create(placedBlocksArr[currentLevel], 0);
 blockOverlay.z = 2;
-
 blockOverlay.setFlag(SpriteFlag.Invisible, true);
 curBlock.setFlag(SpriteFlag.Invisible, true);
 goal.setFlag(SpriteFlag.Invisible, true);
