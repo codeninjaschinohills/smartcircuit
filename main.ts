@@ -104,7 +104,6 @@ let currentLayout = copyLayout(levLayout1);
 
 let switchLevel = function (levelNum: number) {
 
-    setSwitch(false);
     blockOverlay.setFlag(SpriteFlag.Invisible, false);
     curBlock.setFlag(SpriteFlag.Invisible, false);
     goal.setFlag(SpriteFlag.Invisible, false);
@@ -124,13 +123,12 @@ let switchLevel = function (levelNum: number) {
 
 
     currentLevel = levelNum
-    //goal = sprites.create(goalOffArr[currentLevel], 0)
     goal.setImage(goalOffArr[levelNum]);
     goal.x = goalXArr[levelNum]
     goal.y = goalYArr[levelNum]
-    //battery = sprites.create(assets.image`batteryBlock`, 0)
     battery.x = batteryXArr[levelNum]
     battery.y = batteryYArr[levelNum]
+    setSwitch(false);
 
     let tempImg = placedBlocksArr[currentLevel]
     blockOverlay.setImage(tempImg)
@@ -189,8 +187,6 @@ controller.A.onEvent(ControllerButtonEvent.Pressed, function () {
             testBlock.z = 3
             testBlock.x = curBlock.x
             testBlock.y = curBlock.y
-            //console.log(curBlock.x + "," + curBlock.y);
-            //console.log();
 
             placedBlocks.push(testBlock)
 
@@ -207,21 +203,14 @@ controller.A.onEvent(ControllerButtonEvent.Pressed, function () {
             testBlock.x = curBlock.x
             testBlock.y = curBlock.y
             placedBlocks.push(testBlock)
-            console.log(curBlock.x + "," + curBlock.y);
 
             let layoutPos = blockToLayout(testBlock.x, testBlock.y);
-            //console.log(`sprite position=${testBlock.x},${testBlock.y}`);
-            //console.log(`layout position=${layoutPos.x},${layoutPos.y}`);
 
             let wireWidth = 4;
             currentLayout[layoutPos.y][layoutPos.x + 0] += symbolWireEast;
             currentLayout[layoutPos.y][layoutPos.x + 1] += symbolWireEast + symbolWireWest;
             currentLayout[layoutPos.y][layoutPos.x + 2] += symbolWireEast + symbolWireWest;
             currentLayout[layoutPos.y][layoutPos.x + 3] += symbolWireWest;
-
-            //console.log(getLayoutString(currentLayout));
-
-            // symbolGoal = "G"
 
         }
         if (selectorPanel == true) {
@@ -230,17 +219,12 @@ controller.A.onEvent(ControllerButtonEvent.Pressed, function () {
                     placedBlocks[i].destroy()
                 }
 
-                //console.log(getLayoutString(currentLayout));
                 currentLayout = copyLayout(levLayoutArr[currentLevel]);
-                //console.log(getLayoutString(currentLayout));
 
                 goal.setImage(goalOffArr[currentLevel])
                 goal.x = goalXArr[currentLevel];
                 goal.y = goalYArr[currentLevel];
                 goal.z = 1;
-
-                // TODO: How do we clear the currentLayout?
-                // a hint is that there should be an easy way to reset it!
             } else if(selectedButton == 3) {
                 let positivePos = findSymbolInLayout(currentLayout, symbolPositive);
                 let negativePos = findSymbolInLayout(currentLayout, symbolNegative);
@@ -254,7 +238,6 @@ controller.A.onEvent(ControllerButtonEvent.Pressed, function () {
                     goal.x = goalXArr[currentLevel]
                     goal.y = goalYArr[currentLevel];
                     goal.z = 1;
-                    //Win code goes here
 
                     pause(700)
 
@@ -281,21 +264,16 @@ controller.A.onEvent(ControllerButtonEvent.Pressed, function () {
 
                 } else if (positivePathCheck && negativePathCheck) {
                     console.log("Shortcircuit");
-                    //Shortcircuit fail goes here
-
+                    // Shortcircuit fail goes here
                 } else {
                     console.log("Path Not Found");
-                    //Wire connection fail goes here
+                    // Wire connection fail goes here
                 }
             } else if(selectedButton == 2){
                 setSwitch(!switchOn)
             }
         }
     } else if (selectedSS == 1) {
-        //Restart.setFlag(SpriteFlag.Invisible, true)
-        //Next_Level.setFlag(SpriteFlag.Invisible, true)
-        //MenuS.setFlag(SpriteFlag.Invisible, true)
-
         if (currentLevel == 3) {
             switchBlock.setFlag(SpriteFlag.Invisible, false);
             switchPlatform.setFlag(SpriteFlag.Invisible, false)
@@ -306,12 +284,7 @@ controller.A.onEvent(ControllerButtonEvent.Pressed, function () {
         switchLevel(currentLevel)
         menuOpen = false
         selectedSS = 0
-        //console.log("1")
     } else if (selectedSS == 2) {
-        //MenuS.setFlag(SpriteFlag.Invisible, true);
-        //Next_Level.setFlag(SpriteFlag.Invisible, true)
-        //Restart.setFlag(SpriteFlag.Invisible, true)
-
         if(currentLevel == 2){
             switchBlock.setFlag(SpriteFlag.Invisible, false);
             switchPlatform.setFlag(SpriteFlag.Invisible, false)
@@ -320,14 +293,10 @@ controller.A.onEvent(ControllerButtonEvent.Pressed, function () {
         switchLevel(currentLevel + 1)
         menuOpen = false
         selectedSS = 0
-        //console.log("2")
     } else if (selectedSS == 3) {
-        console.log("3")
         menuOpen = true
         area = 1
         selectedSS = 0
-
-
         MenuS.setFlag(SpriteFlag.Invisible, true);
         Next_Level.setFlag(SpriteFlag.Invisible, true)
         Restart.setFlag(SpriteFlag.Invisible, true)

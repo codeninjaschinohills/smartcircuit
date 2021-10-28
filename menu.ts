@@ -292,6 +292,7 @@ let onA = function () {
     if (area == 2) {
 
     }
+    
 };
 
 let onB = function () {
