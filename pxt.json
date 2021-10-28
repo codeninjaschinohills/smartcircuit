@@ -11,7 +11,8 @@
         "assets.json",
         "images.g.jres",
         "images.g.ts",
-        "path.ts"
+        "path.ts",
+        "menu.ts"
     ],
     "testFiles": [
         "test.ts"
