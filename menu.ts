@@ -93,7 +93,7 @@ let onA = function () {
                 `)
             tabOpen = 1
         }
-        if (selected == 1) {
+        else if (selected == 1) {
             Credits.setImage(img`
                 ................................
                 ..8888888888888888888888888888..
@@ -238,9 +238,9 @@ let onA = function () {
                 `)
             Level_3.setPosition(105, StartButton.y - 10)
             levelsOpened = true
-            //left();
+            left();
         }
-        if (selected == 3) {
+        else if (selected == 3) {
             menuOpen = false;
 
             blockOverlay.setFlag(SpriteFlag.Invisible, false);
