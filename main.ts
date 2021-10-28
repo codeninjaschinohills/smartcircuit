@@ -239,12 +239,12 @@ controller.A.onEvent(ControllerButtonEvent.Pressed, function () {
                     }
 
                     MenuS.setFlag(SpriteFlag.Invisible, false);
-                    Next_Level.setFlag(SpriteFlag.Invisible, false)
-                    Restart.setFlag(SpriteFlag.Invisible, false)
-                    Good_job.setFlag(SpriteFlag.Invisible, false)
+                    Next_Level.setFlag(SpriteFlag.Invisible, false);
+                    Restart.setFlag(SpriteFlag.Invisible, false);
+                    Good_job.setFlag(SpriteFlag.Invisible, false);
 
                     switchBlock.setFlag(SpriteFlag.Invisible, true);
-                    switchPlatform.setFlag(SpriteFlag.Invisible, true)
+                    switchPlatform.setFlag(SpriteFlag.Invisible, true);
 
                     blockOverlay.setFlag(SpriteFlag.Invisible, true);
                     curBlock.setFlag(SpriteFlag.Invisible, true);
@@ -254,6 +254,7 @@ controller.A.onEvent(ControllerButtonEvent.Pressed, function () {
 
                     menuOpen = true;
                     area = 2
+                    down();
 
                 } else if (positivePathCheck && negativePathCheck) {
                     console.log("Shortcircuit");
@@ -289,6 +290,7 @@ controller.A.onEvent(ControllerButtonEvent.Pressed, function () {
     } else if (selectedSS == 3) {
         menuOpen = true
         area = 1
+        left();
         selectedSS = 0
         MenuS.setFlag(SpriteFlag.Invisible, true);
         Next_Level.setFlag(SpriteFlag.Invisible, true)
@@ -404,4 +406,6 @@ goal.setFlag(SpriteFlag.Invisible, true);
 battery.setFlag(SpriteFlag.Invisible, true);
 //bottomOverlayTest.setFlag(SpriteFlag.Invisible, true);
 switchBlock.setFlag(SpriteFlag.Invisible, true);
-switchPlatform.setFlag(SpriteFlag.Invisible, true)
+switchPlatform.setFlag(SpriteFlag.Invisible, true);
+
+up();

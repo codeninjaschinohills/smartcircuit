@@ -238,43 +238,30 @@ let onA = function () {
                 `)
             Level_3.setPosition(105, StartButton.y - 10)
             levelsOpened = true
+            //left();
         }
         if (selected == 3) {
             menuOpen = false;
-
-            console.log('3')
 
             blockOverlay.setFlag(SpriteFlag.Invisible, false);
             curBlock.setFlag(SpriteFlag.Invisible, false);
             goal.setFlag(SpriteFlag.Invisible, false);
             battery.setFlag(SpriteFlag.Invisible, false);
             bottomOverlayTest.setFlag(SpriteFlag.Invisible, false);
-            /* Uncomment if you want Switch
-            switchBlock.setFlag(SpriteFlag.Invisible, false);
-            switchPlatform.setFlag(SpriteFlag.Invisible, false)
-            */
 
             switchLevel(2);
         } else if (selected == 5) {
             menuOpen = false;
 
-            console.log("5")
-
             blockOverlay.setFlag(SpriteFlag.Invisible, false);
             curBlock.setFlag(SpriteFlag.Invisible, false);
             goal.setFlag(SpriteFlag.Invisible, false);
             battery.setFlag(SpriteFlag.Invisible, false);
             bottomOverlayTest.setFlag(SpriteFlag.Invisible, false);
-            /* Uncomment if you want Switch
-            switchBlock.setFlag(SpriteFlag.Invisible, false);
-            switchPlatform.setFlag(SpriteFlag.Invisible, false)
-            */
 
             switchLevel(1);
         } else if (selected == 4) {
             menuOpen = false;
-
-            console.log("4");
 
             blockOverlay.setFlag(SpriteFlag.Invisible, false);
             curBlock.setFlag(SpriteFlag.Invisible, false);
@@ -342,7 +329,9 @@ let onB = function () {
     Level_3.setImage(img`
         . 
         `)
+    
     levelsOpened = false
+    up();
 };
 
 let up = function () {
