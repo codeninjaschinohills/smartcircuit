@@ -14,6 +14,18 @@ let spacer = null
 
 let switchOn = true;
 
+function setSwitch(value: boolean){
+    if (value) {
+        switchOn = true
+        switchBlock.setImage(assets.image`OnSwitch`)
+        switchPlatform.setImage(assets.image`switchOn`)
+    } else {
+        switchOn = false
+        switchBlock.setImage(assets.image`Offswitch`)
+        switchPlatform.setImage(assets.image`switchOff`)
+    }
+}
+
 let switchBlock = sprites.create(assets.image`Offswitch`, 0)
 switchBlock.x = 100
 switchBlock.y = 72
@@ -24,6 +36,7 @@ switchPlatform.x = 96
 switchPlatform.y = 72
 switchPlatform.z = 5
 
+let levelHasSwitch = [false, false, false, true]
 
 let goalPos1 = [149, 58]
 let goalPos2 = [80, 43]
@@ -89,6 +102,7 @@ let levLayoutArr = [spacer, levLayout1, levLayout2, levLayout3]
 
 let switchLevel = function (levelNum: number) {
 
+    setSwitch(false);
     blockOverlay.setFlag(SpriteFlag.Invisible, false);
     curBlock.setFlag(SpriteFlag.Invisible, false);
     goal.setFlag(SpriteFlag.Invisible, false);
@@ -235,7 +249,7 @@ controller.A.onEvent(ControllerButtonEvent.Pressed, function () {
                 let positivePathCheck = pathTo(currentLayout, negativePos.x, negativePos.y, symbolGoal);
                 let shortCircuitCheck = pathTo(currentLayout, positivePos.x, positivePos.y, symbolNegative);
 
-                if (positivePathCheck && negativePathCheck && !shortCircuitCheck && switchOn) {
+                if (positivePathCheck && negativePathCheck && !shortCircuitCheck && (switchOn || !levelHasSwitch[currentLevel] )) {
                     console.log("Path Found Fully");
                     goal.setImage(goalOnArr[currentLevel]);
                     goal.x = goalXArr[currentLevel]
@@ -256,7 +270,6 @@ controller.A.onEvent(ControllerButtonEvent.Pressed, function () {
 
                     switchBlock.setFlag(SpriteFlag.Invisible, true);
                     switchPlatform.setFlag(SpriteFlag.Invisible, true)
-                    switchOn = true
 
                     blockOverlay.setFlag(SpriteFlag.Invisible, true);
                     curBlock.setFlag(SpriteFlag.Invisible, true);
@@ -276,15 +289,7 @@ controller.A.onEvent(ControllerButtonEvent.Pressed, function () {
                     //Wire connection fail goes here
                 }
             } else if(selectedButton == 2){
-                if (switchOn) {
-                    switchOn = false
-                    switchBlock.setImage(assets.image`Offswitch`)
-                    switchPlatform.setImage(assets.image`switchOff`)
-                } else {
-                    switchOn = true
-                    switchBlock.setImage(assets.image`OnSwitch`)
-                    switchPlatform.setImage(assets.image`switchOn`)
-                }
+                setSwitch(!switchOn)
             }
         }
     } else if (selectedSS == 1) {
@@ -295,7 +300,6 @@ controller.A.onEvent(ControllerButtonEvent.Pressed, function () {
         if (currentLevel == 3) {
             switchBlock.setFlag(SpriteFlag.Invisible, false);
             switchPlatform.setFlag(SpriteFlag.Invisible, false)
-            switchOn = false
             switchBlock.setImage(assets.image`Offswitch`)
             switchPlatform.setImage(assets.image`switchOff`)
         }
@@ -312,7 +316,6 @@ controller.A.onEvent(ControllerButtonEvent.Pressed, function () {
         if(currentLevel == 2){
             switchBlock.setFlag(SpriteFlag.Invisible, false);
             switchPlatform.setFlag(SpriteFlag.Invisible, false)
-            switchOn = false
         }
 
         switchLevel(currentLevel + 1)
@@ -1145,8 +1148,6 @@ let onA = function () {
 
             switchBlock.setFlag(SpriteFlag.Invisible, false);
             switchPlatform.setFlag(SpriteFlag.Invisible, false)
-
-            switchOn = false;
 
             switchLevel(3);
         }
