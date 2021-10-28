@@ -402,6 +402,6 @@ blockOverlay.setFlag(SpriteFlag.Invisible, true);
 curBlock.setFlag(SpriteFlag.Invisible, true);
 goal.setFlag(SpriteFlag.Invisible, true);
 battery.setFlag(SpriteFlag.Invisible, true);
-bottomOverlayTest.setFlag(SpriteFlag.Invisible, true);
+//bottomOverlayTest.setFlag(SpriteFlag.Invisible, true);
 switchBlock.setFlag(SpriteFlag.Invisible, true);
 switchPlatform.setFlag(SpriteFlag.Invisible, true)
