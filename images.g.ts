@@ -1626,9 +1626,9 @@ dddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd
 7 7 7 7 b b 2 2 2 2 b b 7 7 7 7 
 7 7 7 7 1 b b b b b b 1 7 7 7 7 
 7 7 7 1 b b b b b b b b 1 7 7 7 
-7 1 1 7 7 7 7 7 7 7 7 7 7 1 1 7 
-7 1 1 7 7 7 7 7 7 7 7 7 7 1 1 7 
-7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 
+1 1 1 7 7 7 7 7 7 7 7 7 7 1 1 1 
+1 1 1 7 7 7 7 7 7 7 7 7 7 1 1 1 
+1 1 1 7 7 7 7 7 7 7 7 7 7 1 1 1 
 `, img`
 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 
 7 7 7 7 b b b b b b b b 7 7 7 7 
@@ -1643,9 +1643,9 @@ dddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd
 7 7 7 7 b b 2 2 2 2 b b 7 7 7 7 
 7 7 7 7 1 b b b b b b 1 7 7 7 7 
 7 7 7 1 b b b b b b b b 1 7 7 7 
-7 1 1 7 7 7 7 7 7 7 7 7 7 1 1 7 
-7 1 1 7 7 7 7 7 7 7 7 7 7 1 1 7 
-7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 
+1 1 1 7 7 7 7 7 7 7 7 7 7 1 1 1 
+1 1 1 7 7 7 7 7 7 7 7 7 7 1 1 1 
+1 1 1 7 7 7 7 7 7 7 7 7 7 1 1 1 
 `, img`
 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 
 7 7 7 7 b b b b b b b b 7 7 7 7 
@@ -1660,9 +1660,9 @@ dddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd
 7 7 7 7 b b 2 2 2 2 b b 7 7 7 7 
 7 7 7 7 1 b b b b b b 1 7 7 7 7 
 7 7 7 1 b b b b b b b b 1 7 7 7 
-7 1 1 7 7 7 7 7 7 7 7 7 7 1 1 7 
-7 1 1 7 7 7 7 7 7 7 7 7 7 1 1 7 
-7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 
+1 1 1 7 7 7 7 7 7 7 7 7 7 1 1 1 
+1 1 1 7 7 7 7 7 7 7 7 7 7 1 1 1 
+1 1 1 7 7 7 7 7 7 7 7 7 7 1 1 1 
 `, img`
 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 
 7 7 7 7 b b b b b b b b 7 7 7 7 
@@ -1677,9 +1677,9 @@ dddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd
 7 7 7 7 b b 2 2 2 2 b b 7 7 7 7 
 7 7 7 7 1 b b b b b b 1 7 7 7 7 
 7 7 7 1 b b b b b b b b 1 7 7 7 
-7 1 1 7 7 7 7 7 7 7 7 7 7 1 1 7 
-7 1 1 7 7 7 7 7 7 7 7 7 7 1 1 7 
-7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 
+1 1 1 7 7 7 7 7 7 7 7 7 7 1 1 1 
+1 1 1 7 7 7 7 7 7 7 7 7 7 1 1 1 
+1 1 1 7 7 7 7 7 7 7 7 7 7 1 1 1 
 `, img`
 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 
 7 7 7 7 b b b b b b b b 7 7 7 7 
@@ -1694,9 +1694,9 @@ dddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd
 7 7 7 7 b b 2 2 2 2 b b 7 7 7 7 
 7 7 7 7 1 b b b b b b 1 7 7 7 7 
 7 7 7 1 b b b b b b b b 1 7 7 7 
-7 1 1 7 7 7 7 7 7 7 7 7 7 1 1 7 
-7 1 1 7 7 7 7 7 7 7 7 7 7 1 1 7 
-7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 
+1 1 1 7 7 7 7 7 7 7 7 7 7 1 1 1 
+1 1 1 7 7 7 7 7 7 7 7 7 7 1 1 1 
+1 1 1 7 7 7 7 7 7 7 7 7 7 1 1 1 
 `, img`
 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 
 7 7 7 7 b b b b b b b b 7 7 7 7 
@@ -1711,9 +1711,9 @@ dddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd
 7 7 7 7 b b 2 2 2 2 b b 7 7 7 7 
 7 7 7 7 1 b b b b b b 1 7 7 7 7 
 7 7 7 1 b b b b b b b b 1 7 7 7 
-7 1 1 7 7 7 7 7 7 7 7 7 7 1 1 7 
-7 1 1 7 7 7 7 7 7 7 7 7 7 1 1 7 
-7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 
+1 1 1 7 7 7 7 7 7 7 7 7 7 1 1 1 
+1 1 1 7 7 7 7 7 7 7 7 7 7 1 1 1 
+1 1 1 7 7 7 7 7 7 7 7 7 7 1 1 1 
 `];
             case "fanOff":
             case "anim2":return [img`
@@ -1730,9 +1730,9 @@ dddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd
 7 7 7 7 b b 2 2 2 2 b b 7 7 7 7 
 7 7 7 7 1 b b b b b b 1 7 7 7 7 
 7 7 7 1 b b b b b b b b 1 7 7 7 
-7 1 1 7 7 7 7 7 7 7 7 7 7 1 1 7 
-7 1 1 7 7 7 7 7 7 7 7 7 7 1 1 7 
-7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 
+1 1 1 7 7 7 7 7 7 7 7 7 7 1 1 1 
+1 1 1 7 7 7 7 7 7 7 7 7 7 1 1 1 
+1 1 1 7 7 7 7 7 7 7 7 7 7 1 1 1 
 `, img`
 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 
 7 7 7 7 b b b b b b b b 7 7 7 7 
@@ -1747,9 +1747,9 @@ dddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd
 7 7 7 7 b b 2 2 2 2 b b 7 7 7 7 
 7 7 7 7 1 b b b b b b 1 7 7 7 7 
 7 7 7 1 b b b b b b b b 1 7 7 7 
-7 1 1 7 7 7 7 7 7 7 7 7 7 1 1 7 
-7 1 1 7 7 7 7 7 7 7 7 7 7 1 1 7 
-7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 
+1 1 1 7 7 7 7 7 7 7 7 7 7 1 1 1 
+1 1 1 7 7 7 7 7 7 7 7 7 7 1 1 1 
+1 1 1 7 7 7 7 7 7 7 7 7 7 1 1 1 
 `];
         }
         return null;

@@ -34,7 +34,7 @@ function setSwitch(value: boolean) {
 }
 
 let goalPos1 = [149, 58]
-let goalPos2 = [80, 43]
+let goalPos2 = [80, 45]
 let goalPos3 = [149, 58]
 let goalXArr = [spacer, goalPos1[0], goalPos2[0], goalPos3[0]]
 let goalYArr = [spacer, goalPos1[1], goalPos2[1], goalPos3[1]]
@@ -106,6 +106,9 @@ let switchLevel = function (levelNum: number) {
         switchPlatform.setFlag(SpriteFlag.Invisible, true);
     }
 
+    for (let i = 0; i <= placedBlocks.length - 1; i++) {
+        placedBlocks[i].destroy()
+    }
 
     currentLevel = levelNum
     goal.setImage(goalOffArr[levelNum]);
@@ -227,7 +230,7 @@ controller.A.onEvent(ControllerButtonEvent.Pressed, function () {
                     goal.y = goalYArr[currentLevel];
                     goal.z = 1;
 
-                    pause(900)
+                    pause(1100)
 
                     animation.stopAnimation(animation.AnimationTypes.All, goal);
 
@@ -255,16 +258,25 @@ controller.A.onEvent(ControllerButtonEvent.Pressed, function () {
 
                 } else if (positivePathCheck && negativePathCheck) {
                     console.log("Shortcircuit");
+                    menuOpen = true;
+                    area = 3;
+                    circuitVisible(false);
+                    tryAgainVisible(true);
+                    for (let i = 0; i <= placedBlocks.length - 1; i++) {
+                        placedBlocks[i].destroy()
+                    }
+                    up();
 
                     
                 } else {
                     console.log("Path Not Found");
                     menuOpen = true;
                     area = 3;
-
                     circuitVisible(false);
                     tryAgainVisible(true);
-
+                    for (let i = 0; i <= placedBlocks.length - 1; i++) {
+                        placedBlocks[i].destroy()
+                    }
                     up();
                 }
             } else if(selectedButton == 2){
