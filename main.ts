@@ -10,12 +10,12 @@ let switchOn = false;
 
 let switchBlock = sprites.create(assets.image`Offswitch`, 0)
 switchBlock.x = 100
-switchBlock.y = 72
+switchBlock.y = 88
 switchBlock.z = 5
 
 let switchPlatform = sprites.create(assets.image`switchOff`, 0)
 switchPlatform.x = 96
-switchPlatform.y = 72
+switchPlatform.y = 88
 switchPlatform.z = 5
 
 let levelHasSwitch = [false, false, false, true]
@@ -35,13 +35,13 @@ function setSwitch(value: boolean) {
 
 let goalPos1 = [149, 58]
 let goalPos2 = [80, 45]
-let goalPos3 = [149, 58]
+let goalPos3 = [149, 26]
 let goalXArr = [spacer, goalPos1[0], goalPos2[0], goalPos3[0]]
 let goalYArr = [spacer, goalPos1[1], goalPos2[1], goalPos3[1]]
 
 let batteryPos1 = [21, 58]
 let batteryPos2 = [21, 58]
-let batteryPos3 = [21, 58]
+let batteryPos3 = [21, 74]
 let batteryXArr = [spacer, batteryPos1[0], batteryPos2[0], batteryPos3[0]]
 let batteryYArr = [spacer, batteryPos1[1], batteryPos2[1], batteryPos3[1]]
 
@@ -85,12 +85,12 @@ let levLayout2 =
 let levLayout3 =
     //put in actual level 3 layout here I didn't see it on Kyle's branch
     [
+        ['  ', ' >', '<>', '<>', '<>', '<>', '<>', '<>', 'G<', 'G '],
         ['  ', '  ', '  ', '  ', '  ', '  ', '  ', '  ', '  ', '  '],
+        ['  ', '  ', '  ', '  ', '  ', '  ', '  ', '  ', 'G ', 'G '],
+        ['  ', '- ', '  ', '  ', '  ', '  ', '  ', '  ', '  ', '  '],
         ['  ', '  ', '  ', '  ', '  ', '  ', '  ', '  ', '  ', '  '],
-        ['  ', '->', '<>', '<>', '<>', '<>', '<>', '<>', 'G<', 'G '],
-        ['  ', '  ', '  ', '  ', '  ', '  ', '  ', '  ', '  ', '  '],
-        ['  ', '+>', '<>', '<>', '<>', '< ', '  ', '  ', 'G ', 'G '],
-        ['  ', '  ', '  ', '  ', '  ', '  ', '  ', '  ', '  ', '  '],
+        ['  ', '+>', '<>', '<>', '<>', '< ', '  ', '  ', '  ', '  '],
         ['  ', '  ', '  ', '  ', '  ', '  ', '  ', '  ', '  ', '  ']
     ];
 let levLayoutArr = [spacer, levLayout1, levLayout2, levLayout3]
