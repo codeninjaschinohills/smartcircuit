@@ -1,11 +1,28 @@
 namespace SpriteKind {
     export const MenuButton = SpriteKind.create()
 }
+
+let testVar = true
+
 let menuOpen = true;
+
+let curButtonSelected= 1;
 
 let currentLevel = 1;
 let spacer = null
 
+
+let switchOn = true;
+
+let switchBlock = sprites.create(assets.image`Offswitch`, 0)
+switchBlock.x = 100
+switchBlock.y = 72
+switchBlock.z = 5
+
+let switchPlatform = sprites.create(assets.image`switchOff`, 0)
+switchPlatform.x = 96
+switchPlatform.y = 72
+switchPlatform.z = 5
 
 
 let goalPos1 = [149, 58]
@@ -84,6 +101,10 @@ let switchLevel = function (levelNum: number) {
     Level_1.setFlag(SpriteFlag.Invisible, true);
     Level_2.setFlag(SpriteFlag.Invisible, true);
     Level_3.setFlag(SpriteFlag.Invisible, true);
+    //Good_job.setFlag(SpriteFlag.Invisible, true)
+    Next_Level.setFlag(SpriteFlag.Invisible, true)
+    MenuS.setFlag(SpriteFlag.Invisible, true)
+    Restart.setFlag(SpriteFlag.Invisible, true)
 
 
     currentLevel = levelNum
@@ -206,20 +227,41 @@ controller.A.onEvent(ControllerButtonEvent.Pressed, function () {
 
                 // TODO: How do we clear the currentLayout?
                 // a hint is that there should be an easy way to reset it!
-            } else {
+            } else if(selectedButton == 3) {
                 let positivePos = findSymbolInLayout(currentLayout, symbolPositive);
                 let negativePos = findSymbolInLayout(currentLayout, symbolNegative);
                 let negativePathCheck = pathTo(currentLayout, positivePos.x, positivePos.y, symbolGoal);
                 let positivePathCheck = pathTo(currentLayout, negativePos.x, negativePos.y, symbolGoal);
                 let shortCircuitCheck = pathTo(currentLayout, positivePos.x, positivePos.y, symbolNegative);
 
-                if (positivePathCheck && negativePathCheck && !shortCircuitCheck) {
+                if (positivePathCheck && negativePathCheck && !shortCircuitCheck && switchOn && testVar) {
                     console.log("Path Found Fully");
                     goal.setImage(goalOnArr[currentLevel]);
                     goal.x = goalXArr[currentLevel]
                     goal.y = goalYArr[currentLevel];
                     goal.z = 1;
                     //Win code goes here
+
+                    pause(700)
+
+                    for (let i = 0; i <= placedBlocks.length - 1; i++) {
+                        placedBlocks[i].destroy()
+                    }
+
+
+                    MenuS.setFlag(SpriteFlag.Invisible, false);
+                    Next_Level.setFlag(SpriteFlag.Invisible, false)
+                    Restart.setFlag(SpriteFlag.Invisible, false)
+
+
+                    blockOverlay.setFlag(SpriteFlag.Invisible, true);
+                    curBlock.setFlag(SpriteFlag.Invisible, true);
+                    goal.setFlag(SpriteFlag.Invisible, true);
+                    battery.setFlag(SpriteFlag.Invisible, true);
+                    bottomOverlayTest.setFlag(SpriteFlag.Invisible, true);
+
+                    menuOpen = true;
+                    area = 2
 
                 } else if (positivePathCheck && negativePathCheck) {
                     console.log("Shortcircuit");
@@ -229,11 +271,39 @@ controller.A.onEvent(ControllerButtonEvent.Pressed, function () {
                     console.log("Path Not Found");
                     //Wire connection fail goes here
                 }
+            } else if(selectedButton == 2){
+                if (switchOn) {
+                    switchOn = false
+                    switchBlock.setImage(assets.image`Offswitch`)
+                    switchPlatform.setImage(assets.image`switchOff`)
+                } else {
+                    switchOn = true
+                    switchBlock.setImage(assets.image`OnSwitch`)
+                    switchPlatform.setImage(assets.image`switchOn`)
+                }
             }
         }
+    } else if (selectedSS == 1) {
+        switchLevel(currentLevel)
+        Restart.setFlag(SpriteFlag.Invisible, true)
+        Next_Level.setFlag(SpriteFlag.Invisible, true)
+        MenuS.setFlag(SpriteFlag.Invisible, true)
+        testVar = false;
+        menuOpen = false
+        //console.log("1")
+    } else if (selectedSS == 2) {
+        switchLevel(currentLevel+1)
+        MenuS.setFlag(SpriteFlag.Invisible, true);
+        Next_Level.setFlag(SpriteFlag.Invisible, true)
+        Restart.setFlag(SpriteFlag.Invisible, true)
+        menuOpen = false
+        //console.log("2")
+    } else if (selectedSS == 3) {
+        //console.log("3")
     } else {
         onA();
     }
+    
 })
 controller.left.onEvent(ControllerButtonEvent.Pressed, function () {
     if (!menuOpen) {
@@ -243,6 +313,9 @@ controller.left.onEvent(ControllerButtonEvent.Pressed, function () {
             } else if ((curBlock.x - 32) > 0) {
                 curBlock.x -= 16
             }
+        } else if(selectedButton == 3){
+            bottomOverlayTest.setImage(assets.image`bottomOverlay2`)
+            selectedButton = 2
         } else {
             bottomOverlayTest.setImage(assets.image`bottomOverlay1`)
             selectedButton = 1
@@ -259,9 +332,12 @@ controller.right.onEvent(ControllerButtonEvent.Pressed, function () {
             } else if ((curBlock.x + 32) < 160) {
                 curBlock.x += 16
             }
-        } else {
+        } else if(selectedButton == 1){
             bottomOverlayTest.setImage(assets.image`bottomOverlay2`)
             selectedButton = 2
+        } else {
+            bottomOverlayTest.setImage(assets.image`bottomOverlay3`)
+            selectedButton = 3
         }
     } else {
         right();
@@ -275,8 +351,8 @@ controller.down.onEvent(ControllerButtonEvent.Pressed, function () {
             } else {
                 curBlock.setImage(assets.image`empty`)
                 selectorPanel = true
-                selectedButton = 2
-                bottomOverlayTest.setImage(assets.image`bottomOverlay2`)
+                selectedButton = 3
+                bottomOverlayTest.setImage(assets.image`bottomOverlay3`)
             }
         } else {
             if (curBlock.y + 16 < 106) {
@@ -284,8 +360,8 @@ controller.down.onEvent(ControllerButtonEvent.Pressed, function () {
             } else {
                 curBlock.setImage(assets.image`empty`)
                 selectorPanel = true
-                selectedButton = 2
-                bottomOverlayTest.setImage(assets.image`bottomOverlay2`)
+                selectedButton = 3
+                bottomOverlayTest.setImage(assets.image`bottomOverlay3`)
             }
         }
     } else {
@@ -300,7 +376,7 @@ let bottomOverlayTest: Sprite = null
 let vertical = false
 let selectedButton = 0
 let curBlock: Sprite = null
-selectedButton = 2
+selectedButton = 3
 let battery = sprites.create(assets.image`batteryBlock`, 0)
 let goal = sprites.create(goalOffArr[currentLevel], 0)
 battery.x = 21
@@ -324,6 +400,8 @@ curBlock.setFlag(SpriteFlag.Invisible, true);
 goal.setFlag(SpriteFlag.Invisible, true);
 battery.setFlag(SpriteFlag.Invisible, true);
 bottomOverlayTest.setFlag(SpriteFlag.Invisible, true);
+switchBlock.setFlag(SpriteFlag.Invisible, true);
+switchPlatform.setFlag(SpriteFlag.Invisible, true)
 
 
 let layoutHeight = 7;
@@ -993,8 +1071,26 @@ let onA = function () {
             goal.setFlag(SpriteFlag.Invisible, false);
             battery.setFlag(SpriteFlag.Invisible, false);
             bottomOverlayTest.setFlag(SpriteFlag.Invisible, false);
+            /* Uncomment if you want Switch
+            switchBlock.setFlag(SpriteFlag.Invisible, false);
+            switchPlatform.setFlag(SpriteFlag.Invisible, false)
+            */
 
             switchLevel(2);
+        } else if (selected == 5) {
+            menuOpen = false;
+
+            blockOverlay.setFlag(SpriteFlag.Invisible, false);
+            curBlock.setFlag(SpriteFlag.Invisible, false);
+            goal.setFlag(SpriteFlag.Invisible, false);
+            battery.setFlag(SpriteFlag.Invisible, false);
+            bottomOverlayTest.setFlag(SpriteFlag.Invisible, false);
+            /* Uncomment if you want Switch
+            switchBlock.setFlag(SpriteFlag.Invisible, false);
+            switchPlatform.setFlag(SpriteFlag.Invisible, false)
+            */
+
+            switchLevel(1);
         } else if (selected == 4) {
             menuOpen = false;
 
@@ -1004,18 +1100,14 @@ let onA = function () {
             battery.setFlag(SpriteFlag.Invisible, false);
             bottomOverlayTest.setFlag(SpriteFlag.Invisible, false);
 
-            switchLevel(1);
-        } else if (selected == 5) {
-            menuOpen = false;
+            switchBlock.setFlag(SpriteFlag.Invisible, false);
+            switchPlatform.setFlag(SpriteFlag.Invisible, false)
 
-            blockOverlay.setFlag(SpriteFlag.Invisible, false);
-            curBlock.setFlag(SpriteFlag.Invisible, false);
-            goal.setFlag(SpriteFlag.Invisible, false);
-            battery.setFlag(SpriteFlag.Invisible, false);
-            bottomOverlayTest.setFlag(SpriteFlag.Invisible, false);
+            switchOn = false;
 
             switchLevel(3);
         }
+
     }
     if (area == 2) {
 
@@ -1690,6 +1782,68 @@ let Title: Sprite = null
 let Credits: Sprite = null
 let StartButton: Sprite = null
 let area = 0
+
+Next_Level = sprites.create(img`
+            ................................
+            ..8888888888888888888888888888..
+            .888888888888888888888888888888.
+            88888888888888888888888888888888
+            88888888888888888888888888888888
+            88888888888888888888889988888888
+            88888898898998989889889998888888
+            11888899898998898899989999888811
+            11888898998988898889889999888811
+            88888898898998989889889998888888
+            88888888888888888888889988888888
+            88888888888888888888888888888888
+            88888888888888888888888888888888
+            .888888888888888888888888888888.
+            ..8888888888888888888888888888..
+            ................................
+            `, SpriteKind.Player)
+Restart = sprites.create(img`
+            ................................
+            ..5555555555555555555555555555..
+            .588888888888888888888888888885.
+            58888888888888888888888888888885
+            58888888888888888888888888888885
+            58888888888888888888888888888885
+            588aaa8aa8aaa8aaa8aaa8aaa8aaa885
+            518a8a8aa8a8888a88a8a8a8a88a8815
+            518aa88a888a888a88aaa8aa888a8815
+            588a8a8aa8aaa88a88a8a8a8a88a8885
+            58888888888888888888888888888885
+            58888888888888888888888888888885
+            58888888888888888888888888888885
+            .588888888888888888888888888885.
+            ..5555555555555555555555555555..
+            ................................
+            `, SpriteKind.Player)
+MenuS = sprites.create(img`
+            ................................
+            ..8888888888888888888888888888..
+            .888888888888888888888888888888.
+            88888888888888888888888888888888
+            88888888888888888888888888888888
+            88888888888888888888888888888888
+            8888888f888f8fff8888888888888888
+            1188888ff8ff8fff8fff8f8f88888811
+            1188888f8f8f8ff88f8f8f8f88888811
+            8888888f8f8f8fff8f8f8ffff8888888
+            88888888888888888888888888888888
+            88888888888888888888888888888888
+            88888888888888888888888888888888
+            .888888888888888888888888888888.
+            ..8888888888888888888888888888..
+            ................................
+            `, SpriteKind.Player)
+Restart.setPosition(50, 60)
+Next_Level.setPosition(100, 60)
+MenuS.setPosition(75, 80)
+
+Restart.setFlag(SpriteFlag.Invisible, true)
+Next_Level.setFlag(SpriteFlag.Invisible, true)
+MenuS.setFlag(SpriteFlag.Invisible, true)
 
 area = 1
 scene.setBackgroundImage(img`
