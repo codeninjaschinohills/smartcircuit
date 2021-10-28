@@ -300,9 +300,22 @@ controller.A.onEvent(ControllerButtonEvent.Pressed, function () {
             switchPlatform.setFlag(SpriteFlag.Invisible, false)
         }
 
-        switchLevel(currentLevel + 1)
-        menuOpen = false
-        selectedSS = 0
+        if (currentLevel + 1 >= levLayoutArr.length){
+            menuOpen = true
+            area = 1
+            left();
+            selectedSS = 0
+            MenuS.setFlag(SpriteFlag.Invisible, true);
+            Next_Level.setFlag(SpriteFlag.Invisible, true)
+            Restart.setFlag(SpriteFlag.Invisible, true)
+            Good_job.setFlag(SpriteFlag.Invisible, true)
+
+            areaOneVisible(true);
+        } else {
+            switchLevel(currentLevel + 1)
+            menuOpen = false
+            selectedSS = 0
+        }
     } else if (selectedSS == 3) {
         menuOpen = true
         area = 1
